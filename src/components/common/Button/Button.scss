@@ -1,0 +1,12 @@
+@import '../../../styles/settings.scss';
+
+.button {
+  background-color: white;
+  border: none;
+  color: $blue;
+  height: calc($base-size * 3);
+  min-height: fit-content;
+  min-width: fit-content;
+  padding: $base-size;
+
+}

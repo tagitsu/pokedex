@@ -1,0 +1,20 @@
+@import '../../../styles/settings.scss';
+
+.panel {
+  display: flex;
+  justify-content: space-around;
+
+  &__login,
+  &__registration,
+  &__account {
+    align-items: center;
+    display: flex;
+    padding: $base-size;
+
+    border: 1px solid fuchsia;
+
+  }
+
+
+}
+

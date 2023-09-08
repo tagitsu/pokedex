@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+
+import styles from './App.module.scss';
+import Auth from './components/features/Auth/Auth.js';
+import Pokedex from './pages/Pokedex/Pokedex.js';
+import { auth } from './firebase-config'; 
+import { useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+
 
 function App() {
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser?.uid);
+    });
+  });
+
+  const [ user, setUser ] = useState();
+
+  console.log(`Aktualny użytkownik to ${user}`);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.app}>
+      <Auth />
+      <Pokedex user={user} />
     </div>
   );
 }

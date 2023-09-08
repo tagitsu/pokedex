@@ -1,0 +1,9 @@
+@import './settings.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-content;
+  font-size: calc($base-size * 2);
+}

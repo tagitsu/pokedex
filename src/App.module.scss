@@ -1,0 +1,12 @@
+@import './styles/general.scss';
+@import './styles/settings.scss';
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+
+  background-color: $gray;
+  color: black;
+  text-align: center;
+}

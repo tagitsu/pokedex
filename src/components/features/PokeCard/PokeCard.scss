@@ -1,0 +1,57 @@
+@import '../../../styles/settings.scss';
+
+.card {
+  background-color: $blue;
+  border: $base-size solid white;
+  border-radius: calc($base-size * 2);
+  color: white;
+  display: grid;
+  font-size: $base-size;
+  grid-template-columns: repeat(auto);
+  grid-template-rows: 20% auto auto;
+  padding: calc($base-size * 2);
+  width: 300px;
+
+  &__section {
+    padding: $base-size;
+  }
+
+  &__header {
+    align-items: center;
+    display: flex;
+    
+    grid-column: span 2;
+    justify-content: space-between;
+  }
+
+  &__appearance {
+    grid-column: 1 / 2;
+  }
+
+  &__image {
+    object-fit: cover;
+
+    img {
+      width: 90%;
+      background-color: white;
+      border: 3px solid $navy;
+      border-radius: 10px;
+    }
+  }
+
+  &__abilities {
+    grid-column: span 2;
+  }
+
+  &__stats {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3
+  }
+
+  &__types {
+    align-items: center;
+    display: flex;
+    gap: 5px;
+  }
+
+}
