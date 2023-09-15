@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import styles from './App.module.scss';
-import Auth from './components/features/Auth/Auth.js';
-import Pokedex from './pages/Pokedex/Pokedex.js';
+import './App.scss';
+import Pokedex from './views/Pokedex/Pokedex.js';
 import { auth } from './firebase-config'; 
 import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
+import Header from './views/Header/Header';
 
 
 function App() {
@@ -21,8 +21,8 @@ function App() {
   console.log(`Aktualny użytkownik to ${user}`);
 
   return (
-    <div className={styles.app}>
-      <Auth />
+    <div className='app'>
+      <Header />
       <Pokedex user={user} />
     </div>
   );

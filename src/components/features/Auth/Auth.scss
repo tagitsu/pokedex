@@ -1,8 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .panel {
-  display: flex;
-  justify-content: space-around;
+  
 
   &__login,
   &__registration,
@@ -10,8 +9,7 @@
     align-items: center;
     display: flex;
     padding: $base-size;
-
-    border: 1px solid fuchsia;
+    color: white;
 
   }
 

@@ -1,0 +1,56 @@
+@import '../../styles/settings.scss';
+
+.pokedex {
+  padding: $base-size;
+
+  &__search {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: $base-size;
+    background-color: $gray;
+    border-radius: $base-size;
+    padding: $base-size;
+  }
+
+  &__inputs {
+    margin: $base-size auto;
+
+    input, button {
+      padding: $base-size;
+      margin: 5px;
+      border: 2px solid $navy;
+      border-radius: $radius;
+      text-align: center;
+      background-color: whitesmoke;
+      color: $navy;
+      transition: all .3s ease-in-out;
+    }
+
+    button:hover {
+      background-color: $navy;
+      color: whitesmoke;
+    }
+  }
+
+  &__result {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 30%));
+    gap: calc($base-size * 2);
+    justify-content: center;
+    justify-items: center;
+    align-items: stretch;
+    width: 100%;
+    //padding: $base-size;
+  }
+
+  &__collection {
+
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-items: stretch;
+    grid-template-columns: repeat(auto-fill, minmax(370px, 30%));
+    gap: calc($base-size * 2);
+  }
+}

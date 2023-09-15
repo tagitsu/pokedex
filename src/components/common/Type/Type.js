@@ -1,4 +1,5 @@
 import axios from "axios";
+import clsx from 'clsx';
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShield, faBurst } from "@fortawesome/free-solid-svg-icons";
@@ -14,13 +15,6 @@ const Type = ({ type }) => {
   const getRelations = () => {
     axios.get(type.url).then( (response) => {
       const relObjects = Object.entries(response.data.damage_relations);
-      console.log('rel', relObjects);
-      //const relNames = Object.keys(response.data.damage_relations);
-      //console.log('rel names', relNames);
-      //const relValues = Object.values(response.data.damage_relations);
-      //console.log('rel val', relValues);
-
-
       setRelations(relObjects);
     });
     setIsVisible(!isVisible);
@@ -28,11 +22,15 @@ const Type = ({ type }) => {
 
 
   return(
-    <div className='type'>
+    <div className={clsx('type')}>
       <img src={`${process.env.PUBLIC_URL}/images/types/${type.name}.webp`} alt={`${type.name} type icon`} className='type__icon' onClick={getRelations}/>
       { isVisible && 
         <dialog className='relations' open>
-          <header className='relations__title'> {type.name} <img src={`${process.env.PUBLIC_URL}/images/types/${type.name}.webp`} alt={`${type.name} type icon`} className='relations__icon'/> </header>
+          <header className='relations__title'>
+           {type.name} 
+           <img src={`${process.env.PUBLIC_URL}/images/types/${type.name}.webp`} alt={`${type.name} type icon`} className='relations__icon'/>
+           <button onClick={() => setIsVisible(!isVisible)}> Zamknij X </button>
+          </header>
             <div className='relations__container'>
             {relations?.map( item => 
               <ul key={item[0]} className='relations__relation'>
