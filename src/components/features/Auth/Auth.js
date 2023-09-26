@@ -14,8 +14,8 @@ import { doc, setDoc } from 'firebase/firestore';
 
 const Auth = () => {
 
-  const [ registerEmail, setRegisterEmail ] = useState('');
-  const [ registerPassword, setRegisterPassword ] = useState('');
+  // const [ registerEmail, setRegisterEmail ] = useState('');
+  // const [ registerPassword, setRegisterPassword ] = useState('');
   const [ loginEmail, setLoginEmail ] = useState('');
   const [ loginPassword, setLoginPassword ] = useState('');
 
@@ -33,8 +33,8 @@ const Auth = () => {
       console.log('rejestracja rozpoczęta')
       const user = await createUserWithEmailAndPassword(
         auth, 
-        registerEmail, 
-        registerPassword
+        loginEmail, 
+        loginPassword
       );
       console.log('nowy użytkownik', user.user.uid);
       const userAccount = setDoc(doc(db, `users`, `${user.user.uid}`), {
@@ -67,7 +67,7 @@ const Auth = () => {
 
   return(
     <div className='panel'>
-      { !user && 
+      {/* { !user && 
       <div className='panel__registration'>
         <p> Zarejestruj się </p>
         <input 
@@ -80,12 +80,10 @@ const Auth = () => {
         onChange={(event) => {
           setRegisterPassword(event.target.value)
         }} />
-        <Button onClick={register} text='Dodaj użytkownika' />
-      </div>}
+      </div>} */}
 
       { !user && 
       <div className='panel__login'>
-        <p> Zaloguj się </p>
         <input 
         placeholder='Email...' 
         onChange={(event) => {
@@ -98,13 +96,13 @@ const Auth = () => {
         }} />
 
         <Button onClick={login} text='Zaloguj' />
-
+        <Button onClick={register} text='Zarejestruj' />
       </div>}
 
       { user && 
       <div className='panel__account'>
         <p> To jest Pokèdex użytkownika {user.email?.substring(0, user.email.indexOf('@'))} </p>
-        <button onClick={logout} className='panel__logout'> wyloguj </button>
+        <Button onClick={logout} text='wyloguj' />
       </div>}
     </div>
   )

@@ -13,6 +13,19 @@
     color: white;
     gap: $base-size;
 
+    input {
+      padding: $base-size;
+      border: none;
+      border-radius: $radius;
+      text-align: center;
+      color: $blue;
+    }
+
+    input::placeholder {
+      color: $navy;
+      opacity: .5;
+    }
+
   }
 
   &__account {
