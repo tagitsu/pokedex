@@ -103,8 +103,8 @@ const Auth = () => {
 
       { user && 
       <div className='panel__account'>
-        <p> {user.email} </p>
-        <Button onClick={logout} text='Wyloguj' />
+        <p> To jest Pokèdex użytkownika {user.email?.substring(0, user.email.indexOf('@'))} </p>
+        <button onClick={logout} className='panel__logout'> wyloguj </button>
       </div>}
     </div>
   )

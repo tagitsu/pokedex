@@ -1,7 +1,7 @@
 @import '../../../styles/settings.scss';
 
+
 .card {
-  background: linear-gradient(to left, whitesmoke, $blue);
   border: calc($base-size * 1) solid white;
   border-radius: calc($base-size * 1.2);
   display: grid;
@@ -24,6 +24,12 @@
     justify-content: flex-start;
     align-items: baseline;
     gap: calc($base-size / 2);
+
+    h1 {
+      height: calc($base-size * 2);
+      overflow-wrap: break-word;
+      margin: 0;
+    }
   }
 
   &__types, &__hp {
@@ -42,29 +48,86 @@
     display: grid;
     align-items: center;
     justify-items: center;
-    
     grid-template-columns: 1fr 1fr;
   }
 
+  &__features > p {
+    height: 100%;
+    padding: 0;
+  }
+
   &__image {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100px;
+    height: 100px;
 
     img {
       width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
   }
 
+  &__normal {
+    background: linear-gradient(-45deg, darken($normal, 20), lighten($normal, 15), darken($normal, 20));
+  }
 
+  &__fire {
+    background: linear-gradient(-45deg, darken($fire, 20), lighten($fire, 15), darken($fire, 20));
+  }
+
+  &__water {
+    background: linear-gradient(-45deg, darken($water, 20), lighten($water, 15), darken($water, 20));
+  }
+  &__grass {
+    background: linear-gradient(-45deg, darken($grass, 20), lighten($grass, 15), darken($grass, 20));
+  }
+  &__flying {
+    background: linear-gradient(-45deg, darken($flying, 20), lighten($flying, 15), darken($flying, 20));
+  }
+  &__fighting {
+    background: linear-gradient(-45deg, darken($fighting, 20), lighten($fighting, 15), darken($fighting, 20));
+  }
+  &__poison {
+    background: linear-gradient(-45deg, darken($poison, 20), lighten($poison, 15), darken($poison, 20));
+  }
+  &__electric {
+    background: linear-gradient(-45deg, darken($electric, 20), lighten($electric, 15), darken($electric, 20));
+  }
+  &__ground {
+    background: linear-gradient(-45deg, darken($ground, 20), lighten($ground, 15), darken($ground, 20));
+  }
+  &__rock {
+    background: linear-gradient(-45deg, darken($rock, 20), lighten($rock, 15), darken($rock, 20));
+  }
+  &__psychic {
+    background: linear-gradient(-45deg, darken($psychic, 20), lighten($psychic, 15), darken($psychic, 20));
+  }
+  &__ice {
+    background: linear-gradient(-45deg, darken($ice, 20), lighten($ice, 15), darken($ice, 20));
+  }
+  &__bug {
+    background: linear-gradient(-45deg, darken($bug, 20), lighten($bug, 15), darken($bug, 20));
+  }
+  &__ghost {
+    background: linear-gradient(-45deg, darken($ghost, 20), lighten($ghost, 15), darken($ghost, 20));
+  }
+  &__steel {
+    background: linear-gradient(-45deg, darken($steel, 20), lighten($steel, 15), darken($steel, 20));
+  }
+  &__dragon {
+    background: linear-gradient(-45deg, darken($dragon, 20), lighten($dragon, 15), darken($dragon, 20));
+  }
+  &__dark {
+    background: linear-gradient(-45deg, darken($dark, 20), lighten($dark, 15), darken($dark, 20));
+  }
+  &__fairy {
+    background: linear-gradient(-45deg, darken($fairy, 20), lighten($fairy, 15), darken($fairy, 20));
+  }
 }
 
-
 .card--active {
-  background: linear-gradient(whitesmoke, $blue);
   grid-template-columns: auto auto;
-  grid-template-rows: 10% 35% 45% 10%;
+  grid-template-rows: 10% 35% 20% 30% 5%;
   height: 500px;
 
 
@@ -104,20 +167,75 @@
     }
   }
 
-
-
   &__appearance {
     grid-column: span 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    justify-content: space-between;
+    background-color: whitesmoke;
     border-radius: 10px;
     color: $blue;
+    overflow: hidden;
+    border: 4px solid white;
   }
+
+  &__cave {
+    background: url(../../../../public/images/habitats/batch_cave.jpg) center / 300px 200px;
+  }
+
+  &__grassland {
+    background: url(../../../../public/images/habitats/batch_grassland.jpg);
+  }
+
+  &__mountain {
+    background: url(../../../../public/images/habitats/batch_mountain.jpg) center ;
+  }
+
+  &__rough-terrain {
+    background: url(../../../../public/images/habitats/batch_rough-terrain.jpg) center;
+  }
+
+  &__waters-edge {
+    background: url(../../../../public/images/habitats/batch_waters-edge.jpg);
+  }
+
+  &__forest {
+    background: url(../../../../public/images/habitats/batch_forest.jpg) center / 300px 200px no-repeat padding-box content-box;
+  }
+
+  &__sea {
+    background: url(../../../../public/images/habitats/batch_sea.jpg) center;
+  }
+
+  &__urban {
+    background: url(../../../../public/images/habitats/batch_urban.jpg) center;
+  }
+
+  &__rare {
+    background: url(../../../../public/images/habitats/batch_rare.jpg) center;
+  }
+
+
+  &__cave, 
+  &__grassland, 
+  &__mountain, 
+  &__rough-terrain, 
+  &__water-edge, 
+  &__forest, 
+  &__sea, 
+  &__urban, 
+  &__rare {
+    background-size: cover;
+    background-color: rgb(37, 35, 46);
+    background-blend-mode: screen;
+  }
+
+
 
   &__image {
     height: 80%;
+
 
     img {
       height: 100%;
@@ -125,18 +243,63 @@
   }
 
   &__features {
+    width: 100%;
+    padding: calc($base-size / 3);
     display: flex;
+    justify-content: center;
     gap: $base-size;
+
+    background-color: white;
+
+    p {
+      margin: 0;
+    }
+
+  }
+
+  &__abilities, &__stats, &__species {
+    padding: calc($base-size / 3) $base-size;
+    // display: flex;
+    // flex-direction: column;
+    // flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: calc($base-size * 2.4) auto;
+    align-items: baseline;
+    //justify-items: first baseline;
+
+
+    h2 {
+      grid-column: span 2;
+    }
+
+    h2, p {
+      padding: 0;
+      margin: 0;
+
+      border: 1px dotted black;
+    }
   }
 
   &__abilities {
-    //grid-column: 2 / 3;
-    //text-align: center;
-    padding: $base-size;
+
+    p {
+      grid-column: span 2;
+    }
   }
 
-  &__stats {
-    padding: $base-size;
+  &__species {
+    grid-column: span 2;
+
+  }
+
+  &__fact {
+    grid-column: span 2;
+    background-color: whitesmoke;
+    padding: 4px;
+    border-radius: 3px;
+    color: $blue;
+    text-align: justify;
   }
 
   &__adding {
@@ -149,10 +312,13 @@
       width: calc($base-size * 3);
       height: calc($base-size * 3);
       border-radius: 50%;
-      background-color: whitesmoke;
+      background: url('../../../../public/images/pokeball-icon.png') center / calc($base-size * 4) calc($base-size * 4);
+      transition: all 1s ease-in-out;
+
     }
 
+    button:hover {
+      transform: rotateZ(20deg) scale(1.1);
+    }
   }
-
-
 }

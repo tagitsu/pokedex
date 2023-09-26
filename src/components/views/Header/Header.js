@@ -1,5 +1,5 @@
 import './Header.scss';
-import Auth from '../../components/features/Auth/Auth';
+import Auth from '../../features/Auth/Auth';
 
 const Header = () => {
 

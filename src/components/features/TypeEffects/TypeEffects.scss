@@ -1,0 +1,60 @@
+@import '../../../styles/settings.scss';
+
+
+.effects {
+  //width: max-content;
+  background-color: whitesmoke;
+  border-radius: $radius;
+  box-shadow: 2px 2px 20px rgba(72, 72, 72, 0.428);
+
+
+  &__header, &__types {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title, &__subtitle {
+    font-size: calc($base-size * 1.4);
+    margin: 0;
+  }
+
+  &__close {
+    background-color: transparent;
+    transition: all .3s ease-in-out;
+  }
+
+  &__close:hover {
+    color: darkslategray;
+  }
+
+  &__icon {
+    height: calc($base-size * 2.4);
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $base-size;
+  }
+
+  &__relation {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    //grid-template-rows: calc($base-size * 3) auto;
+    justify-items: flex-start;
+    gap: $base-size;
+    padding: $base-size;
+    margin: 0;
+    border: 1px solid orange;
+    border-radius: $radius;
+  }
+
+  &__subtitle {
+    grid-column: span 5;
+  }
+
+  &__types {
+    list-style-type: none;
+  }
+}

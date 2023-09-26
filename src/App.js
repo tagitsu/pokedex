@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
 import './App.scss';
-import Pokedex from './views/Pokedex/Pokedex.js';
+import Pokedex from './components/views/Pokedex/Pokedex.js';
 import { auth } from './firebase-config'; 
 import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import Header from './views/Header/Header';
+import Header from './components/views/Header/Header';
 
 
 function App() {

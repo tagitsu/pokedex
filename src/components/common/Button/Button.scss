@@ -1,7 +1,10 @@
 @import '../../../styles/settings.scss';
 
-button {
+.button {
   border: none;
   padding: $base-size;
+  background-color: transparent;
+  color: white;
   cursor: pointer;
 }
+

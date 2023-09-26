@@ -1,0 +1,9 @@
+@import '../../../styles/settings.scss';
+
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  background: linear-gradient($navy, $blue, $navy);
+}

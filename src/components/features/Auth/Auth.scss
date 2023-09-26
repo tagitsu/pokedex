@@ -1,7 +1,8 @@
 @import '../../../styles/settings.scss';
 
 .panel {
-  
+  border: 1px solid white;
+  width: 100%;
 
   &__login,
   &__registration,
@@ -10,9 +11,19 @@
     display: flex;
     padding: $base-size;
     color: white;
+    gap: $base-size;
 
   }
 
+  &__account {
+    justify-content: space-between;
+  }
+
+  &__logout {
+    background-color: transparent;
+    border: none;
+    color: white;
+  }
 
 }
 
