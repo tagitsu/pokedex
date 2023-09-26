@@ -98,7 +98,7 @@ const PokeCard = ({ pokemon, addPokemon, myPokemons }) => {
             <h2> O gatunku </h2>
             <p> Kolor: {pokemon?.color ? pokemon.color : '-'} </p>
             <p> Siedlisko: {pokemon?.habitat ? pokemon.habitat : '-'} </p>
-            <div className={clsx('card--active__fact')}> {pokemon?.text ? <p>{pokemon.text}</p> : <p> There is no information about this species </p>} </div>
+            <div className={clsx('card--active__fact', `card--active__${pokemon.habitat}`)}> {pokemon?.text ? <p>{pokemon.text}</p> : <p> There is no information about this species </p>} </div>
           </section>
           { 
             // TODO odkomentuj linię poniżej gdy wszystko będzie gotowe!!

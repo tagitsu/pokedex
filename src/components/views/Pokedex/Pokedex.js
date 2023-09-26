@@ -15,8 +15,6 @@ const Pokedex = ({ user }) => {
   const [ myPokemon, setMyPokemon ] = useState([]);
   const [ userPokemons, setUserPokemons ] = useState([]);
 
-  console.log(myPokemon);
-  
   useEffect(() => {
     async function getPokemons() {
       const data = await getDocs(collection(db, 'users', `${user}`, 'pokedex'));
@@ -28,7 +26,6 @@ const Pokedex = ({ user }) => {
   const searchPokemon = () => {
 
     // czas wyszukania pokemona/pokemonów
-
     const leadingZero = (time) => {
       return (time < 10) ? '0' + time : time;
     };
@@ -41,11 +38,10 @@ const Pokedex = ({ user }) => {
 
       // znalezienie pasujących do wyszukiwania
       const searchMatch = () => {
-        const matchingPokemons = allPokemons.filter( pokemon => pokemon.name.includes(search) || pokemon.id === search);
-        console.log('pasujące pokemony', search, matchingPokemons);
+        const matchingPokemons = allPokemons.filter( pokemon => pokemon.name.includes(search) );
+        console.log('pasujące pokemony', search, matchingPokemons.length);
         for ( let i = 0; i < matchingPokemons.length; i++) {
           let pokemon, pokemonTypes = [], pokemonAbilities = []
-          //console.log(`pasujący pokemon o indeksie ${i}`, matchingPokemons[i].name);
   
           axios.get(matchingPokemons[i].url).then( response => {
             const pokemonObject = response.data;
@@ -66,13 +62,10 @@ const Pokedex = ({ user }) => {
               if (pokemonObject) {
                 axios.get(pokemonObject.species.url).then( response => {
                   const pokemonSpecies = response.data;
-                  console.log(`pokemon species dla ${pokemonObject.name}`, pokemonSpecies.flavor_text_entries)
                   const funFacts = pokemonSpecies.flavor_text_entries.filter( text => text.language.name === 'en');
-                  console.log(funFacts);
                   
                   const pickText = (funFacts) => {
                     const index = Math.floor(Math.random() * funFacts.length);
-                    //console.log(`index wylosowany dla ${pokemonObject.name}`, index, pokemonSpecies.funFacts[index]);
                     return funFacts[index].flavor_text;
                   }
     
@@ -83,7 +76,7 @@ const Pokedex = ({ user }) => {
                     text: pickText(funFacts)
                   }
 
-                  console.log(`etap II - obiekt pokemon ${pokemonObject.id}`, pokemon, pokemonSpecies.flavor_text_entries);
+                  console.log(`etap II - obiekt pokemon ${pokemonObject.id}`, pokemon);
                   setPokemonData(pokemonData => [...pokemonData, pokemon]);
                   setMyPokemon();
             
@@ -115,10 +108,8 @@ const Pokedex = ({ user }) => {
               };
               console.log(`etap I - obiekt pokemon ${pokemon.name}`, pokemon);
             }
-
             getSpeciesInfo();
           })
-
         }
       }
       searchMatch();

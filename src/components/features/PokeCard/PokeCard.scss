@@ -127,8 +127,9 @@
 
 .card--active {
   grid-template-columns: auto auto;
-  grid-template-rows: 10% 35% 20% 30% 5%;
+  grid-template-rows: 10% 35% 20% 35%;
   height: 500px;
+  position: relative;
 
 
   &__header {
@@ -181,11 +182,11 @@
   }
 
   &__cave {
-    background: url(../../../../public/images/habitats/batch_cave.jpg) center / 300px 200px;
+    background: url(../../../../public/images/habitats/batch_cave.jpg) center ;
   }
 
   &__grassland {
-    background: url(../../../../public/images/habitats/batch_grassland.jpg);
+    background: url(../../../../public/images/habitats/batch_grassland.jpg) center;
   }
 
   &__mountain {
@@ -197,11 +198,11 @@
   }
 
   &__waters-edge {
-    background: url(../../../../public/images/habitats/batch_waters-edge.jpg);
+    background: url(../../../../public/images/habitats/batch_waters-edge.jpg) center;
   }
 
   &__forest {
-    background: url(../../../../public/images/habitats/batch_forest.jpg) center / 300px 200px no-repeat padding-box content-box;
+    background: url(../../../../public/images/habitats/batch_forest.jpg) center;
   }
 
   &__sea {
@@ -276,8 +277,6 @@
     h2, p {
       padding: 0;
       margin: 0;
-
-      border: 1px dotted black;
     }
   }
 
@@ -295,11 +294,16 @@
 
   &__fact {
     grid-column: span 2;
-    background-color: whitesmoke;
+    //background-color: whitesmoke;
+    background-size: contain;
+    background-position: center;
+    background-color: rgba(255, 250, 240, 0.848);
+    background-blend-mode: screen;
     padding: 4px;
     border-radius: 3px;
-    color: $blue;
+    color: $navy;
     text-align: justify;
+    //font-weight: 700;
   }
 
   &__adding {
@@ -307,8 +311,12 @@
     display: flex;
     justify-content: flex-end;
     align-items: end;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
 
     button {
+
       width: calc($base-size * 3);
       height: calc($base-size * 3);
       border-radius: 50%;
@@ -319,6 +327,10 @@
 
     button:hover {
       transform: rotateZ(20deg) scale(1.1);
+    }
+
+    button:active {
+      transform: rotateZ(360deg);
     }
   }
 }
