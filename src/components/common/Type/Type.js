@@ -5,13 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShield, faBurst } from "@fortawesome/free-solid-svg-icons";
 import './Type.scss';
 import TypeEffects from "../../features/TypeEffects/TypeEffects";
+
 const Type = ({ type }) => {
 
 
   const [ relations, setRelations ] = useState();
   const [ openModal, setOpenModal ] = useState(false);
 
-  // TODO zamień angielskie opisy oddziaływań między typami na polskie
+  //console.log(type);
 
   const getRelations = () => {
     axios.get(type.url).then( (response) => {

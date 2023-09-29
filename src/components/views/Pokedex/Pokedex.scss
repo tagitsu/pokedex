@@ -3,7 +3,7 @@
 .pokedex {
   padding: $base-size;
 
-  &__search {
+  &__search, &__menu {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@
     }
 
     button:hover {
-      background-color: $navy;
+      background-color: $blue;
       color: whitesmoke;
     }
   }
@@ -43,6 +43,28 @@
     width: 100%;
     //padding: $base-size;
   }
+
+  &__menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  &__filter {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__button {
+    background: radial-gradient($navy, $blue);
+    color: white;
+    border: none;
+    border-radius: $radius;
+    cursor: pointer;
+
+  }
+
 
   &__collection {
 

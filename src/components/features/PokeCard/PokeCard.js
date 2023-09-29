@@ -44,8 +44,8 @@ const PokeCard = ({ pokemon, addPokemon, myPokemons }) => {
           </header>
           <section className={clsx('card__appearence')} onClick={() => setIsActive(!isActive)}>
             <div className={clsx('card__features')}>
-              <p>Wysokość: {pokemon.appearance.height} m</p>
-              <p>Waga: {pokemon.appearance.weight} kg</p>
+              <p>Height: {pokemon.appearance.height} m</p>
+              <p>Weight: {pokemon.appearance.weight} kg</p>
             </div>
             <div className={clsx('card__image')}>
               <img src={img} alt={pokemon.name} />
@@ -77,13 +77,13 @@ const PokeCard = ({ pokemon, addPokemon, myPokemons }) => {
               <img src={img} alt={pokemon.name} />
             </div>
             <div className={clsx('card__features', 'card--active__features')}>
-              <p>Wysokość: {pokemon.appearance.height} m</p>
-              <p>Waga: {pokemon.appearance.weight} kg</p>
+              <p>H: {pokemon.appearance.height} m</p>
+              <p>W: {pokemon.appearance.weight} kg</p>
             </div>
 
           </section>
           <section className={clsx('card--active__stats')}>
-            <h2> Statystyki </h2>
+            <h2> Stats </h2>
             <p>ATK: {pokemon.stats.atk} </p>
             <p>DEF: {pokemon.stats.def} </p>
             <p>SpATK: {pokemon.stats.spAtk} </p>
@@ -91,18 +91,18 @@ const PokeCard = ({ pokemon, addPokemon, myPokemons }) => {
             <p>SPD: {pokemon.stats.spd} </p>
           </section>
           <section className={clsx('card--active__abilities')}>
-            <h2> Zdolności </h2>
+            <h2> Abilities </h2>
               {pokemon?.abilities.map( ability => <p key={ability}> {ability} </p>)}
           </section>
           <section className={clsx('card--active__species')}>
-            <h2> O gatunku </h2>
-            <p> Kolor: {pokemon?.color ? pokemon.color : '-'} </p>
-            <p> Siedlisko: {pokemon?.habitat ? pokemon.habitat : '-'} </p>
+            <h2> Species </h2>
+            <p> Color: {pokemon?.color ? pokemon.color : '-'} </p>
+            <p> Habitat: {pokemon?.habitat ? pokemon.habitat : '-'} </p>
             <div className={clsx('card--active__fact', `card--active__${pokemon.habitat}`)}> {pokemon?.text ? <p>{pokemon.text}</p> : <p> There is no information about this species </p>} </div>
           </section>
           { 
             // TODO odkomentuj linię poniżej gdy wszystko będzie gotowe!!
-            //myPokemons && !(isInPokedex(pokemon.id)) && 
+            myPokemons && !(isInPokedex(pokemon.id)) && 
             <div className='card--active__adding'>
               <Button onClick={() => addPokemon(pokemon.id)} />
             </div>

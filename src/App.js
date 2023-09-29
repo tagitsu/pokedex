@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import axios from 'axios';
 import './App.scss';
 import Pokedex from './components/views/Pokedex/Pokedex.js';
 import { auth } from './firebase-config'; 
@@ -14,16 +14,21 @@ function App() {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser?.uid);
     });
-  });
+    axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=2000`).then( (response) => {
+      setAllPokemons(response.data.results);
+    })
+  }, []);
 
   const [ user, setUser ] = useState();
+  const [ allPokemons, setAllPokemons ] = useState([])
 
-  console.log(`Aktualny użytkownik to ${user}`);
-
+  console.log(user);
+  console.log(allPokemons.length);
+  
   return (
     <div className='app'>
-      <Header />
-      <Pokedex user={user} />
+      <Header user={user} />
+      <Pokedex user={user} allPokemons={allPokemons} />
     </div>
   );
 }

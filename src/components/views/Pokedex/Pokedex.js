@@ -8,15 +8,16 @@ import axios from "axios";
 import PokeCard from "../../features/PokeCard/PokeCard";
 import Button from '../../common/Button/Button';
 
-const Pokedex = ({ user }) => {
+const Pokedex = ({ user, allPokemons }) => {
 
   const [ search, setSearch ] = useState(''); 
   const [ pokemonData, setPokemonData ] = useState([]);
   const [ myPokemon, setMyPokemon ] = useState([]);
   const [ userPokemons, setUserPokemons ] = useState([]);
+  const [ sortedPokemons, setSortedPokemons ] = useState(userPokemons);
 
   useEffect(() => {
-    async function getPokemons() {
+    const getPokemons = async() => {
       const data = await getDocs(collection(db, 'users', `${user}`, 'pokedex'));
       setUserPokemons(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
     }
@@ -32,9 +33,6 @@ const Pokedex = ({ user }) => {
     
     const date = new Date();
     const captureTime = `${leadingZero(date.getDate())}.${leadingZero(date.getMonth() +1)}.${date.getFullYear()} ${leadingZero(date.getHours())}:${leadingZero(date.getMinutes())}:${leadingZero(date.getSeconds())}`;
-
-    axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=2000`).then( (response) => {
-      const allPokemons = response.data.results;
 
       // znalezienie pasujących do wyszukiwania
       const searchMatch = () => {
@@ -66,7 +64,8 @@ const Pokedex = ({ user }) => {
                   
                   const pickText = (funFacts) => {
                     const index = Math.floor(Math.random() * funFacts.length);
-                    return funFacts[index].flavor_text;
+                    console.log(index, funFacts[index].flavor_text);
+                    return funFacts[index]?.flavor_text;
                   }
     
                   pokemon = { 
@@ -78,7 +77,7 @@ const Pokedex = ({ user }) => {
 
                   console.log(`etap II - obiekt pokemon ${pokemonObject.id}`, pokemon);
                   setPokemonData(pokemonData => [...pokemonData, pokemon]);
-                  setMyPokemon();
+                  //setMyPokemon();
             
                 }) 
               }
@@ -113,7 +112,7 @@ const Pokedex = ({ user }) => {
         }
       }
       searchMatch();
-    });
+    
   };
 
   const searchMyPokemon = () => {
@@ -124,13 +123,47 @@ const Pokedex = ({ user }) => {
       pokemon.id === search 
     );
     setMyPokemon(myPokemon);
-    setPokemonData();
-  }
+  };
 
   // TODO Po dodaniu pokemona do mojego Pokedexu chciałabym aby widok odświeżał się od razu.
   const addPokemon = (id) => {
     const [ pokemonToPokedex ] = pokemonData.filter( pokemon => pokemon.id === id);
     setDoc(doc(db, `users/${user}/pokedex`, `${id}`), pokemonToPokedex);
+    //window.location.reload();
+  };
+
+  const getFirstLetters = () => {
+    const allLetters = userPokemons.map( pokemon => pokemon.name[0] );
+    const sortLetters = allLetters.sort();
+    let firstLetters = [];
+    for ( let i = 0; i < sortLetters.length; i++) {
+      const letter = sortLetters.filter( letter => letter === sortLetters[i]);
+      if (!firstLetters.includes(letter[0])) {
+        firstLetters = [ ...firstLetters, letter[0] ];
+      }
+    }
+    return (firstLetters);
+  };
+
+  const getTypes = () => {
+    const allTypes = userPokemons.map( pokemon => { for (let i = 0; i < pokemon.types.length; i++) { return(pokemon.types[i].name)} } );
+    const sortTypes = allTypes.sort();
+    let types = [];
+    for (let i = 0; i < sortTypes.length; i++) {
+      const type = sortTypes.filter( type => type === sortTypes[i]);
+      if (!types.includes(type[0])) {
+        types = [ ...types, type[0] ];
+      }
+    }
+    return (types)
+  };
+
+  const getPokemonsByName = (letter) => {
+    setSortedPokemons(userPokemons.filter( pokemon => pokemon.name[0] == letter.toLowerCase() ));
+  };
+
+  const getPokemonsByType = (type) => {
+    setSortedPokemons(userPokemons.filter( pokemon => {for(let i = 0; i < pokemon.types.length; i++) { if(pokemon.types[i].name === type) return(true) }}  ));
   }
 
   return (
@@ -150,16 +183,26 @@ const Pokedex = ({ user }) => {
           {
             myPokemon &&
             myPokemon.map( pokemon => 
-              <PokeCard key={pokemon.id} pokemon={pokemon} />)
+              <PokeCard key={pokemon.id} pokemon={pokemon} myPokemons={userPokemons}/>)
           }
         </div>
       </div>
-      <p> Ilość pokemonów w Pokédex: {userPokemons.length} </p>
-      <p> Sortuj wg: </p>
+      <div className='pokedex__menu'>
+          <section className='pokedex__filter'>
+            { getFirstLetters().map( letter => <button className='pokedex__button' onClick={(e) => getPokemonsByName(e.target.innerText)}> {letter.toUpperCase()} </button>) }
+          </section>
+          <section className='pokedex__filter'>
+            { getTypes().map( type => <button className='pokedex__button' onClick={(e) => getPokemonsByType(e.target.innerText)}> {type} </button>) }
+          </section>
+
+      </div>
 
       <div className='pokedex__collection'>
-        { userPokemons.length > 0 && 
-          userPokemons.map( (pokemon) => <PokeCard key={pokemon.id.toString()} pokemon={pokemon} /> )}
+        { userPokemons.length > 0 && sortedPokemons.length === 0 ?
+          userPokemons.map( (pokemon) => <PokeCard key={pokemon.id.toString()} pokemon={pokemon} /> )
+          :
+          sortedPokemons.map( (pokemon) => <PokeCard key={pokemon.id.toString()} pokemon={pokemon} /> )
+        }
       </div>
     </div>
   )

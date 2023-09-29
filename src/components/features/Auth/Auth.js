@@ -12,7 +12,7 @@ import './Auth.scss';
 import Button from '../../common/Button/Button';
 import { doc, setDoc } from 'firebase/firestore';
 
-const Auth = () => {
+const Auth = ({ pokemonsAmount }) => {
 
   // const [ registerEmail, setRegisterEmail ] = useState('');
   // const [ registerPassword, setRegisterPassword ] = useState('');
@@ -26,7 +26,6 @@ const Auth = () => {
       setUser(currentUser);
     })
   })
-
 
   const register = async () => {
     try {
@@ -48,7 +47,6 @@ const Auth = () => {
 
   const login = async () => {
     try {
-      console.log('logowanie rozpoczęte')
       const user = await signInWithEmailAndPassword(
         auth, 
         loginEmail, 
@@ -63,7 +61,7 @@ const Auth = () => {
     await signOut(auth)
   };
 
-  console.log('auth - current', auth.currentUser, 'auth - user state', user);
+  console.log(auth.currentUser?.email);
 
   return(
     <div className='panel'>
@@ -85,24 +83,24 @@ const Auth = () => {
       { !user && 
       <div className='panel__login'>
         <input 
-        placeholder='Email...' 
+        placeholder='email' 
         onChange={(event) => {
           setLoginEmail(event.target.value)
         }} />
         <input 
-        placeholder='Hasło...' 
+        placeholder='password' 
         onChange={(event) => {
           setLoginPassword(event.target.value)
         }} />
 
-        <Button onClick={login} text='Zaloguj' />
-        <Button onClick={register} text='Zarejestruj' />
+        <Button onClick={login} text='sign in' />
+        <Button onClick={register} text='sign up' />
       </div>}
 
       { user && 
       <div className='panel__account'>
-        <p> To jest Pokèdex użytkownika {user.email?.substring(0, user.email.indexOf('@'))} </p>
-        <Button onClick={logout} text='wyloguj' />
+        <p> Hello {user.email?.substring(0, user.email.indexOf('@'))}! There is {pokemonsAmount} pokemons in your pokèdex.` </p>
+        <Button onClick={logout} text='logout' />
       </div>}
     </div>
   )
