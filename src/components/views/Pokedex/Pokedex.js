@@ -171,8 +171,8 @@ const Pokedex = ({ user, allPokemons }) => {
       <div className='pokedex__search'>
         <div className='pokedex__inputs'>
           <input type='text' onChange={(event) => setSearch(event.target.value)}/>
-          <Button onClick={searchPokemon} text='Szukaj w bazie Pokedex'/>
-          <Button onClick={searchMyPokemon} text='Szukaj w moim Pokedex'/>
+          <Button onClick={searchPokemon} text='Search the Pokèmon database'/>
+          <Button onClick={searchMyPokemon} text='Search my Pokèdex'/>
         </div>
         <div className='pokedex__result'>
           { pokemonData && 
@@ -188,12 +188,13 @@ const Pokedex = ({ user, allPokemons }) => {
         </div>
       </div>
       <div className='pokedex__menu'>
-          <section className='pokedex__filter'>
-            { getFirstLetters().map( letter => <button className='pokedex__button' onClick={(e) => getPokemonsByName(e.target.innerText)}> {letter.toUpperCase()} </button>) }
-          </section>
-          <section className='pokedex__filter'>
-            { getTypes().map( type => <button className='pokedex__button' onClick={(e) => getPokemonsByType(e.target.innerText)}> {type} </button>) }
-          </section>
+        <p> Filter your Pokèdex </p>
+        <section className='pokedex__menu--letters'>
+          { getFirstLetters().map( letter => <button className='pokedex__button' key={letter} onClick={(e) => getPokemonsByName(e.target.innerText)}> {letter.toUpperCase()} </button>) }
+        </section>
+        <section className='pokedex__menu--types'>
+          { getTypes().map( type => <button className='pokedex__button' key={type} onClick={(e) => getPokemonsByType(e.target.innerText)}> {type} </button>) }
+        </section>
 
       </div>
 

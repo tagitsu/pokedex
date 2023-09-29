@@ -2,15 +2,22 @@
 
 .pokedex {
   padding: $base-size;
+  display: grid;
+  grid-template-columns: 18% auto;
+
 
   &__search, &__menu {
     align-items: center;
-    display: flex;
-    flex-direction: column;
+    //display: flex;
+    //flex-direction: column;
     margin: $base-size;
     background-color: $gray;
     border-radius: $base-size;
     padding: $base-size;
+  }
+
+  &__search {
+    grid-column: span 2;
   }
 
   &__inputs {
@@ -45,15 +52,23 @@
   }
 
   &__menu {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 100%;
+    align-items: flex-start;
+    gap: $base-size;
+    height: max-content;
+    min-width: min-content
+
   }
 
-  &__filter {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+  &__menu--letters, &__menu--types {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(20px, 1fr));
+    gap: 4px;
+  }
+
+  &__menu--types {
+    grid-template-columns: repeat( auto-fit, minmax(60px, 100%));
   }
 
   &__button {
@@ -62,12 +77,17 @@
     border: none;
     border-radius: $radius;
     cursor: pointer;
+    min-width: fit-content;
 
   }
 
 
   &__collection {
 
+    background-color: floralwhite;
+    border-radius: $base-size;
+    margin: $base-size;
+    padding: $base-size;
     display: grid;
     justify-content: center;
     justify-items: center;
