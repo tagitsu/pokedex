@@ -3,33 +3,23 @@ import clsx from 'clsx';
 import Type from '../../common/Type/Type';
 import { useState } from 'react';
 import Button from '../../common/Button/Button';
+import utils from '../../../utils/pokedexUtils';
 
 
-const PokeCard = ({ pokemon, addPokemon, myPokemons }) => {
+const PokeCard = ({ user, pokemon, myPokemons }) => {
 
   const [ isActive, setIsActive ] = useState(false);
 
   const img = pokemon.appearance.image || pokemon.appearance.image2 || pokemon.appearance.image3;
-
-  const nameToUpperCase = (pokemonName) => {
-    return pokemonName[0].toUpperCase() + pokemonName.substring(1);
-  };
-
-  // INFO wywoływana przy wyświetlaniu przycisku dodawania pokemona do pokedex
-  const isInPokedex = (id) => {
-    const pokemonInPokedex = myPokemons?.filter( pokemon => pokemon.id === id);
-    return Boolean(pokemonInPokedex?.length);
-  };
 
   return(
     <div>
       { !isActive &&
         <article className={clsx('card', `card__${pokemon.types[0].name}`)} onClick={() => setIsActive(!isActive)}>
           <header className={clsx('card__header')}>
-            <div className='card__title'>
-              <p> #{pokemon.id} </p>
-              <h1> {nameToUpperCase(pokemon.name)}</h1>
-            </div>
+            <h1 className='card__title'>
+              {utils.nameToUpperCase(pokemon.name)}
+            </h1>
             <div className='card__box'>
               <div className='card__hp'>
                 <span> HP </span>
@@ -57,8 +47,7 @@ const PokeCard = ({ pokemon, addPokemon, myPokemons }) => {
         <article className={clsx('card', 'card--active', `card__${pokemon.types[0].name}`)} >
           <header className={clsx('card__header')}>
             <div className='card__title'>
-              <p> #{pokemon.id} </p>
-              <h1> {nameToUpperCase(pokemon.name)}</h1>
+              <h1> {utils.nameToUpperCase(pokemon.name)}</h1>
             </div>
             <div className='card__box'>
               <div className='card__hp'>
@@ -77,6 +66,7 @@ const PokeCard = ({ pokemon, addPokemon, myPokemons }) => {
               <img src={img} alt={pokemon.name} />
             </div>
             <div className={clsx('card__features', 'card--active__features')}>
+              <p> No. {pokemon.id} </p>
               <p>H: {pokemon.appearance.height} m</p>
               <p>W: {pokemon.appearance.weight} kg</p>
             </div>
@@ -101,10 +91,9 @@ const PokeCard = ({ pokemon, addPokemon, myPokemons }) => {
             <div className={clsx('card--active__fact', `card--active__${pokemon.habitat}`)}> {pokemon?.text ? <p>{pokemon.text}</p> : <p> There is no information about this species </p>} </div>
           </section>
           { 
-            // TODO odkomentuj linię poniżej gdy wszystko będzie gotowe!!
-            myPokemons && !(isInPokedex(pokemon.id)) && 
+            myPokemons && !utils.isInPokedex(myPokemons, pokemon.id) && 
             <div className='card--active__adding'>
-              <Button onClick={() => addPokemon(pokemon.id)} />
+              <Button onClick={() => utils.addPokemon(pokemon, user)} />
             </div>
           }
         </article>

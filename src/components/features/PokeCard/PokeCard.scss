@@ -264,9 +264,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: calc($base-size * 2.4) repeat(3, 1fr);
-    //align-items: center;
-    //justify-items: first baseline;
-    border: 1px solid white;
 
 
     h2 {
