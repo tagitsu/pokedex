@@ -3,55 +3,28 @@
 .pokedex {
   padding: $base-size;
   display: grid;
-  grid-template-columns: 18% auto;
+  grid-template-columns: 20% auto;
+  background: $red;
 
 
-  &__search, &__menu {
+  &__menu {
     align-items: center;
     //display: flex;
     //flex-direction: column;
     margin: $base-size;
-    background-color: $gray;
+    //background-color: $gray;
     border-radius: $base-size;
     padding: $base-size;
   }
 
-  &__search {
-    grid-column: span 2;
-  }
-
-  &__inputs {
-    margin: $base-size auto;
-
-    input, button {
-      padding: $base-size;
-      margin: 5px;
-      border: 2px solid $navy;
-      border-radius: $radius;
-      text-align: center;
-      background-color: whitesmoke;
-      color: $navy;
-      transition: all .3s ease-in-out;
-    }
-
-    button:hover {
-      background-color: $blue;
-      color: whitesmoke;
-    }
-  }
-
-  &__result {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(370px, 30%));
-    gap: calc($base-size * 2);
-    justify-content: center;
-    justify-items: center;
-    align-items: stretch;
-    width: 100%;
-    //padding: $base-size;
-  }
 
   &__menu {
+    background-color: lighten($red, 5);
+    border-radius: $base-size;
+    margin: $base-size;
+    padding: $base-size;
+    box-shadow: 2px 2px 2px darken($red, 80);
+
     display: grid;
     grid-template-columns: 100%;
     align-items: flex-start;
@@ -72,19 +45,29 @@
   }
 
   &__button {
-    background: radial-gradient($navy, $blue);
-    color: white;
-    border: none;
-    border-radius: $radius;
+    background-color: whitesmoke;
+    color: $navy;
+    border-style: none;
+    border-radius: 3px;
     cursor: pointer;
-    min-width: fit-content;
+    min-width: max-content;
+    transition: all .3s ease-in-out;
+    //box-shadow: 2px 2px 2px darken($red, 18);
+    padding: 2px;
+    font-size: $base-size;
+    border: 1px solid $gray;
+  }
 
+  &__button:hover {
+    background-color: $blue;
+    color: white;
+    //box-shadow: 0px 0px 12px lighten($yellow, 18);
   }
 
 
   &__collection {
 
-    background-color: floralwhite;
+    background-color: lighten($red, 5);
     border-radius: $base-size;
     margin: $base-size;
     padding: $base-size;
@@ -92,7 +75,10 @@
     justify-content: center;
     justify-items: center;
     align-items: stretch;
+    align-content: stretch;
     grid-template-columns: repeat(auto-fill, minmax(370px, 30%));
     gap: calc($base-size * 2);
+    box-shadow: 2px 2px 2px darken($red, 80);
+
   }
 }

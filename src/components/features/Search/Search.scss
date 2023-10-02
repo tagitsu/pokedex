@@ -1,0 +1,48 @@
+@import '../../../styles/settings.scss';
+
+.search {
+  align-items: center;
+  //display: flex;
+  //flex-direction: column;
+  margin: $base-size;
+  //background-color: $gray;
+  border-radius: $base-size;
+  padding: $base-size;
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__inputs {
+    margin: $base-size auto;
+  
+    input, button {
+      padding: $base-size;
+      margin: 5px;
+      border: 2px solid $navy;
+      border-radius: $radius;
+      text-align: center;
+      background-color: whitesmoke;
+      color: $navy;
+      transition: all .3s ease-in-out;
+    }
+  
+    button:hover {
+      background-color: $blue;
+      color: whitesmoke;
+    }
+  }
+  
+  &__result {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 30%));
+    gap: calc($base-size * 2);
+    justify-content: center;
+    justify-items: center;
+    align-items: stretch;
+    width: 100%;
+    //padding: $base-size;
+  }
+  
+}
+
