@@ -12,6 +12,7 @@ const Pokedex = ({ user, allPokemons }) => {
 
   const [ userPokemons, setUserPokemons ] = useState([]);
   const [ sortedPokemons, setSortedPokemons ] = useState(userPokemons);
+  const [ searchedPokemons, setSearchedPokemons ] = useState(null);
 
   useEffect(() => {
     const getPokemons = async() => {
@@ -25,19 +26,34 @@ const Pokedex = ({ user, allPokemons }) => {
     setSortedPokemons(pokemons);
   };
 
+  const getSearchedPokemons = (pokemons) => {
+    setSearchedPokemons(pokemons);
+  };
 
+  const displayPokemons = () => {
+    if (!sortedPokemons.length && !searchedPokemons) {
+      return(userPokemons);
+    } else if (sortedPokemons.length && !searchedPokemons) {
+      return(sortedPokemons);
+    } else if (searchedPokemons) {
+      return(searchedPokemons);
+    }
+  };
+
+  displayPokemons();
 
   return (
     <div className='pokedex'>
-      <Search user={user} allPokemons={allPokemons} userPokemons={userPokemons} />
+      <Search user={user} allPokemons={allPokemons} userPokemons={userPokemons} getSearchedPokemons={getSearchedPokemons} />
       <Menu userPokemons={userPokemons} getSortedPokemons={getSortedPokemons}/>
 
       <div className='pokedex__collection'>
-        { userPokemons.length > 0 && sortedPokemons.length === 0 ?
+        {/* { userPokemons.length > 0 && sortedPokemons.length === 0 ?
           userPokemons.map( (pokemon) => <PokeCard key={pokemon.id.toString()} pokemon={pokemon} /> )
           :
           sortedPokemons.map( (pokemon) => <PokeCard key={pokemon.id.toString()} pokemon={pokemon} /> )
-        }
+        } */}
+        { displayPokemons().map( pokemon => <PokeCard key={pokemon.id.toString()} pokemon={pokemon} />)}
       </div>
       <UpButton container={'.pokedex__collection'}/>
     </div>

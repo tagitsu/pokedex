@@ -10,7 +10,6 @@ const UpButton = ({ container }) => {
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.querySelector(container).scrollTop;
-    console.log(scrolled);
     if ( scrolled > 500) {
       setVisible(true);
     } else {
@@ -18,9 +17,7 @@ const UpButton = ({ container }) => {
     }
   };
 
-  console.log(container);
   const elContainer = document.querySelector(container);
-  console.log(elContainer);
 
   elContainer && document.querySelector(container).addEventListener('scroll', () => {
     toggleVisible();
