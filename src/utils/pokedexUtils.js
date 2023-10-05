@@ -3,6 +3,11 @@ import { db } from '../firebase-config';
 
 const utils = {};
 
+// APP
+utils.getOffsetTop = (element) => {
+  return (element.offsetTop);
+}
+
 // POKECARD
 utils.nameToUpperCase = (pokemonName) => {
   return pokemonName[0].toUpperCase() + pokemonName.substring(1);

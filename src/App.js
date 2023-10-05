@@ -6,9 +6,13 @@ import { auth } from './firebase-config';
 import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import Header from './components/views/Header/Header';
-
+import UpButton from './components/common/UpButton/UpButton';
+import utils from './utils/pokedexUtils';
 
 function App() {
+
+  const [ user, setUser ] = useState();
+  const [ allPokemons, setAllPokemons ] = useState([]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -17,18 +21,12 @@ function App() {
     axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=2000`).then( (response) => {
       setAllPokemons(response.data.results);
     })
-  }, []);
+  }, [user]);
 
-  const [ user, setUser ] = useState();
-  const [ allPokemons, setAllPokemons ] = useState([])
-
-  console.log(user);
-  console.log(allPokemons.length);
-  
   return (
-    <div className='app'>
+    <div className='app' >
       <Header user={user} />
-      <Pokedex user={user} allPokemons={allPokemons} />
+      { user && <Pokedex user={user} allPokemons={allPokemons} /> }
     </div>
   );
 }

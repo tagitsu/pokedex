@@ -6,6 +6,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import PokeCard from "../../features/PokeCard/PokeCard";
 import Search from '../../features/Search/Search';
 import Menu from '../../features/Menu/Menu';
+import UpButton from '../../common/UpButton/UpButton';
 
 const Pokedex = ({ user, allPokemons }) => {
 
@@ -24,6 +25,8 @@ const Pokedex = ({ user, allPokemons }) => {
     setSortedPokemons(pokemons);
   };
 
+
+
   return (
     <div className='pokedex'>
       <Search user={user} allPokemons={allPokemons} userPokemons={userPokemons} />
@@ -36,6 +39,7 @@ const Pokedex = ({ user, allPokemons }) => {
           sortedPokemons.map( (pokemon) => <PokeCard key={pokemon.id.toString()} pokemon={pokemon} /> )
         }
       </div>
+      <UpButton container={'.pokedex__collection'}/>
     </div>
   )
 };

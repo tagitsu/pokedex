@@ -16,8 +16,8 @@ const Auth = ({ pokemonsAmount }) => {
 
   // const [ registerEmail, setRegisterEmail ] = useState('');
   // const [ registerPassword, setRegisterPassword ] = useState('');
-  const [ loginEmail, setLoginEmail ] = useState('');
-  const [ loginPassword, setLoginPassword ] = useState('');
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
 
   const [ user, setUser ] = useState({});
 
@@ -25,15 +25,15 @@ const Auth = ({ pokemonsAmount }) => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     })
-  })
+  }, [])
 
   const register = async () => {
     try {
       console.log('rejestracja rozpoczęta')
       const user = await createUserWithEmailAndPassword(
         auth, 
-        loginEmail, 
-        loginPassword
+        email, 
+        password
       );
       console.log('nowy użytkownik', user.user.uid);
       const userAccount = setDoc(doc(db, `users`, `${user.user.uid}`), {
@@ -49,8 +49,8 @@ const Auth = ({ pokemonsAmount }) => {
     try {
       const user = await signInWithEmailAndPassword(
         auth, 
-        loginEmail, 
-        loginPassword
+        email, 
+        password
       );
       console.log('zalogowany użytkownik', user);
     } catch (error) {
@@ -60,8 +60,6 @@ const Auth = ({ pokemonsAmount }) => {
   const logout = async () => {
     await signOut(auth)
   };
-
-  console.log(auth.currentUser?.email);
 
   return(
     <div className='panel'>
@@ -85,12 +83,12 @@ const Auth = ({ pokemonsAmount }) => {
         <input 
         placeholder='email' 
         onChange={(event) => {
-          setLoginEmail(event.target.value)
+          setEmail(event.target.value)
         }} />
         <input 
         placeholder='password' 
         onChange={(event) => {
-          setLoginPassword(event.target.value)
+          setPassword(event.target.value)
         }} />
 
         <Button onClick={login} text='sign in' />
@@ -99,7 +97,7 @@ const Auth = ({ pokemonsAmount }) => {
 
       { user && 
       <div className='panel__account'>
-        <p> Hello {user.email?.substring(0, user.email.indexOf('@'))}! There is {pokemonsAmount} pokemons in your pokèdex.` </p>
+        <p> Hello {user.email?.substring(0, user.email.indexOf('@')).toUpperCase()}! This is your Pokèdex. </p>
         <Button onClick={logout} text='logout' />
       </div>}
     </div>
