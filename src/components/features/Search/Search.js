@@ -126,24 +126,10 @@ const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons }) => {
 
   return (
     <div className='search'>
-    <div className='search__inputs'>
-      <input type='text' onChange={(event) => setSearch(event.target.value)} defaultValue={search} />
+      <input type='text' onChange={(event) => setSearch(event.target.value)} />
       <Button onClick={searchPokemon} text='Search the Pokèmon database'/>
       <Button onClick={searchMyPokemons} text='Search my Pokèdex'/>
     </div>
-    {/* <div className='search__result'>
-      { pokemonData && 
-        pokemonData.map( pokemon => 
-          <PokeCard key={pokemon.id} user={user} pokemon={pokemon} myPokemons={userPokemons}/>
-      )
-      }
-      {
-        myPokemons &&
-        myPokemons.map( pokemon => 
-          <PokeCard key={pokemon.id} user={user} pokemon={pokemon} myPokemons={userPokemons}/>)
-      }
-    </div> */}
-  </div>
 )
 };
 
