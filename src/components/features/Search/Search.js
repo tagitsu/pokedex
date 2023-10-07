@@ -10,6 +10,7 @@ const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons }) => {
   const [ pokemonData, setPokemonData ] = useState([]);
   const [ myPokemons, setMyPokemons ] = useState([]);
 
+  // FIX po wyszukaniu nie znika tekst w inpucie i nie można ponowić wyszukiwania bez odswieżenia dtrony
   const searchPokemon = () => {
 
     setPokemonData([]);
@@ -116,12 +117,12 @@ const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons }) => {
       getSearchedPokemons(pokemonData);
     } else if (myPokemons.length) {
       getSearchedPokemons(myPokemons);
-    } else {
-      getSearchedPokemons(null);
     }
   };
 
-  displaySearchResult();
+  if (pokemonData.length || myPokemons.length) {
+    displaySearchResult();
+  }
 
   return (
     <div className='search'>

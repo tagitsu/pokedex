@@ -11,7 +11,7 @@ import UpButton from '../../common/UpButton/UpButton';
 const Pokedex = ({ user, allPokemons }) => {
 
   const [ userPokemons, setUserPokemons ] = useState([]);
-  const [ sortedPokemons, setSortedPokemons ] = useState(userPokemons);
+  const [ sortedPokemons, setSortedPokemons ] = useState(null);
   const [ searchedPokemons, setSearchedPokemons ] = useState(null);
 
   useEffect(() => {
@@ -31,12 +31,14 @@ const Pokedex = ({ user, allPokemons }) => {
   };
 
   const displayPokemons = () => {
-    if (!sortedPokemons.length && !searchedPokemons) {
+    if (!sortedPokemons?.length && !searchedPokemons) {
       return(userPokemons);
-    } else if (sortedPokemons.length && !searchedPokemons) {
+    } else if (sortedPokemons?.length && !searchedPokemons) {
       return(sortedPokemons);
-    } else if (searchedPokemons) {
+    } else if (searchedPokemons && !sortedPokemons?.length) {
       return(searchedPokemons);
+    } else if (searchedPokemons && sortedPokemons?.length) {
+      return(sortedPokemons);
     }
   };
 
@@ -45,14 +47,9 @@ const Pokedex = ({ user, allPokemons }) => {
   return (
     <div className='pokedex'>
       <Search user={user} allPokemons={allPokemons} userPokemons={userPokemons} getSearchedPokemons={getSearchedPokemons} />
-      <Menu userPokemons={userPokemons} getSortedPokemons={getSortedPokemons}/>
+      <Menu userPokemons={userPokemons} getSortedPokemons={getSortedPokemons} displayPokemons={displayPokemons} />
 
       <div className='pokedex__collection'>
-        {/* { userPokemons.length > 0 && sortedPokemons.length === 0 ?
-          userPokemons.map( (pokemon) => <PokeCard key={pokemon.id.toString()} pokemon={pokemon} /> )
-          :
-          sortedPokemons.map( (pokemon) => <PokeCard key={pokemon.id.toString()} pokemon={pokemon} /> )
-        } */}
         { displayPokemons().map( pokemon => <PokeCard key={pokemon.id.toString()} pokemon={pokemon} />)}
       </div>
       <UpButton container={'.pokedex__collection'}/>

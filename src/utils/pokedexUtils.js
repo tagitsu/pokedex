@@ -25,8 +25,8 @@ utils.addPokemon = (pokemon, user) => {
 
 // MENU
 
-utils.getFirstLetters = (userPokemons) => {
-  const allLetters = userPokemons.map( pokemon => pokemon.name[0] );
+utils.getFirstLetters = (pokemons) => {
+  const allLetters = pokemons.map( pokemon => pokemon.name[0] );
   const sortLetters = allLetters.sort();
   let firstLetters = [];
   for ( let i = 0; i < sortLetters.length; i++) {
@@ -38,8 +38,8 @@ utils.getFirstLetters = (userPokemons) => {
   return (firstLetters);
 };
 
-utils.getTypes = (userPokemons) => {
-  const allTypes = userPokemons.map( pokemon => { for (let i = 0; i < pokemon.types.length; i++) { return(pokemon.types[i].name)} } );
+utils.getTypes = (pokemons) => {
+  const allTypes = pokemons.map( pokemon => { for (let i = 0; i < pokemon.types.length; i++) { return(pokemon.types[i].name)} } );
   const sortTypes = allTypes.sort();
   let types = [];
   for (let i = 0; i < sortTypes.length; i++) {
@@ -51,12 +51,12 @@ utils.getTypes = (userPokemons) => {
   return (types);
 };
 
-utils.getPokemonsByName = (userPokemons, letter, getSortedPokemons) => {
-   getSortedPokemons(userPokemons.filter( pokemon => pokemon.name[0] == letter.toLowerCase() ));
+utils.getPokemonsByName = (displayPokemons, letter, getSortedPokemons) => {
+   getSortedPokemons(displayPokemons().filter( pokemon => pokemon.name[0] === letter.toLowerCase() ));
 };
 
-utils.getPokemonsByType = (userPokemons, type, getSortedPokemons) => {
-  getSortedPokemons(userPokemons.filter( pokemon => {for(let i = 0; i < pokemon.types.length; i++) { if(pokemon.types[i].name === type) return(true) }}  ));
+utils.getPokemonsByType = (displayPokemons, type, getSortedPokemons) => {
+  getSortedPokemons(displayPokemons().filter( pokemon => {for(let i = 0; i < pokemon.types.length; i++) { if(pokemon.types[i].name === type) return(true) }}  ));
 };
 
 
