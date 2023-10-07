@@ -46,7 +46,7 @@ const Pokedex = ({ user, allPokemons }) => {
 
   return (
     <div className='pokedex'>
-      <Search user={user} allPokemons={allPokemons} userPokemons={userPokemons} getSearchedPokemons={getSearchedPokemons} />
+      <Search user={user} allPokemons={allPokemons} userPokemons={userPokemons} getSearchedPokemons={getSearchedPokemons} getSortedPokemons={getSortedPokemons} />
       <Menu userPokemons={userPokemons} getSortedPokemons={getSortedPokemons} displayPokemons={displayPokemons} />
 
       <div className='pokedex__collection'>

@@ -2,17 +2,17 @@ import axios from "axios";
 import { useState } from "react";
 import './Search.scss';
 import Button from "../../common/Button/Button";
-import PokeCard from "../PokeCard/PokeCard";
 
-const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons }) => {
+const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons, getSortedPokemons }) => {
 
   const [ search, setSearch ] = useState(''); 
   const [ pokemonData, setPokemonData ] = useState([]);
   const [ myPokemons, setMyPokemons ] = useState([]);
 
+  console.log(search);
   // FIX po wyszukaniu nie znika tekst w inpucie i nie można ponowić wyszukiwania bez odswieżenia dtrony
   const searchPokemon = () => {
-
+    getSortedPokemons(null);
     setPokemonData([]);
     setMyPokemons([]);
 
@@ -99,10 +99,13 @@ const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons }) => {
       }
     };
     searchMatch();
-    setSearch('');
   };
 
   const searchMyPokemons = () => {
+    getSortedPokemons(null);
+    setPokemonData([]);
+    setMyPokemons([]);
+
     const myPokemons = userPokemons.filter( 
       pokemon => 
       pokemon.name.includes(search) 
@@ -126,7 +129,7 @@ const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons }) => {
 
   return (
     <div className='search'>
-      <input type='text' onChange={(event) => setSearch(event.target.value)} />
+      <input type='text' defaultValue={search} onChange={(event) => setSearch(event.target.value)} />
       <Button onClick={searchPokemon} text='Search the Pokèmon database'/>
       <Button onClick={searchMyPokemons} text='Search my Pokèdex'/>
     </div>
