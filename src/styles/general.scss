@@ -7,3 +7,17 @@ body, ::after, ::before {
   font-family: $font-content;
   font-size: calc($base-size * 2);
 }
+
+@media screen and (max-width: 850px) and (orientation: landscape) {
+  /* … */
+}
+
+@media screen and (max-width: 400px) and (orientation: portrait){
+  /* … */
+}
+
+
+
+
+
+
