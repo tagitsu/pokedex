@@ -48,9 +48,8 @@ const Pokedex = ({ user, allPokemons }) => {
     <div className='pokedex'>
       <Search user={user} allPokemons={allPokemons} userPokemons={userPokemons} getSearchedPokemons={getSearchedPokemons} getSortedPokemons={getSortedPokemons} />
       <Menu userPokemons={userPokemons} getSortedPokemons={getSortedPokemons} displayPokemons={displayPokemons} />
-
       <div className='pokedex__collection'>
-        { displayPokemons().map( pokemon => <PokeCard key={pokemon.id.toString()} pokemon={pokemon} />)}
+        { displayPokemons().map( pokemon => <PokeCard key={pokemon.id.toString()} user={user} pokemon={pokemon} userPokemons={userPokemons} />)}
       </div>
       <UpButton container={'.pokedex__collection'}/>
     </div>
