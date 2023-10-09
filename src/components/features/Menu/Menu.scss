@@ -1,25 +1,17 @@
 @import '../../../styles/settings.scss';
 
 .menu {
-  align-items: center;
-  //display: flex;
-  //flex-direction: column;
+  min-width: min-content;
+  height: 75vh;
   margin: $base-size;
-  //background-color: $gray;
-  border-radius: $base-size;
   padding: $base-size;
+  border-radius: $base-size;
   background-color: lighten($red, 5);
-  border-radius: $base-size;
-  margin: $base-size;
-  padding: $base-size;
   box-shadow: 2px 2px 2px darken($red, 80);
-
   display: grid;
   grid-template-columns: 100%;
   align-items: flex-start;
-  gap: $base-size;
-  height: max-content;
-  min-width: min-content;
+  overflow: scroll;
 
   &__button {
     background-color: whitesmoke;
@@ -43,14 +35,17 @@
 }
 
 
-.menu--letters, .menu--types {
+.menu--letters {
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(20px, 1fr));
   gap: 4px;
 }
 
 .menu--types {
-  grid-template-columns: repeat( auto-fit, minmax(60px, 100%));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+
 }
 
 

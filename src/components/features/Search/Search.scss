@@ -1,15 +1,14 @@
 @import '../../../styles/settings.scss';
 
 .search {
-  align-items: center;
-  margin: $base-size;
   border-radius: $base-size;
-  padding: $base-size;
   grid-column: span 2;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   input, button {
+    width: 30%;
     padding: $base-size;
     margin: 5px;
     border: 2px solid $navy;
