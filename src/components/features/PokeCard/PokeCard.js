@@ -67,6 +67,7 @@ const PokeCard = ({ user, pokemon, userPokemons }) => {
             </div>
             <div className={clsx('card__features', 'card--active__features')}>
               <p> No. {pokemon.id} </p>
+              <p> {pokemon.genus} </p>
               <p>H: {pokemon.appearance.height} m</p>
               <p>W: {pokemon.appearance.weight} kg</p>
             </div>

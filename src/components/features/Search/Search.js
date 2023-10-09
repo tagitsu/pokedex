@@ -10,7 +10,6 @@ const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons, getSorte
   const [ myPokemons, setMyPokemons ] = useState([]);
 
   console.log(search);
-  // FIX po wyszukaniu nie znika tekst w inpucie i nie można ponowić wyszukiwania bez odswieżenia dtrony
   const searchPokemon = () => {
     getSortedPokemons(null);
     setPokemonData([]);
@@ -32,7 +31,7 @@ const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons, getSorte
 
         axios.get(matchingPokemons[i].url).then( response => {
           const pokemonObject = response.data;
-          //console.log(`pokemonObject ${pokemonObject.name}`, pokemonObject);
+          console.log(`pokemonObject ${pokemonObject.name}`, pokemonObject);
 
           for (let i = 0; i < pokemonObject.types.length; i++) {
             pokemonTypes.push({
@@ -48,20 +47,24 @@ const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons, getSorte
             if (pokemonObject) {
               axios.get(pokemonObject.species.url).then( response => {
                 const pokemonSpecies = response.data;
+                console.log(pokemonSpecies);
                 const funFacts = pokemonSpecies.flavor_text_entries.filter( text => text.language.name === 'en');
-                
+                const genera = pokemonSpecies.genera.filter( text => text.language.name === 'en');
+                console.log(genera[0].genus);
                 const pickText = (funFacts) => {
                   const index = Math.floor(Math.random() * funFacts.length);
                   //console.log(index, funFacts[index].flavor_text);
                   return funFacts[index]?.flavor_text;
-                }
+                };
+  
   
                 pokemon = { 
                   ...pokemon, 
                   habitat: pokemonSpecies.habitat?.name ? pokemonSpecies.habitat.name : null, 
                   color: pokemonSpecies.color?.name ? pokemonSpecies.color.name : null,
-                  text: pickText(funFacts)
-                }
+                  text: pickText(funFacts),
+                  genus: genera[0].genus,
+                };
 
                 //console.log(`etap II - obiekt pokemon ${pokemonObject.id}`, pokemon);
                 setPokemonData(pokemonData => [...pokemonData, pokemon]);
