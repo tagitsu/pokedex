@@ -20,6 +20,7 @@ utils.isInPokedex = (myPokemons, id) => {
 
 utils.addPokemon = (pokemon, user) => {
   console.log(pokemon);
+  console.log(user);
   setDoc(doc(db, `users/${user}/pokedex`, `${pokemon.id}`), pokemon);
 };
 

@@ -17,14 +17,14 @@ const UpButton = ({ container }) => {
     }
   };
 
-  const elContainer = document.querySelector(container);
+  const btnContainer = document.querySelector(container);
 
-  elContainer && document.querySelector(container).addEventListener('scroll', () => {
+  btnContainer && document.querySelector(container).addEventListener('scroll', () => {
     toggleVisible();
   });
 
   const handleScrollToTop = (element) => {
-    elContainer.scrollTo({
+    btnContainer.scrollTo({
       top: 0,
       behavior: 'smooth'
     })

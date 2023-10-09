@@ -5,15 +5,15 @@ const Menu = ({ userPokemons, displayPokemons, getSortedPokemons }) => {
 
   return (
     <div className='menu'>
-      <section className='menu--letters'>
+      {/* <section className='menu--letters'>
         <button 
           className='menu__button' 
           onClick={(e) => getSortedPokemons(userPokemons)}
         > 
         my all pokemons 
         </button>
-      </section>
-      <section className='menu--letters'>
+      </section> */}
+      <section className='menu__letters'>
         { utils.getFirstLetters(displayPokemons()).map( letter => 
           <button 
             className='menu__button'
@@ -24,7 +24,7 @@ const Menu = ({ userPokemons, displayPokemons, getSortedPokemons }) => {
           </button>
         )}
       </section>
-      <section className='menu--types'>
+      <section className='menu__types'>
         { utils.getTypes(displayPokemons()).map( type => 
           <button 
             className='menu__button' 

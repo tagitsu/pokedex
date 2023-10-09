@@ -6,19 +6,15 @@
   grid-template-columns: 20% auto;
   background: $red;
 
-
-
-
   &__collection {
-
     background-color: lighten($red, 5);
     border-radius: $base-size;
     margin: $base-size;
-    padding: $base-size;
+    padding: $base-size calc($base-size * 4);
     display: grid;
     justify-content: center;
     justify-items: center;
-    align-items: stretch;
+    align-items: start;
     align-content: stretch;
     grid-template-columns: repeat(auto-fill, minmax(370px, 30%));
     gap: calc($base-size * 2);
@@ -27,4 +23,36 @@
     height: 75vh;
     position: relative;
   }
+
+  &__all {
+    position: absolute;
+    z-index: 1;
+    top: $base-size;
+    left: $base-size;
+    width: calc($base-size * 3);
+    height: calc($base-size * 3);
+    border-radius: 50%;
+    border-width: $base-size;
+    border-style: ridge;
+    border-color: $blue;
+    background-color: $gray;
+    color: $gray;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8px;
+    transition: all .3s;
+  }
+
+  &__all:hover {
+    border-color: $grass;
+    color: $grass;
+    box-shadow: 0 0 12px $yellow;
+  }
+
+  &__all:focus {
+    transform: rotate(180deg);
+  }
+
 }

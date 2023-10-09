@@ -6,10 +6,10 @@ import Button from '../../common/Button/Button';
 import utils from '../../../utils/pokedexUtils';
 
 
-const PokeCard = ({ user, pokemon, myPokemons }) => {
+const PokeCard = ({ user, pokemon, userPokemons }) => {
 
   const [ isActive, setIsActive ] = useState(false);
-
+  //console.log(user);
   const img = pokemon.appearance.image || pokemon.appearance.image2 || pokemon.appearance.image3;
 
   return(
@@ -91,7 +91,7 @@ const PokeCard = ({ user, pokemon, myPokemons }) => {
             <div className={clsx('card--active__fact', `card--active__${pokemon.habitat}`)}> {pokemon?.text ? <p>{pokemon.text}</p> : <p> There is no information about this species </p>} </div>
           </section>
           { 
-            myPokemons && !utils.isInPokedex(myPokemons, pokemon.id) && 
+            userPokemons && !utils.isInPokedex(userPokemons, pokemon.id) && 
             <div className='card--active__adding'>
               <Button onClick={() => utils.addPokemon(pokemon, user)} />
             </div>

@@ -10,21 +10,52 @@
   box-shadow: 2px 2px 2px darken($red, 80);
   display: grid;
   grid-template-columns: 100%;
-  align-items: flex-start;
+  //align-items: center;
+  //align-content: stretch;
+  gap: $base-size;
   overflow: scroll;
+
+  &__letters, &__types {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+  }
+
+  &__letters {
+    grid-template-columns: repeat( auto-fit, minmax(calc($base-size * 2.5), 1fr));
+  }
+
+  &__letters > button {
+    width: calc($base-size * 2.5);
+    height: calc($base-size * 2.5);
+  }
+
+  &__types {
+    height: 100%;
+    display: grid;
+    justify-items: stretch;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  
+  }
 
   &__button {
     background-color: whitesmoke;
     color: $navy;
-    border-style: none;
-    border-radius: 3px;
+    border-style: outset;
+    border-width: 3px;
+    border-color: $gray;
+    border-radius: 5px;
     cursor: pointer;
     min-width: max-content;
     transition: all .3s ease-in-out;
     //box-shadow: 2px 2px 2px darken($red, 18);
     padding: 2px;
-    font-size: $base-size;
-    border: 1px solid $gray;
+    font-size: calc($base-size * 1.6);
+    //border: 1px solid $gray;
   }
   
   &__button:hover {
@@ -32,20 +63,10 @@
     color: white;
     //box-shadow: 0px 0px 12px lighten($yellow, 18);
   }
+
+  &__button:focus {
+    background-color: $grass;
+    color: white;
+    //box-shadow: 0px 0px 12px lighten($yellow, 18);
+  }
 }
-
-
-.menu--letters {
-  display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(20px, 1fr));
-  gap: 4px;
-}
-
-.menu--types {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-
-}
-
-
