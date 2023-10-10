@@ -1,14 +1,14 @@
 @import '../../../styles/settings.scss';
 
 .pokedex {
+  height: calc(100vh - 7vh);
   padding: $base-size;
   display: grid;
   grid-template-columns: 20% auto;
   background: $red;
 
   &__collection {
-    background-color: lighten($red, 5);
-    border-radius: $base-size;
+    height: 75vh;
     margin: $base-size;
     padding: $base-size calc($base-size * 4);
     display: grid;
@@ -18,41 +18,53 @@
     align-content: stretch;
     grid-template-columns: repeat(auto-fill, minmax(370px, 30%));
     gap: calc($base-size * 2);
+    background-color: lighten($red, 5);
+    border-radius: $base-size;
     box-shadow: 2px 2px 2px darken($red, 80);
     overflow: scroll;
-    height: 75vh;
     position: relative;
   }
 
-  &__all {
-    position: absolute;
-    z-index: 1;
-    top: $base-size;
-    left: $base-size;
-    width: calc($base-size * 3);
-    height: calc($base-size * 3);
-    border-radius: 50%;
-    border-width: $base-size;
-    border-style: ridge;
-    border-color: $blue;
-    background-color: $gray;
-    color: $gray;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 8px;
-    transition: all .3s;
-  }
+}
 
-  &__all:hover {
-    border-color: $grass;
-    color: $grass;
-    box-shadow: 0 0 12px $yellow;
-  }
+@media screen and (max-width: 850px) and (orientation: landscape) {
+  .pokedex {
+    margin: 0;
+    grid-template-columns: auto auto;
+    grid-template-rows: 20vh 50vh;
+    justify-items: center;
+    background: $yellow;
 
-  &__all:focus {
-    transform: rotate(180deg);
-  }
 
+    &__collection {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      width: 50vw;
+      height: 70vh;
+      margin: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) and (orientation: portrait){
+  .pokedex {
+    align-content: space-evenly;
+    grid-template-columns: 100%;
+    grid-template-rows: 5vh 65vh 10vh;
+    background: $grass;
+
+    &__collection {
+      margin: 0;
+      height: 510px;
+      //max-height: 65vh;
+    }
+
+    // &__all {
+    //   position: fixed;
+    //   z-index: 3;
+    //   top: -$base-size;
+    //   left: 50%;
+    //   transform: translateX(-50%);
+    // }
+  }
 }

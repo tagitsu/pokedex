@@ -46,19 +46,11 @@ const Pokedex = ({ user, allPokemons }) => {
 
   displayPokemons();
 
-  const handleBack = () => {
-    window.location.reload();
-    getSortedPokemons(userPokemons)
-  }
-
   return (
     <div className='pokedex'>
       <Search user={user} allPokemons={allPokemons} userPokemons={userPokemons} getSearchedPokemons={getSearchedPokemons} getSortedPokemons={getSortedPokemons} />
       <Menu userPokemons={userPokemons} getSortedPokemons={getSortedPokemons} displayPokemons={displayPokemons} />
       <div className='pokedex__collection'>
-        <button className='pokedex__all' onClick={handleBack}>
-          <FontAwesomeIcon icon={faArrowsRotate} />
-        </button>
         { displayPokemons().map( pokemon => <PokeCard key={pokemon.id.toString()} user={user} pokemon={pokemon} userPokemons={userPokemons} />)}
       </div>
       <UpButton container={'.pokedex__collection'}/>

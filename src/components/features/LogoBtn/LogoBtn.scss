@@ -1,0 +1,30 @@
+@import '../../../styles/settings.scss';
+
+.logo {
+  //width: calc($base-size * 3);
+  //height: calc($base-size * 3);
+  width: 7vh;
+  height: 7vh;
+  border-radius: 50%;
+  border-width: 2.3vh;
+  border-style: ridge;
+  border-color: $red;
+  background-color: $gray;
+  color: $gray;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8px;
+  transition: all .3s;
+}
+
+.logo:hover {
+  border-color: $grass;
+  color: $grass;
+  box-shadow: 0 0 12px $yellow;
+}
+
+.logo:focus {
+  transform: rotate(180deg);
+}

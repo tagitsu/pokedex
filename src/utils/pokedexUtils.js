@@ -6,7 +6,11 @@ const utils = {};
 // APP
 utils.getOffsetTop = (element) => {
   return (element.offsetTop);
-}
+};
+
+utils.reloadPokedex = () => {
+  window.location.reload();
+};
 
 // POKECARD
 utils.nameToUpperCase = (pokemonName) => {

@@ -1,10 +1,12 @@
 @import '../../../styles/settings.scss';
 
 .header {
-  //position: sticky;
-  z-index: 1;
-  top: 0;
+  //height: calc($base-size * 5);
+  height: 7vh;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
   justify-content: space-around;
   background: linear-gradient($navy, $blue, $navy);
 }
