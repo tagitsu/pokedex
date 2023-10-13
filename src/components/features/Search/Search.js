@@ -1,10 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import './Search.scss';
-import Button from "../../common/Button/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDatabase, faGlassWaterDroplet, faGlobe, faMobileRetro, faNetworkWired } from "@fortawesome/free-solid-svg-icons";
-import {TbDeviceGamePad, TbDeviceMobileSearch, TbWorldSearch} from 'react-icons/tb';
+import { TbDeviceMobileSearch, TbWorldSearch } from 'react-icons/tb';
 
 const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons, getSortedPokemons }) => {
 
