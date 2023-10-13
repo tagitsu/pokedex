@@ -34,8 +34,8 @@
 
   &__button {
     width: 100%;
-    background-color: whitesmoke;
-    color: $navy;
+    background-color: $navy;
+    color: white;
     border-style: outset;
     border-width: 2px;
     border-color: $gray;
@@ -50,7 +50,6 @@
   
   &__button:hover {
     background-color: $blue;
-    color: white;
   }
 
   &__button:focus {
