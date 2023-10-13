@@ -7,4 +7,16 @@
   align-items: flex-start;
   justify-content: flex-start;
   background: linear-gradient($navy, $blue, $navy);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 100% 50%, 40% 50%, 30% 100%, 0% 100%, 0% 0%);}
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 100% 50%, 40% 50%, 30% 100%, 0% 100%, 0% 0%);
+}
+
+@media screen and (max-width: 850px) and (orientation: landscape) {
+  .header {
+    grid-template-columns: 10% 90%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 43% 80%, 40% 100%, 0 100%);
+}
+}
+
+@media screen and (max-width: 400px) and (orientation: portrait){
+  /* … */
+}

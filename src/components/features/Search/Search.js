@@ -3,7 +3,8 @@ import { useState } from "react";
 import './Search.scss';
 import Button from "../../common/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDatabase, faMobileRetro } from "@fortawesome/free-solid-svg-icons";
+import { faDatabase, faGlassWaterDroplet, faGlobe, faMobileRetro, faNetworkWired } from "@fortawesome/free-solid-svg-icons";
+import {TbDeviceGamePad, TbDeviceMobileSearch, TbWorldSearch} from 'react-icons/tb';
 
 const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons, getSortedPokemons }) => {
 
@@ -136,10 +137,10 @@ const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons, getSorte
     <div className='search'>
       <input type='text' defaultValue={search} onChange={(event) => setSearch(event.target.value)} />
       <button onClick={searchPokemon}>
-        <FontAwesomeIcon icon={faDatabase} />
+        <TbWorldSearch />
       </button>
       <button onClick={searchMyPokemons}>
-        <FontAwesomeIcon icon={faMobileRetro} />
+        <TbDeviceMobileSearch />
       </button>
     </div>
 )

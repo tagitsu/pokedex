@@ -9,6 +9,7 @@ import Header from './components/views/Header/Header';
 import Auth from './components/features/Auth/Auth';
 import UpButton from './components/common/UpButton/UpButton';
 import utils from './utils/pokedexUtils';
+import LogoBtn from './components/features/LogoBtn/LogoBtn';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <div className='app' >
+      <LogoBtn />
       <Header user={user} />
       { user ? <Pokedex user={user} allPokemons={allPokemons} /> : <Auth /> }
     </div>

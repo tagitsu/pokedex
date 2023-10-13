@@ -1,7 +1,8 @@
 @import '../../../styles/settings.scss';
 
 .panel {
-
+  grid-column: 2 / 3;
+  
   &__login,
   &__account {
     margin-top: 3px;
