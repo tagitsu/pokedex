@@ -1,15 +1,15 @@
 @import '../../../styles/settings.scss';
 
 .menu {
-  min-width: min-content;
-  height: 75vh;
+  //min-width: min-content;
+  //height: 75vh;
   margin: $base-size;
   padding: $base-size;
   border-radius: $base-size;
+  border: 2px outset rgba(255, 255, 255, 0.321);
   background-color: lighten($red, 5);
-  box-shadow: 2px 2px 2px darken($red, 80);
+  //box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.346);
   display: grid;
-  //grid-template-columns: 100%;
   grid-template-rows: repeat(2, max-content);
   gap: $base-size;
   overflow: scroll;
@@ -56,5 +56,53 @@
   &__button:focus {
     background-color: $grass;
     color: white;
+  }
+}
+
+@media screen and (max-width: 850px) and (orientation: landscape) {
+  .menu {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    margin: 5px;
+    align-self: stretch;
+    justify-self: stretch;
+
+    &__letters, &__types {
+      gap: 2px;
+    }
+
+    &__types {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    &__button {
+      font-weight: 400;
+      font-size: calc($base-size * 1.2);
+    }
+  }
+}
+
+@media screen and (max-width: 400px) and (orientation: portrait){
+  .menu {
+    margin: 0;
+    padding: 3px;
+    grid-row: 3 / 4;
+    gap: 5px;
+    align-items: baseline;
+
+    &__letters {
+      grid-column: 1 / 2;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  
+    &__types {
+      grid-column: 2 / 3;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__button {
+      font-weight: 400;
+      font-size: calc($base-size * 1.2);
+    }
   }
 }

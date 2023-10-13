@@ -11,6 +11,8 @@ import './Auth.scss';
 
 import Button from '../../common/Button/Button';
 import { doc, setDoc } from 'firebase/firestore';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 const Auth = ({ pokemonsAmount }) => {
 
@@ -90,15 +92,18 @@ const Auth = ({ pokemonsAmount }) => {
         onChange={(event) => {
           setPassword(event.target.value)
         }} />
-
-        <Button onClick={login} text='sign in' />
-        <Button onClick={register} text='sign up' />
+        <div className='panel__sign-btn'>
+          <button onClick={login}> sign in </button>
+          <button onClick={register}> sign up </button>
+        </div>
       </div>}
 
       { user && 
       <div className='panel__account'>
         <p> Hello {user.email?.substring(0, user.email.indexOf('@')).toUpperCase()}! This is your Pokèdex. </p>
-        <Button onClick={logout} text='logout' />
+        <button className='panel__logout' onClick={logout}>
+          <FontAwesomeIcon icon={faPowerOff} />
+        </button>
       </div>}
     </div>
   )

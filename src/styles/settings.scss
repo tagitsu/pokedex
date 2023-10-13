@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Pixelify+Sans&family=VT323&display=swap');
+$font-content: 'Gill Sans', sans-serif;
+$font-search: 'DotGothic16', sans-serif;
+//$font-search: 'VT323', monospace;
 
-$font-content: 'Gill Sans', monospace;
 $base-size: 12px;
 
 
@@ -12,6 +13,7 @@ $gold: #c7a008;
 $yellow: #ffcb05;
 $red: #e4000f; // nintendo red
 $gray: #DFDFDF;
+$screenGray: #ced7ce;
 
 $normal: rgb(115, 116, 116);
 $fire: #ff5f00;

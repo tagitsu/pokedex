@@ -1,12 +1,10 @@
 @import '../../../styles/settings.scss';
 
 .header {
-  //height: calc($base-size * 5);
   height: 7vh;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: center;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  align-items: flex-start;
+  justify-content: flex-start;
   background: linear-gradient($navy, $blue, $navy);
-}
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 100% 50%, 40% 50%, 30% 100%, 0% 100%, 0% 0%);}

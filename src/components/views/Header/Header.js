@@ -2,12 +2,12 @@ import './Header.scss';
 import Auth from '../../features/Auth/Auth';
 import LogoBtn from '../../features/LogoBtn/LogoBtn';
 
-const Header = ({}) => {
+const Header = ({ user }) => {
 
   return(
     <header className='header'>
       <LogoBtn />
-      <Auth />
+      { user && <Auth /> }
     </header>
   )
 };

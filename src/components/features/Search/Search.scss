@@ -6,22 +6,81 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 5px;
 
-  input, button {
-    width: 30%;
-    padding: $base-size;
-    margin: 5px;
-    border: 2px solid $navy;
+
+  input {
+    background-color: #ced7ce;
+    border: 3px inset $red;
+    font-size: calc($base-size * 2);
+    font-family: $font-search;
+    font-weight: 600;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 2px;
+    color: black;
+    padding-bottom: 7px;
     border-radius: $radius;
     text-align: center;
-    background-color: whitesmoke;
-    color: $navy;
-    transition: all .3s ease-in-out;
+  }
+
+  button {
+
+    
+    font-size: calc($base-size * 3);
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+
+    color: white;
+    transition: all 3s ease-in-out;
   }
 
   button:hover {
+    color: transparent;
     background-color: $blue;
-    color: whitesmoke;
+    background-clip: text;
+
+    transform: scale(1.06);
   }  
 }
 
+@media screen and (max-width: 850px) and (orientation: landscape) {
+  .search {
+    margin: 5px;
+    grid-column: 1 / 2;
+    align-self: stretch;
+    justify-self: stretch;
+    gap: 5px;
+
+    input {
+      align-self: stretch;
+      width: 50%;
+    }
+
+    button {
+      align-self: stretch;
+      
+      
+    }
+  }
+}
+
+@media screen and (max-width: 400px) and (orientation: portrait){
+
+  .search {
+    grid-row: 1 / 2;
+    align-self: stretch;
+    justify-self: stretch;
+    gap: 5px;
+
+    input {
+      width: 100%;
+    }
+
+    input, button {
+      padding: 5px;
+      margin: 0;
+    }
+  }
+}

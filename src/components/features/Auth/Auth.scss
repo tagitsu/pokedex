@@ -1,14 +1,12 @@
 @import '../../../styles/settings.scss';
 
 .panel {
-  width: 80%;
 
   &__login,
-  &__registration,
   &__account {
-    align-items: center;
+    margin-top: 3px;
     display: flex;
-    padding: $base-size;
+    justify-content: space-between;
     color: white;
     gap: $base-size;
 
@@ -24,18 +22,50 @@
       color: $navy;
       opacity: .5;
     }
+  }
 
+  &__login {
+    width: 100vw;
+    height: 50vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__sign-btn {
+    display: flex;
+    justify-content: center;
+
+    button {
+      background-color: transparent;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
   }
 
   &__account {
-    justify-content: space-between;
+    padding: 0;
+    width: 100%;
+
+    p {
+      margin: 0;
+    }
   }
 
   &__logout {
     background-color: transparent;
     border: none;
     color: white;
+    cursor: pointer;
   }
 
+  &__logout:hover {
+    color: $fire;
+  }
+
+  &__logout:focus {
+    color: $red;
+  }
 }
 

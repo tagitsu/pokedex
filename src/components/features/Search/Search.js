@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import './Search.scss';
 import Button from "../../common/Button/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDatabase, faMobileRetro } from "@fortawesome/free-solid-svg-icons";
 
 const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons, getSortedPokemons }) => {
 
@@ -133,8 +135,12 @@ const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons, getSorte
   return (
     <div className='search'>
       <input type='text' defaultValue={search} onChange={(event) => setSearch(event.target.value)} />
-      <Button onClick={searchPokemon} text='Search the Pokèmon database'/>
-      <Button onClick={searchMyPokemons} text='Search my Pokèdex'/>
+      <button onClick={searchPokemon}>
+        <FontAwesomeIcon icon={faDatabase} />
+      </button>
+      <button onClick={searchMyPokemons}>
+        <FontAwesomeIcon icon={faMobileRetro} />
+      </button>
     </div>
 )
 };
