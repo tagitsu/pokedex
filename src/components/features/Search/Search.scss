@@ -15,32 +15,24 @@
     font-size: calc($base-size * 2);
     font-family: $font-search;
     font-weight: 600;
-    font-variant-caps: all-small-caps;
     letter-spacing: 2px;
     color: black;
-    padding-bottom: 7px;
     border-radius: $radius;
     text-align: center;
   }
 
   button {
-
-    
+    display: flex;
+    align-items: center;
     font-size: calc($base-size * 3);
-    padding: 0;
     background-color: transparent;
     border: none;
-    text-align: center;
-
     color: white;
-    transition: all 3s ease-in-out;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
   }
 
   button:hover {
-    color: transparent;
-    background-color: $blue;
-    background-clip: text;
-
     transform: scale(1.06);
   }  
 }
