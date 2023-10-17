@@ -4,17 +4,10 @@
   width: calc($base-size * 7);
   height: calc($base-size * 7);
   border-radius: 50%;
-  border-width: $base-size;
-  border-style: ridge;
-  border-color: $red;
-  background-color: aqua;
-  color: $gray;
+  border: 3px solid whitesmoke;
+  background: radial-gradient(lighten($blue, 5), $blue, $navy, darken($navy, 30));
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 8px;
-  transition: all .3s;
+  transition: all .3s ease-in-out;
   position: absolute;
   top: 1vh;
   left: 1vh;
@@ -22,9 +15,9 @@
 }
 
 .logo:hover {
-  border-color: $grass;
+  border-color: yellowgreen;
   color: $grass;
-  box-shadow: 0 0 12px aqua;
+  box-shadow: 0 0 12px yellowgreen;
 }
 
 .logo:focus {
