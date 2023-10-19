@@ -26,8 +26,8 @@
     display: flex;
     align-items: center;
     font-size: calc($base-size * 3);
-    background-color: $navy;
-    border: 2px outset $gray;
+    background-color: transparent;
+    border: none;
     border-radius: 5px;
     color: white;
     transition: all .3s ease-in-out;
@@ -36,8 +36,7 @@
 
   button:hover {
     transform: scale(1.06);
-    background-color: $blue;
-  }  
+  }
 }
 
 @media screen and (max-width: 850px) and (orientation: landscape) {

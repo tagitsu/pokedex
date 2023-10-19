@@ -1,39 +1,76 @@
 @import '../../../styles/settings.scss';
 
 .logo {
-  width: calc($base-size * 7);
-  height: calc($base-size * 7);
-  border-radius: 50%;
-  border: 3px solid whitesmoke;
-  background: radial-gradient(lighten($blue, 5), $blue, $navy, darken($navy, 30));
-  cursor: pointer;
-  transition: all .3s ease-in-out;
   position: absolute;
   top: 1vh;
   left: 1vh;
   z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+
+&__reload {
+    width: calc($base-size * 7);
+    height: calc($base-size * 7);
+    border-radius: 50%;
+    border: 5px inset whitesmoke;
+    background: radial-gradient(circle, $aqua 15%, $blue);
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      border-color: $aqua;
+      box-shadow: 0 0 12px $aqua;
+    }
+  }
+
+  &__btn {
+    width: calc($base-size * 2);
+    height: calc($base-size * 2);
+    border-radius: 50%;
+    border: 2px inset whitesmoke;
+
+    &--red {
+      background: radial-gradient(red, red, rgb(128, 0, 68));
+    }
+
+    &--yellow {
+      background: radial-gradient(rgb(251, 251, 162), yellow, rgb(255, 183, 0));
+    }
+
+    &--green {
+      background: radial-gradient(lime, yellowgreen, green);
+    }
+  }
 }
 
-.logo:hover {
-  border-color: yellowgreen;
-  color: $grass;
-  box-shadow: 0 0 12px yellowgreen;
-}
+// @keyframes blink {
+//   0%, 50%, 100% {
+//     opacity: 1;
+//   }
 
-.logo:focus {
-  transform: rotate(180deg);
-}
+//   25%, 75% {
+//     //border-color: $aqua;
+//     box-shadow: 0 0 5px white;
+//   }
+// }
 
 @media screen and (max-width: 850px) and (orientation: landscape) {
   .logo {
-    width: calc($base-size * 4);
-    height: calc($base-size * 4);
+
+    &__reload {
+      width: calc($base-size * 4);
+      height: calc($base-size * 4);
+    }
   }
 }
 
 @media screen and (max-width: 400px) and (orientation: portrait){
   .logo {
-    width: calc($base-size * 4);
-    height: calc($base-size * 4);
+
+    &__reload {
+      width: calc($base-size * 4);
+      height: calc($base-size * 4);
+    }
   }
 }

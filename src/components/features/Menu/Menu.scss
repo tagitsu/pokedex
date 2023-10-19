@@ -50,10 +50,11 @@
   
   &__button:hover {
     background-color: $blue;
+    color: white;
   }
 
   &__button:focus {
-    background-color: $grass;
+    background-color: $yellow;
     color: white;
   }
 }
