@@ -1,0 +1,114 @@
+@import '../../../styles/settings.scss';
+
+.account {
+  padding: 0;
+
+  &__header {
+    padding: $base-size;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: $navy;
+    color: whitesmoke;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 100% 50%, 40% 50%, 30% 100%, 0% 100%, 0% 0%);
+
+    h1 {
+      width: 40%;
+    }
+
+    & * {
+      border: 1px dotted white;
+    }
+  }
+
+  &__form {
+    padding: $base-size;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      text-align: justify;
+      line-height: 1.5;
+    }
+
+    span {
+      color: $red;
+    }
+    
+  }
+
+  &__btn {
+    color: whitesmoke;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+
+    &--delete {
+      background-color: $gray;
+      cursor: not-allowed;
+    }
+
+    &--cancel {
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+
+  &__input-box {
+    width: 60%;
+    margin: $base-size 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $base-size;
+    position: relative;
+
+    label {
+      width: max-content;
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: calc($base-size * 1.2);
+      font-weight: 600;
+      color: $gray;
+      pointer-events: none;
+      text-align: center;
+      transition: .3s;
+    }
+
+    input:focus ~ label, input:valid ~ label {
+      top:0;
+      left: $base-size;
+      transform: translate(0%, -50%);
+      font-size: $base-size;
+      font-weight: 400;
+      color: $blue;
+      background-color: white;
+      padding: 0 3px;
+    }
+
+    input:valid ~ button {
+      background-color: $red;
+      cursor: pointer;
+    }
+
+    input {
+      width: 100%;
+      border: 2px solid $navy;
+      border-radius: 5px;
+      padding: $base-size;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: $blue;
+    }
+
+
+
+    
+  }
+}

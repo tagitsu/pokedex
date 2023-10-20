@@ -3,33 +3,58 @@
 .panel {
   grid-column: 2 / 3;
   
-  &__login,
-  &__account {
-    margin-top: 3px;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    gap: $base-size;
+  &__input-box {
+    position: relative;
+    color: black;
+    font-family: $font-search;
+    letter-spacing: 2px;
 
     input {
-      padding: $base-size;
-      border: none;
+      background-color: $screenGray;
+      border: 3px inset $red;
+      font-size: calc($base-size * 2);
+      font-family: $font-search;
+      font-weight: 300;
+      letter-spacing: 2px;
+
       border-radius: $radius;
       text-align: center;
-      color: $blue;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
     }
 
-    input::placeholder {
-      color: $navy;
-      opacity: .5;
+    label {
+      position: absolute;
+      top: 50%;
+      left: $base-size;
+      right: 0%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition: .3s;
     }
+
+    input:focus ~ label, input:valid ~ label {
+      left: 105%;
+      color: whitesmoke;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: $blue;
+    }
+  }
+
+  &__login,
+  &__account {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $base-size;
   }
 
   &__login {
     width: 100vw;
     height: 50vh;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
   }
 
@@ -48,9 +73,17 @@
   &__account {
     padding: 0;
     width: 100%;
+    justify-self: end;
+    transition: .3s;
 
     p {
+      display: inline-block;
       margin: 0;
+      font-size: calc($base-size * 1.2);
+    }
+
+    span {
+      cursor: pointer;
     }
   }
 
@@ -71,7 +104,6 @@
   &__logout:hover {
     color: $fire;
   }
-
 }
 
 @media screen and (max-width: 850px) and (orientation: landscape) {
@@ -88,4 +120,3 @@
 @media screen and (max-width: 400px) and (orientation: portrait){
   /* … */
 }
-

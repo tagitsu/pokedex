@@ -9,12 +9,12 @@ import { auth, db } from '../../../firebase-config';
 
 import './Auth.scss';
 
-import Button from '../../common/Button/Button';
 import { doc, setDoc } from 'firebase/firestore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import AccountModal from '../AccountModal/AccountModal';
 
-const Auth = ({ pokemonsAmount }) => {
+const Auth = () => {
 
   // const [ registerEmail, setRegisterEmail ] = useState('');
   // const [ registerPassword, setRegisterPassword ] = useState('');
@@ -22,6 +22,7 @@ const Auth = ({ pokemonsAmount }) => {
   const [ password, setPassword ] = useState('');
 
   const [ user, setUser ] = useState({});
+  const [ openModal, setOpenModal ] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -63,35 +64,36 @@ const Auth = ({ pokemonsAmount }) => {
     await signOut(auth)
   };
 
+  const handleOpen = () => {
+    setOpenModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenModal(false);
+  };
+
   return(
     <div className='panel'>
-      {/* { !user && 
-      <div className='panel__registration'>
-        <p> Zarejestruj się </p>
-        <input 
-          placeholder='Email...' 
-          onChange={(event) => {
-            setRegisterEmail(event.target.value)
-          }} />
-        <input 
-        placeholder='Hasło...' 
-        onChange={(event) => {
-          setRegisterPassword(event.target.value)
-        }} />
-      </div>} */}
-
       { !user && 
       <div className='panel__login'>
-        <input 
-        placeholder='email' 
-        onChange={(event) => {
-          setEmail(event.target.value)
-        }} />
-        <input 
-        placeholder='password' 
-        onChange={(event) => {
-          setPassword(event.target.value)
-        }} />
+        <div className='panel__input-box'>
+          <input 
+          onChange={(event) => {
+            setEmail(event.target.value)
+          }} 
+          required 
+          />
+          <label>email</label>
+        </div>
+        <div className='panel__input-box'>
+          <input 
+            onChange={(event) => {
+              setPassword(event.target.value)
+            }} 
+            required
+          />
+          <label>password</label>
+        </div>
         <div className='panel__sign-btn'>
           <button onClick={login}> sign in </button>
           <button onClick={register}> sign up </button>
@@ -100,7 +102,8 @@ const Auth = ({ pokemonsAmount }) => {
 
       { user && 
       <div className='panel__account'>
-        <p> Hello {user.email?.substring(0, user.email.indexOf('@')).toUpperCase()}! This is your Pokèdex. </p>
+        <p>trainer: <span onClick={handleOpen}> {user.email?.substring(0, user.email.indexOf('@'))}</span></p>
+        <AccountModal userEmail={user.email} openModal={openModal} closeModal={handleClose} />
         <button className='panel__logout' onClick={logout}>
           <FontAwesomeIcon icon={faPowerOff} />
         </button>

@@ -4,7 +4,7 @@
   height: calc(100vh - 7vh);
   padding: $base-size;
   display: grid;
-  grid-template-columns: 20% auto;
+  grid-template-columns: auto auto;
   background: $red;
 
   &__collection {

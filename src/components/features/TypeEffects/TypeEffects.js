@@ -40,8 +40,6 @@ const TypeEffects = ({ type, effects, openModal, closeModal }) => {
     }
   }
 
-  // {item[0].}
-
   return (
     <dialog className='effects' ref={ref} onCancel={closeModal}>
       <header className='effects__header'>
