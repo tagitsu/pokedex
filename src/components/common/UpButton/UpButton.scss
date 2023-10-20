@@ -27,6 +27,8 @@
 @media screen and (max-width: 400px) and (orientation: portrait){
   .up {
     color: $blue;
+    border: 2px outset whitesmoke;
+    background-color: whitesmoke;
   }
 }
 

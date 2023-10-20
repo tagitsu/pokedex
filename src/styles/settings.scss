@@ -2,10 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Pixelify+Sans&family=VT323&display=swap');
 $font-content: 'Gill Sans', sans-serif;
 $font-search: 'DotGothic16', sans-serif;
-//$font-search: 'VT323', monospace;
 
 $base-size: 12px;
-
 
 $navy: #3c5aa6;
 $blue: #2a75bb;
@@ -13,27 +11,46 @@ $aqua: #6affff;
 $gold: #c7a008;
 $yellow: #ffcb05;
 $red: #e4000f; // nintendo red
-$gray: #DFDFDF;
+$gray: #acabab;
 $screenGray: #ced7ce;
 
-$normal: rgb(115, 116, 116);
-$fire: #ff5f00;
-$water: rgb(34, 141, 212);
-$grass: #008001;
-$flying: #7cb9e8;
-$fighting: #a41313;
-$poison: #00ff00;
-$electric: rgb(233, 204, 35);
-$ground: rgb(106, 60, 39);
-$rock: rgb(146, 135, 130);
-$psychic: rgb(156, 60, 208);
-$ice: rgb(74, 214, 238);
-$bug: #6b8e23;
-$ghost: rgb(177, 157, 191);
-$steel: gray;
-$dragon: rgb(13, 110, 68);
-$dark: rgb(63, 63, 63);
-$fairy: rgb(220, 137, 198);
+// $normal: #737474;
+// $fire: #ff5f00;
+// $water: #228dd4;
+// $grass: #008001;
+// $flying: #7cb9e8;
+// $fighting: #a41313;
+// $poison: #00ff00;
+// $electric: #e9cc23;
+// $ground: #6a3c27;
+// $rock: #928782;
+// $psychic: #9c3cd0;
+// $ice: #4ad6ee;
+// $bug: #6b8e23;
+// $ghost: #b19dbf;
+// $steel: #547d87;
+// $dragon: #0d6e44;
+// $dark: #3f3f3f;
+// $fairy: #dc89c6;
+
+$normal: #A8A77A;
+$fire: #EE8130;
+$water: #6390F0;
+$electric: #F7D02C;
+$grass: #7AC74C;
+$ice: #96D9D6;
+$fighting: #C22E28;
+$poison: #A33EA1;
+$ground: #E2BF65;
+$flying: #A98FF3;
+$psychic: #F95587;
+$bug: #A6B91A;
+$rock: #B6A136;
+$ghost: #735797;
+$dragon: #6F35FC;
+$dark: #705746;
+$steel: #B7B7CE;
+$fairy: #D685AD;
 
 $radius: 7px;
 

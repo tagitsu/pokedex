@@ -12,6 +12,7 @@
   height: 150px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   position: relative;
+  background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.7));
 
   &__header {
     grid-column: span 2;
@@ -26,6 +27,8 @@
     align-items: baseline;
     gap: calc($base-size / 2);
     margin-left: $base-size;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.292);
     
     h1 {
       height: calc($base-size * 2);
@@ -68,60 +71,74 @@
   }
 
   &__normal {
-    background: linear-gradient(-45deg, darken($normal, 20), lighten($normal, 15), darken($normal, 20));
+    background-color: $normal;
   }
 
   &__fire {
-    background: linear-gradient(-45deg, darken($fire, 20), lighten($fire, 15), darken($fire, 20));
+    background-color: $fire;
   }
 
   &__water {
-    background: linear-gradient(-45deg, darken($water, 20), lighten($water, 15), darken($water, 20));
+    background-color: $water;
   }
+
   &__grass {
-    background: linear-gradient(-45deg, darken($grass, 20), lighten($grass, 15), darken($grass, 20));
+    background-color: $grass;
   }
+
   &__flying {
-    background: linear-gradient(-45deg, darken($flying, 20), lighten($flying, 15), darken($flying, 20));
+    background-color: $flying;
   }
+
   &__fighting {
-    background: linear-gradient(-45deg, darken($fighting, 20), lighten($fighting, 15), darken($fighting, 20));
+    background-color: $fighting;
   }
+
   &__poison {
-    background: linear-gradient(-45deg, darken($poison, 20), lighten($poison, 15), darken($poison, 20));
+    background-color: $poison;
   }
+
   &__electric {
-    background: linear-gradient(-45deg, darken($electric, 20), lighten($electric, 15), darken($electric, 20));
+    background-color: $electric;
   }
+
   &__ground {
-    background: linear-gradient(-45deg, darken($ground, 20), lighten($ground, 15), darken($ground, 20));
+    background-color: $ground;
   }
+
   &__rock {
-    background: linear-gradient(-45deg, darken($rock, 20), lighten($rock, 15), darken($rock, 20));
+    background-color: $rock;
   }
+
   &__psychic {
-    background: linear-gradient(-45deg, darken($psychic, 20), lighten($psychic, 15), darken($psychic, 20));
+    background-color: $psychic;
   }
   &__ice {
-    background: linear-gradient(-45deg, darken($ice, 20), lighten($ice, 15), darken($ice, 20));
+    background-color: $ice;
   }
+
   &__bug {
-    background: linear-gradient(-45deg, darken($bug, 20), lighten($bug, 15), darken($bug, 20));
+    background-color: $bug;
   }
+
   &__ghost {
-    background: linear-gradient(-45deg, darken($ghost, 20), lighten($ghost, 15), darken($ghost, 20));
+    background-color: $ghost;
   }
+
   &__steel {
-    background: linear-gradient(-45deg, darken($steel, 20), lighten($steel, 15), darken($steel, 20));
+    background-color: $steel;
   }
+
   &__dragon {
-    background: linear-gradient(-45deg, darken($dragon, 20), lighten($dragon, 15), darken($dragon, 20));
+    background-color: $dragon;
   }
+
   &__dark {
-    background: linear-gradient(-45deg, darken($dark, 20), lighten($dark, 15), darken($dark, 20));
+    background-color: $dark;
   }
+
   &__fairy {
-    background: linear-gradient(-45deg, darken($fairy, 20), lighten($fairy, 15), darken($fairy, 20));
+    background-color: $fairy;
   }
 }
 
