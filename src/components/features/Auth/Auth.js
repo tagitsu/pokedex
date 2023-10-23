@@ -16,8 +16,6 @@ import AccountModal from '../AccountModal/AccountModal';
 
 const Auth = () => {
 
-  // const [ registerEmail, setRegisterEmail ] = useState('');
-  // const [ registerPassword, setRegisterPassword ] = useState('');
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
 
@@ -78,21 +76,24 @@ const Auth = () => {
       <div className='panel__login'>
         <div className='panel__input-box'>
           <input 
+          id='email-input'
           onChange={(event) => {
             setEmail(event.target.value)
           }} 
           required 
           />
-          <label>email</label>
+          <label htmlFor='email-input'>email</label>
         </div>
         <div className='panel__input-box'>
           <input 
+            id='password-input'
+            type='password'
             onChange={(event) => {
               setPassword(event.target.value)
             }} 
             required
           />
-          <label>password</label>
+          <label htmlFor='password-input'>password</label>
         </div>
         <div className='panel__sign-btn'>
           <button onClick={login}> sign in </button>

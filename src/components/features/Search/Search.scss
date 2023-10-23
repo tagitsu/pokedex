@@ -40,7 +40,7 @@
   }
 }
 
-@media screen and (max-width: 850px) and (orientation: landscape) {
+@media screen and (max-width: 860px) and (orientation: landscape) {
   .search {
     width: 80%;
     margin: 5px;
@@ -63,7 +63,7 @@
   }
 }
 
-@media screen and (max-width: 400px) and (orientation: portrait){
+@media screen and (max-width: 420px) and (orientation: portrait){
 
   .search {
     grid-row: 1 / 2;

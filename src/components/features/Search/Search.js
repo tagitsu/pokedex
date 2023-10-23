@@ -3,13 +3,12 @@ import { useState } from "react";
 import './Search.scss';
 import { TbDeviceMobileSearch, TbWorldSearch } from 'react-icons/tb';
 
-const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons, getSortedPokemons }) => {
+const Search = ({ allPokemons, userPokemons, getSearchedPokemons, getSortedPokemons }) => {
 
   const [ search, setSearch ] = useState(''); 
   const [ pokemonData, setPokemonData ] = useState([]);
   const [ myPokemons, setMyPokemons ] = useState([]);
 
-  console.log(search);
   const searchPokemon = () => {
     getSortedPokemons(null);
     setPokemonData([]);
@@ -131,15 +130,15 @@ const Search = ({ user, allPokemons, userPokemons, getSearchedPokemons, getSorte
   }
 
   return (
-    <div className='search'>
-      <input type='text' defaultValue={search} onChange={(event) => setSearch(event.target.value)} />
+    <form className='search'>
+      <input type='text' name='search-input' defaultValue={search} onChange={(event) => setSearch(event.target.value)} />
       <button onClick={searchPokemon}>
         <TbWorldSearch />
       </button>
       <button onClick={searchMyPokemons}>
         <TbDeviceMobileSearch />
       </button>
-    </div>
+    </form>
 )
 };
 

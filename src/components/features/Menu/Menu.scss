@@ -15,7 +15,9 @@
   &__button-box {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 3), 1fr));
-    justify-content: space-evenly;
+    justify-items: center;
+    align-items: center;
+    gap: 2px;
   }
 
   &__button {
@@ -50,7 +52,7 @@
   }
 }
 
-@media screen and (max-width: 850px) and (orientation: landscape) {
+@media screen and (max-width: 860px) and (orientation: landscape) {
   .menu {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
@@ -73,7 +75,7 @@
   }
 }
 
-@media screen and (max-width: 400px) and (orientation: portrait){
+@media screen and (max-width: 420px) and (orientation: portrait){
   .menu {
     margin: 0;
     padding: 3px;
