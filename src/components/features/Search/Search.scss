@@ -9,7 +9,6 @@
   align-items: center;
   gap: 5px;
 
-
   input {
     background-color: #ced7ce;
     border: 3px inset $red;
@@ -42,11 +41,9 @@
 
 @media screen and (max-width: 860px) and (orientation: landscape) {
   .search {
-    width: 80%;
     margin: 5px;
     grid-column: 1 / 2;
-    align-self: stretch;
-    justify-self: flex-end;
+    justify-self: center;
     gap: 5px;
     font-size: calc($base-size * 1.4);
 
@@ -58,7 +55,7 @@
 
     button {
       align-self: stretch;
-      font-size: inherit;
+      font-size: calc($base-size * 2.4);
     }
   }
 }
@@ -71,6 +68,5 @@
     input {
       width: 50%;
     }
-
   }
 }

@@ -4,7 +4,8 @@
   height: calc(100vh - 11vh);
   padding: 1vh;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: minmax(20%, 30%) auto;
+  grid-template-rows: 10% auto;
   background: $red;
   border-radius: $base-size;
 

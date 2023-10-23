@@ -4,8 +4,9 @@
   height: 7vh;
   display: grid;
   grid-template-columns: 40% 60%;
-  align-items: flex-start;
-  justify-content: flex-start;
+  grid-template-rows: 50% 50%;
+  align-items: center;
+  justify-items: end;
   background-color: $blue;
   border-radius: $base-size $base-size 0 0;
   clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 100% 50%, 40% 50%, 30% 100%, 0% 100%, 0% 0%);
@@ -14,10 +15,12 @@
 @media screen and (max-width: 850px) and (orientation: landscape) {
   .header {
     grid-template-columns: 20% 80%;
-    clip-path: polygon(100% 0, 100% 70%, 20% 70%, 15% 100%, 0 100%, 0 0);
+    grid-template-rows: 100%;
+    clip-path: none;
   }
 }
 
 @media screen and (max-width: 400px) and (orientation: portrait){
-  /* … */
+  .header {
+  }
 }

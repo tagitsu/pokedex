@@ -2,7 +2,7 @@
 
 .panel {
   grid-column: 2 / 3;
-  
+
   &__input-box {
     position: relative;
     color: black;
@@ -16,7 +16,6 @@
       font-family: $font-search;
       font-weight: 300;
       letter-spacing: 2px;
-
       border-radius: $radius;
       text-align: center;
       text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
@@ -71,21 +70,18 @@
   }
 
   &__account {
-    padding: 0;
-    width: 100%;
+    padding: 0 5px;
     justify-self: end;
     transition: .3s;
+  }
 
-    p {
-      display: inline-block;
+  &__user {
+      display: flex;
+      align-items: center;
+      gap: 3px;
       margin: 0;
-      padding-left: $base-size;
       font-size: calc($base-size * 1.2);
-    }
-
-    span {
       cursor: pointer;
-    }
   }
 
   &__logout {
@@ -97,9 +93,9 @@
     background-color: transparent;
     border-radius: 50%;
     border: none;
-    font-size: 2vh;
     color: white;
     cursor: pointer;
+    transition: .3s ease-in-out;
   }
 
   &__logout:hover {
@@ -110,10 +106,14 @@
 @media screen and (max-width: 860px) and (orientation: landscape) {
   .panel {
 
+    &__user {
+      font-size: 4vh;
+    }
+
     &__logout {
       width: 2vw;
       height: 2vw;
-      font-size: 1vw;
+      font-size: 3vh;
       }
   }
 }

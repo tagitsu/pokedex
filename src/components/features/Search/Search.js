@@ -9,7 +9,8 @@ const Search = ({ allPokemons, userPokemons, getSearchedPokemons, getSortedPokem
   const [ pokemonData, setPokemonData ] = useState([]);
   const [ myPokemons, setMyPokemons ] = useState([]);
 
-  const searchPokemon = () => {
+  const searchPokemon = (e) => {
+    e.preventDefault();
     getSortedPokemons(null);
     setPokemonData([]);
     setMyPokemons([]);
@@ -103,7 +104,8 @@ const Search = ({ allPokemons, userPokemons, getSearchedPokemons, getSortedPokem
     searchMatch();
   };
 
-  const searchMyPokemons = () => {
+  const searchMyPokemons = (e) => {
+    e.preventDefault();
     getSortedPokemons(null);
     setPokemonData([]);
     setMyPokemons([]);
@@ -132,14 +134,14 @@ const Search = ({ allPokemons, userPokemons, getSearchedPokemons, getSortedPokem
   return (
     <form className='search'>
       <input type='text' name='search-input' defaultValue={search} onChange={(event) => setSearch(event.target.value)} />
-      <button onClick={searchPokemon}>
+      <button onClick={(e) => searchPokemon(e)}>
         <TbWorldSearch />
       </button>
-      <button onClick={searchMyPokemons}>
+      <button onClick={(e) => searchMyPokemons(e)}>
         <TbDeviceMobileSearch />
       </button>
     </form>
-)
+  )
 };
 
 export default Search;
