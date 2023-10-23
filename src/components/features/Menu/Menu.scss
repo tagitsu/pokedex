@@ -11,7 +11,6 @@
   gap: $base-size;
   overflow: scroll;
 
-
   &__button-box {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 3), 1fr));
@@ -22,6 +21,7 @@
   &__button {
     width: calc($base-size * 3);
     height: calc($base-size * 3);
+    padding: 1px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,7 +34,6 @@
     font-family: $font-content;
     font-weight: 600;
     font-size: calc($base-size * 2);
-    padding: 1px;
 
     img {
       width: 100%;

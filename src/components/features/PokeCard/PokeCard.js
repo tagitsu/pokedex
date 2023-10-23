@@ -9,7 +9,7 @@ import utils from '../../../utils/pokedexUtils';
 const PokeCard = ({ user, pokemon, userPokemons }) => {
 
   const [ isActive, setIsActive ] = useState(false);
-  //console.log(user);
+
   const img = pokemon.appearance.image || pokemon.appearance.image2 || pokemon.appearance.image3;
 
   return(
@@ -100,7 +100,6 @@ const PokeCard = ({ user, pokemon, userPokemons }) => {
         </article>
       }
     </div>
-
   )
 };
 

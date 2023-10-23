@@ -1,6 +1,13 @@
 import { doc, setDoc } from "firebase/firestore";
-import { db } from '../firebase-config';
 import axios from "axios";
+import { 
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut
+} from 'firebase/auth';
+import { auth, db } from '../firebase-config';
+
 
 const utils = {};
 
@@ -13,7 +20,37 @@ utils.reloadPokedex = () => {
   window.location.reload();
 };
 
-// POKEDEX
+// AUTHENTICATION
+
+utils.register = async (email, password) => {
+  try {
+    const user = await createUserWithEmailAndPassword(
+      auth, 
+      email, 
+      password
+    );
+    const userAccount = setDoc(doc(db, `users`, `${user.user.uid}`), {
+      id: user.user.uid,
+    });
+} catch (error) {
+    console.log(error.message);
+  }
+};
+
+
+utils.login = async (email, password) => {
+  try {
+    const user = await signInWithEmailAndPassword(
+      auth, 
+      email, 
+      password
+    );
+  } catch (error) {
+    console.log(error.message);
+  }  };
+
+
+// SEARCH
 
 utils.searchMyPokemons = (e, getSortedPokemons, setPokemonData, setMyPokemons, userPokemons, search) => {
   e.preventDefault();

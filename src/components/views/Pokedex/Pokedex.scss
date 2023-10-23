@@ -28,6 +28,16 @@
     position: relative;
   }
 
+  &__info {
+    font-family: $font-search;
+    font-size: calc($base-size * 2);
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: black;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  }
+
 }
 
 @media screen and (max-width: 860px) and (orientation: landscape) {

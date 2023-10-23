@@ -4,6 +4,10 @@
   grid-column: 2 / 3;
 
   &__input-box {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
     position: relative;
     color: black;
     font-family: $font-search;
@@ -47,7 +51,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: $base-size;
+    gap: calc($base-size * 1.2);
   }
 
   &__login {
@@ -59,14 +63,28 @@
 
   &__sign-btn {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+  }
 
-    button {
-      background-color: transparent;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
+  &__normalbtn, &__activebtn {
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .3s;
+  }
+
+  &__normalbtn {
+    background-color: transparent;
+    color: whitesmoke;
+  }
+
+  &__activebtn {
+    width: 50%;
+    padding: $base-size;
+    background-color: whitesmoke;
+    color: $red;
   }
 
   &__account {
@@ -119,5 +137,21 @@
 }
 
 @media screen and (max-width: 420px) and (orientation: portrait){
-  /* … */
+  .panel {
+
+    &__login {
+      gap: calc($base-size * 3);
+    }
+
+    input:focus ~ label, input:valid ~ label {
+      top: -25%;
+      left: 10%;
+      color: whitesmoke;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: $blue;
+    }
+  }
 }
