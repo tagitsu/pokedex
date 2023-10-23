@@ -9,5 +9,9 @@
   color: white;
   font-size: $base-size;
   position: relative;
+
+  border: 1vh outset $red;
+  border-radius: $base-size;
+  box-sizing: border-box;
 }
 

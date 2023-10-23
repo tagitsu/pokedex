@@ -10,10 +10,10 @@
   gap: 5px;
 
 &__reload {
-    width: calc($base-size * 7);
-    height: calc($base-size * 7);
+    width: 10vh;
+    height: 10vh;
     border-radius: 50%;
-    border: 5px inset whitesmoke;
+    border: 3px inset whitesmoke;
     background: radial-gradient(circle, $aqua 15%, $blue);
     cursor: pointer;
     transition: all .3s ease-in-out;
@@ -25,8 +25,8 @@
   }
 
   &__btn {
-    width: calc($base-size * 2);
-    height: calc($base-size * 2);
+    width: 3vh;
+    height: 3vh;
     border-radius: 50%;
     border: 2px inset whitesmoke;
 
@@ -58,11 +58,6 @@
 @media screen and (max-width: 850px) and (orientation: landscape) {
   .logo {
 
-    &__reload {
-      width: calc($base-size * 4);
-      height: calc($base-size * 4);
-    }
-
     &__btn {
       width: calc($base-size * 1.4);
       height: calc($base-size * 1.4);
@@ -74,8 +69,13 @@
   .logo {
 
     &__reload {
-      width: calc($base-size * 4);
-      height: calc($base-size * 4);
+      width: 5vh;
+      height: 5vh;
+    }
+
+    &__btn {
+      width: 3vh;
+      height: 3vh;
     }
   }
 }

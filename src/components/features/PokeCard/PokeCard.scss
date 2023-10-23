@@ -288,6 +288,10 @@
       padding: 0;
       margin: 0;
     }
+
+    p {
+      font-size: calc($base-size * 1.2)
+    }
   }
 
   &__abilities {

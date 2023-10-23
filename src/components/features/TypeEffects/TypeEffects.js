@@ -24,17 +24,17 @@ const TypeEffects = ({ type, effects, openModal, closeModal }) => {
     //text.replace(/_/g, ' ')
     switch (text) {
       case 'double_damage_from':
-        return 'dostaję podwójne obrażenia od';
+        return 'weak defense';
       case 'half_damage_from':
-        return 'dostaję połowę obrażeń od';
+        return 'strong defense';
       case 'no_damage_from':
-        return 'nie dostaję obrażeń od';
+        return 'resistance';
       case 'double_damage_to':
-        return 'zadaję podwójne obrażenia';
+        return 'strong attack';
       case 'half_damage_to':
-        return 'zadaję połowę obrażeń';
+        return 'weak attack';
       case 'no_damage_to':
-        return 'nie zadaję żadnych obrażeń';
+        return 'immune to attack';
       default:
         return '-';
     }

@@ -79,6 +79,7 @@
     p {
       display: inline-block;
       margin: 0;
+      padding-left: $base-size;
       font-size: calc($base-size * 1.2);
     }
 

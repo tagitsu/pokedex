@@ -1,18 +1,23 @@
 @import '../../../styles/settings.scss';
 
-
 .effects {
-  //width: max-content;
+  height: 80vh;
+  width: 80vw;
   border: $base-size solid white;
-  background: linear-gradient($blue, $navy);
+  background: $blue;
   color: white;
   border-radius: $base-size;
-  box-shadow: 12px 12px 10px rgba(72, 72, 72, 0.428);
+  box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.3);
+
+  &__header {
+    grid-column: span 2;
+    justify-content: space-between;
+    align-items: center;
+
+  }
 
   &__header, &__types {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 
   &__types {
@@ -27,7 +32,11 @@
 
   &__title {
     display: flex;
-    padding: $base-size;
+    align-items: center;
+
+    h1 {
+      margin: 0;
+    }
   }
 
   &__subtitle {
@@ -60,11 +69,12 @@
 
   &__container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: $base-size;
   }
 
   &__relation {
+    grid-column: span 2;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-items: flex-start;

@@ -1,8 +1,6 @@
 @import '../../../styles/settings.scss';
 
 .menu {
-  //min-width: min-content;
-  //height: 75vh;
   margin: $base-size;
   padding: $base-size;
   border-radius: $base-size;
@@ -14,37 +12,32 @@
   overflow: scroll;
 
 
-  &__letters, &__types {
+  &__button-box {
     display: grid;
-    justify-items: center;
-    align-items: center;
-    gap: 4px;
-    height: 100%;
-  }
-
-  &__letters {
-    grid-template-columns: repeat( auto-fit, minmax(calc($base-size * 3), 1fr));
-    grid-template-rows: repeat( auto-fit, minmax(calc($base-size * 2.5), 1fr));
-  }
-
-  &__types {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 3), 1fr));
+    justify-content: space-evenly;
   }
 
   &__button {
-    width: 100%;
-    background-color: whitesmoke;
+    width: calc($base-size * 3);
+    height: calc($base-size * 3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: whitesmoke;
     color: $navy;
-    border-style: outset;
-    border-width: 2px;
-    border-color: $gray;
-    border-radius: 5px;
+    border: 2px outset $gray;
+    border-radius: $radius;
     cursor: pointer;
     transition: all .3s ease-in-out;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    font-family: $font-content;
     font-weight: 600;
-    padding: 2px;
-    font-size: calc($base-size * 1.6);
+    font-size: calc($base-size * 2);
+    padding: 1px;
+
+    img {
+      width: 100%;
+    }
   }
   
   &__button:hover {
@@ -53,8 +46,7 @@
   }
 
   &__button:focus {
-    background-color: $yellow;
-    color: white;
+    border-color: $grass;
   }
 }
 

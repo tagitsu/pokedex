@@ -13,7 +13,7 @@ const Menu = ({ userPokemons, displayPokemons, getSortedPokemons }) => {
         my all pokemons 
         </button>
       </section> */}
-      <section className='menu__letters'>
+      <section className='menu__button-box'>
         { utils.getFirstLetters(displayPokemons()).map( letter => 
           <button 
             className='menu__button'
@@ -24,14 +24,14 @@ const Menu = ({ userPokemons, displayPokemons, getSortedPokemons }) => {
           </button>
         )}
       </section>
-      <section className='menu__types'>
+      <section className='menu__button-box'>
         { utils.getTypes(displayPokemons()).map( type => 
           <button 
             className='menu__button' 
             key={type} 
-            onClick={(e) => utils.getPokemonsByType(displayPokemons, e.target.innerText, getSortedPokemons)}
+            onClick={(e) => utils.getPokemonsByType(displayPokemons, type, getSortedPokemons)}
           > 
-            {type} 
+            <img src={`${process.env.PUBLIC_URL}/images/types/${type}.webp`} alt={type}/>
           </button>
         )}
       </section>

@@ -3,6 +3,7 @@
 .search {
   border-radius: $base-size;
   grid-column: span 2;
+  justify-self: flex-end;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +49,6 @@
     justify-self: flex-end;
     gap: 5px;
     font-size: calc($base-size * 1.4);
-    border: 1px solid yellow;
 
     input {
       width: 50%;
@@ -67,7 +67,6 @@
 
   .search {
     grid-row: 1 / 2;
-    //margin: 5px;
 
     input {
       width: 50%;

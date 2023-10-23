@@ -1,14 +1,14 @@
 @import '../../../styles/settings.scss';
 
 .pokedex {
-  height: calc(100vh - 7vh);
-  padding: $base-size;
+  height: calc(100vh - 11vh);
+  padding: 1vh;
   display: grid;
   grid-template-columns: auto auto;
   background: $red;
+  border-radius: $base-size;
 
   &__collection {
-    //height: 75vh;
     margin: $base-size;
     padding: $base-size calc($base-size * 4);
     display: grid;
@@ -50,8 +50,7 @@
 @media screen and (max-width: 400px) and (orientation: portrait){
   .pokedex {
     grid-template-columns: 100%;
-    grid-template-rows: 5vh 60vh 25vh;
-    //background: $grass;
+    grid-template-rows: 6vh 58vh 25vh;
     gap: 3px;
 
     &__collection {
