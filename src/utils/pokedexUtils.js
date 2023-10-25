@@ -1,10 +1,11 @@
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, deleteDoc } from "firebase/firestore";
 import axios from "axios";
 import { 
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
+  deleteUser
 } from 'firebase/auth';
 import { auth, db } from '../firebase-config';
 
@@ -22,7 +23,7 @@ utils.reloadPokedex = () => {
 
 // AUTHENTICATION
 
-utils.register = async (email, password) => {
+utils.register = async (email, password, setErrorMsg) => {
   try {
     const user = await createUserWithEmailAndPassword(
       auth, 
@@ -33,12 +34,27 @@ utils.register = async (email, password) => {
       id: user.user.uid,
     });
 } catch (error) {
-    console.log(error.message);
+  const errorCode = error.code;
+  console.log(error.message);
+  
+  setErrorMsg( () => {
+    switch (errorCode) {
+      case 'auth/invalid-email':
+        return 'The email is not correct. Please enter a valid email address.';
+      case 'auth/missing-password':
+        return 'Enter the password.';
+      case 'auth/email-already-in-use':
+        return `There is user using the ${email} address in our database. Enter correct password and sign in.`;
+      case 'auth/weak-password':
+        return 'Password should be at least 6 characters.'
+      default:
+        return null;
+    }
+  });
   }
 };
 
-
-utils.login = async (email, password) => {
+utils.login = async (email, password, setErrorMsg) => {
   try {
     const user = await signInWithEmailAndPassword(
       auth, 
@@ -46,8 +62,40 @@ utils.login = async (email, password) => {
       password
     );
   } catch (error) {
-    console.log(error.message);
-  }  };
+      const errorCode = error.code;
+      console.log(errorCode);
+      
+      setErrorMsg( () => {
+        switch (errorCode) {
+          case 'auth/invalid-email':
+            return 'The email is not correct. Please enter a valid email address.';
+          case 'auth/missing-password':
+            return 'Enter the password.';
+          case 'auth/wrong-password':
+            return 'The password is incorrect.';
+          case 'auth/user-not-found':
+            return `There is no user using the ${email} address in our database.`;
+          default:
+            return null;
+        }
+      });
+    }  
+};
+
+utils.logout = async () => {
+  await signOut(auth)
+};
+
+utils.deleteAccount = async () => {
+  try {
+    const user = auth.currentUser;
+    console.log(user.uid);
+    await deleteUser(user);
+    await deleteDoc(doc(db, `users`, `${user.uid}`));
+  } catch (error) {
+    console.log(error.code)
+  };
+}
 
 
 // SEARCH

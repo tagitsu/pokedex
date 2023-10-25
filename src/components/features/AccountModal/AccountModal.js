@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useEffect, useRef, useState} from "react";
 import './AccountModal.scss';
 import { IoClose, IoWarningOutline } from 'react-icons/io5';
-
+import utils from '../../../utils/pokedexUtils';
 const AccountModal = ({ userEmail, openModal, closeModal }) => {
 
   const ref = useRef();
@@ -19,7 +19,7 @@ const AccountModal = ({ userEmail, openModal, closeModal }) => {
   const handleDelete = (e) => {
     e.preventDefault();
     if (verification === userEmail) {
-      console.log('deleted account');
+      utils.deleteAccount();
     } else {
       console.log('invalid email');
     }
@@ -43,7 +43,6 @@ const AccountModal = ({ userEmail, openModal, closeModal }) => {
           <label>confirm your email address</label>
           <button className={clsx('account__btn', 'account__btn--delete')} type='submit'>Delete account</button>
         </div>
-       
       </form>
     </dialog>
   )

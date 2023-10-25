@@ -22,8 +22,6 @@ const Pokedex = ({ user, allPokemons }) => {
     getPokemons();
     }, [user]);
 
-    console.log(searchedPokemons);
-
   const getSortedPokemons = (pokemons) => {
     setSortedPokemons(pokemons);
   };
@@ -46,10 +44,11 @@ const Pokedex = ({ user, allPokemons }) => {
 
   displayPokemons();
 
-  const info = <article className='pokedex__info'>
-  <h2> You don't have any Pokemon yet </h2>
-  <p> Search and catch your first Pokèmons </p>
-</article>
+  const info = 
+    <article className='pokedex__info'>
+      <h2> You don't have any Pokemon yet </h2>
+      <p> Search and catch your first Pokèmons </p>
+    </article>
 
   return (
     <div className='pokedex'>

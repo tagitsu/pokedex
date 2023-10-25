@@ -303,8 +303,10 @@
   }
 
   &__fact {
+    min-height: 100%;
+    height: min-content;
     margin: 0 calc($base-size * -1);
-    padding: 0 calc($base-size * 3);
+    padding: 2px calc($base-size * 3);
     grid-column: span 2;
     grid-row: 3 / 5;
     display: flex;

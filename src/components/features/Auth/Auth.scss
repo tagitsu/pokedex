@@ -16,7 +16,7 @@
     input {
       background-color: $screenGray;
       border: 3px inset $red;
-      font-size: calc($base-size * 2);
+      font-size: calc($base-size * 1.4);
       font-family: $font-search;
       font-weight: 300;
       letter-spacing: 2px;
@@ -85,6 +85,10 @@
     padding: $base-size;
     background-color: whitesmoke;
     color: $red;
+  }
+
+  &__error {
+    height: calc($base-size * 3);
   }
 
   &__account {
