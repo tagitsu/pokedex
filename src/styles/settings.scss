@@ -5,34 +5,19 @@ $font-content: 'Gill Sans', sans-serif;
 $font-search: 'DotGothic16', sans-serif;
 
 $base-size: 12px;
+$radius: 5px;
+
+$card-up: 12px 12px 10px rgba(0, 0, 0, 0.3);
+$card-down: 2px 2px 2px rgba(0, 0, 0, 0.3);
 
 $navy: #3c5aa6;
 $blue: #2a75bb;
 $aqua: #6affff;
-$gold: #c7a008;
-$yellow: #ffcb05;
-$red: #e4000f; // nintendo red
-$gray: #acabab;
+$red: #e4000f; 
+//$gray: #acabab;
 $screenGray: #ced7ce;
 
-// $normal: #737474;
-// $fire: #ff5f00;
-// $water: #228dd4;
-// $grass: #008001;
-// $flying: #7cb9e8;
-// $fighting: #a41313;
-// $poison: #00ff00;
-// $electric: #e9cc23;
-// $ground: #6a3c27;
-// $rock: #928782;
-// $psychic: #9c3cd0;
-// $ice: #4ad6ee;
-// $bug: #6b8e23;
-// $ghost: #b19dbf;
-// $steel: #547d87;
-// $dragon: #0d6e44;
-// $dark: #3f3f3f;
-// $fairy: #dc89c6;
+// TYPES COLORS
 
 $normal: #A8A77A;
 $fire: #EE8130;
@@ -52,6 +37,3 @@ $dragon: #6F35FC;
 $dark: #705746;
 $steel: #B7B7CE;
 $fairy: #D685AD;
-
-$radius: 7px;
-

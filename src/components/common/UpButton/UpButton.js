@@ -23,7 +23,7 @@ const UpButton = ({ container }) => {
     toggleVisible();
   });
 
-  const handleScrollToTop = (element) => {
+  const handleScrollToTop = () => {
     btnContainer.scrollTo({
       top: 0,
       behavior: 'smooth'
@@ -33,7 +33,7 @@ const UpButton = ({ container }) => {
   return(
     <button 
       className={clsx('up', visible ? 'up--visible' : 'up--hidden')}
-      onClick={() => handleScrollToTop(container)}
+      onClick={handleScrollToTop}
     >
       <FontAwesomeIcon icon={faChevronCircleUp} />
     </button>

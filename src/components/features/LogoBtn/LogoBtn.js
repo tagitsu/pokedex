@@ -6,10 +6,10 @@ const LogoBtn = () => {
 
   return (
     <div className='logo'>
-      <button className='logo__reload' onClick={utils.reloadPokedex}></button>
-      <button className={clsx('logo__btn', 'logo__btn--red')}></button>
-      <button className={clsx('logo__btn', 'logo__btn--yellow')}></button>
-      <button className={clsx('logo__btn', 'logo__btn--green')}></button>
+      <button className='logo__reload' onClick={utils.reloadPokedex} />
+      <button className={clsx('logo__btn', 'logo__btn--red')} />
+      <button className={clsx('logo__btn', 'logo__btn--yellow')} />
+      <button className={clsx('logo__btn', 'logo__btn--green')} />
     </div>
   )
 };

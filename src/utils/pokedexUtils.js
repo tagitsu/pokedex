@@ -217,6 +217,16 @@ utils.addPokemon = (pokemon, user) => {
   setDoc(doc(db, `users/${user}/pokedex`, `${pokemon.id}`), pokemon);
 };
 
+// TYPE
+
+utils.getRelations = (type, setRelations, setIsOpen) => {
+  axios.get(type.url).then( (response) => {
+    const relObjects = Object.entries(response.data.damage_relations);
+    setRelations(relObjects);
+  });
+  setIsOpen(true);
+};
+
 // MENU
 
 utils.getFirstLetters = (pokemons) => {

@@ -1,27 +1,21 @@
-import axios from "axios";
-import clsx from 'clsx';
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShield, faBurst, faClose } from "@fortawesome/free-solid-svg-icons";
 import './TypeEffects.scss';
 
-const TypeEffects = ({ type, effects, openModal, closeModal }) => {
+const TypeEffects = ({ type, effects, isOpen, closeModal }) => {
 
   const ref = useRef();
 
   useEffect( () => {
-    if (openModal) {
+    if (isOpen) {
       ref.current?.showModal();
     } else {
       ref.current?.close();
     }
-  }, [openModal]);
-
-
-  // TODO zamień angielskie opisy oddziaływań między typami na polskie
+  }, [isOpen]);
 
   const translate = (text) => {
-    //text.replace(/_/g, ' ')
     switch (text) {
       case 'double_damage_from':
         return 'weak defense';
@@ -38,7 +32,7 @@ const TypeEffects = ({ type, effects, openModal, closeModal }) => {
       default:
         return '-';
     }
-  }
+  };
 
   return (
     <dialog className='effects' ref={ref} onCancel={closeModal}>
@@ -52,7 +46,7 @@ const TypeEffects = ({ type, effects, openModal, closeModal }) => {
         <div className='effects__container'>
         {effects?.map( item => 
           <ul key={item[0]} className='effects__relation'>
-            <h2 className='effects__subtitle'>  {item[0].includes('from') ? <FontAwesomeIcon icon={faShield} /> : <FontAwesomeIcon icon={faBurst} /> } {translate(item[0])} </h2>
+            <h2 className='effects__subtitle'> {item[0].includes('from') ? <FontAwesomeIcon icon={faShield} /> : <FontAwesomeIcon icon={faBurst} /> } {translate(item[0])} </h2>
             {item[1].map( value => 
               <li key={value.name} className='effects__types'>
                 <img src={`${process.env.PUBLIC_URL}/images/types/${value.name}.webp`} alt={`${type.name} type icon`} className='effects__icon'/>

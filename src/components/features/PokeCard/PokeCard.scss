@@ -10,7 +10,7 @@
   padding: calc($base-size / 2);
   width: 310px;
   height: 150px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: $card-down;
   position: relative;
   background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.7));
 
@@ -147,7 +147,7 @@
   grid-template-rows: 10% 35% 20% 35%;
   height: 500px;
   position: relative;
-  box-shadow: 10px 10px 10px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: $card-up;
   transform: scale(1.02);
 
   &__header {
@@ -331,6 +331,7 @@
     button {
       width: calc($base-size * 3);
       height: calc($base-size * 3);
+      border: none;
       border-radius: 50%;
       background: url('../../../../public/images/pokeball-icon.png') center / calc($base-size * 4) calc($base-size * 4);
       transition: all .5s ease-in-out;

@@ -9,9 +9,13 @@ body, ::after, ::before {
 }
 
 @media screen and (max-width: 860px) and (orientation: landscape) {
-  /* … */
+  body {
+    background-color: greenyellow;
+  }
 }
 
 @media screen and (max-width: 420px) and (orientation: portrait){
-  /* … */
+  body {
+    background-color: fuchsia;
+  }
 }

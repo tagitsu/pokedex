@@ -2,9 +2,7 @@ import './PokeCard.scss';
 import clsx from 'clsx';
 import Type from '../../common/Type/Type';
 import { useState } from 'react';
-import Button from '../../common/Button/Button';
 import utils from '../../../utils/pokedexUtils';
-
 
 const PokeCard = ({ user, pokemon, userPokemons }) => {
 
@@ -12,6 +10,8 @@ const PokeCard = ({ user, pokemon, userPokemons }) => {
 
   const img = pokemon.appearance.image || pokemon.appearance.image2 || pokemon.appearance.image3;
 
+  // TODO uproszczenie komponentu - dwa komponenty MiniCard i StandardCard
+  // lub MiniCard jako osobny komponent a pełna wersja karty tutaj
   return(
     <div>
       { !isActive &&
@@ -28,7 +28,7 @@ const PokeCard = ({ user, pokemon, userPokemons }) => {
               <div className='card__types'> 
                 {pokemon?.types.map( type => 
                   <Type key={type.name} type={type} />)
-                } 
+                }
               </div>
             </div>
           </header>
@@ -94,7 +94,7 @@ const PokeCard = ({ user, pokemon, userPokemons }) => {
           { 
             userPokemons && !utils.isInPokedex(userPokemons, pokemon.id) && 
             <div className='card--active__adding'>
-              <Button onClick={() => utils.addPokemon(pokemon, user)} />
+              <button onClick={() => utils.addPokemon(pokemon, user)} />
             </div>
           }
         </article>

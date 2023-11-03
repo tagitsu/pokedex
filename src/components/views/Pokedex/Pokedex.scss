@@ -4,8 +4,8 @@
   height: calc(100vh - 11vh);
   padding: 1vh;
   display: grid;
-  grid-template-columns: minmax(20%, 30%) auto;
-  grid-template-rows: 10% auto;
+  grid-template-columns: minmax(120px, 20%) auto;
+  grid-template-rows: auto auto;
   background: $red;
   border-radius: $base-size;
 
@@ -42,10 +42,9 @@
 
 @media screen and (max-width: 860px) and (orientation: landscape) {
   .pokedex {
-    padding: 0;
     grid-template-columns: 40vw auto;
     grid-template-rows: 10vh auto;
-    justify-content: center;
+    //justify-content: center;
 
 
     &__collection {

@@ -14,7 +14,7 @@ import './Auth.scss';
 import { doc, setDoc } from 'firebase/firestore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
-import { MdCatchingPokemon } from 'react-icons/md';
+import { BiUserCircle } from 'react-icons/bi';
 import AccountModal from '../AccountModal/AccountModal';
 
 const Auth = () => {
@@ -76,7 +76,7 @@ const Auth = () => {
 
       { user && 
       <div className='panel__account'>
-        <div className='panel__user' onClick={handleOpen}> <MdCatchingPokemon /> {user.email?.substring(0, user.email.indexOf('@'))}</div>
+        <div className='panel__user' onClick={handleOpen}> <BiUserCircle /> {user.email?.substring(0, user.email.indexOf('@'))}</div>
         <AccountModal userEmail={user.email} openModal={openModal} closeModal={handleClose} />
         <button className='panel__logout' onClick={utils.logout}>
           <FontAwesomeIcon icon={faPowerOff} />

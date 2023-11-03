@@ -1,19 +1,17 @@
 @import '../../../styles/settings.scss';
 
 .effects {
-  height: 80vh;
   width: 80vw;
   border: $base-size solid white;
   background: $blue;
   color: white;
   border-radius: $base-size;
-  box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: $card-up;
 
   &__header {
     grid-column: span 2;
     justify-content: space-between;
     align-items: center;
-
   }
 
   &__header, &__types {
@@ -76,7 +74,7 @@
   &__relation {
     grid-column: span 2;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
     justify-items: flex-start;
     gap: $base-size;
     padding: $base-size;

@@ -4,17 +4,15 @@
   margin: $base-size;
   padding: $base-size;
   border-radius: $base-size;
-  border: 2px outset rgba(255, 255, 255, 0.321);
+  border: 2px outset rgba(255, 255, 255, 0.3);
   background-color: lighten($red, 5);
-  display: grid;
-  grid-template-rows: repeat(2, max-content);
-  gap: $base-size;
   overflow: scroll;
 
   &__button-box {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 3), 1fr));
-    justify-items: start;
+    justify-items: center;
+    margin: 3px;
     gap: 2px;
   }
 
@@ -27,7 +25,7 @@
     justify-content: center;
     background: whitesmoke;
     color: $navy;
-    border: 2px outset $gray;
+    border: 2px outset lightgray;
     border-radius: $radius;
     cursor: pointer;
     transition: all .3s ease-in-out;
@@ -46,7 +44,7 @@
   }
 
   &__button:focus {
-    border-color: $grass;
+    border-color: $aqua;
   }
 }
 
@@ -57,19 +55,6 @@
     margin: 5px;
     align-self: stretch;
     justify-self: stretch;
-
-    &__letters, &__types {
-      gap: 2px;
-    }
-
-    &__types {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    &__button {
-      font-weight: 400;
-      font-size: calc($base-size * 1.2);
-    }
   }
 }
 
@@ -80,20 +65,7 @@
     grid-row: 3 / 4;
     gap: 5px;
     align-items: baseline;
-
-    &__letters {
-      grid-column: 1 / 2;
-      grid-template-columns: repeat(4, 1fr);
-    }
-  
-    &__types {
-      grid-column: 2 / 3;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    &__button {
-      font-weight: 400;
-      font-size: calc($base-size * 1.2);
-    }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }

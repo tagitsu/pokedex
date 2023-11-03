@@ -1,6 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .search {
+  padding: $base-size;
   border-radius: $base-size;
   grid-column: span 2;
   justify-self: flex-end;
@@ -10,7 +11,7 @@
   gap: 5px;
 
   input {
-    background-color: #ced7ce;
+    background-color: $screenGray;
     border: 3px inset $red;
     font-size: calc($base-size * 2);
     font-family: $font-search;
@@ -28,14 +29,14 @@
     font-size: calc($base-size * 3);
     background-color: transparent;
     border: none;
-    border-radius: 5px;
+    border-radius: $radius;
     color: white;
     transition: all .3s ease-in-out;
     cursor: pointer;
   }
 
-  button:hover {
-    transform: scale(1.06);
+  button:active {
+    transform: scale(0.96);
   }
 }
 

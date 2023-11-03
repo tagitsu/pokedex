@@ -31,7 +31,7 @@
     border: 2px inset whitesmoke;
 
     &--red {
-      background: radial-gradient(red, red, rgb(128, 0, 68));
+      background: radial-gradient(tomato, red, darkred);
     }
 
     &--yellow {
@@ -74,8 +74,8 @@
     }
 
     &__btn {
-      width: 3vh;
-      height: 3vh;
+      width: 2vh;
+      height: 2vh;
     }
   }
 }
