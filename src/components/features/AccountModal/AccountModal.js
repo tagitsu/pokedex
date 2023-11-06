@@ -3,7 +3,8 @@ import { useEffect, useRef, useState} from "react";
 import './AccountModal.scss';
 import { IoClose, IoWarningOutline } from 'react-icons/io5';
 import utils from '../../../utils/pokedexUtils';
-const AccountModal = ({ userEmail, openModal, closeModal }) => {
+
+const AccountModal = ({ userLogin, openModal, closeModal }) => {
 
   const ref = useRef();
   const [ verification, setVerification ] = useState('');
@@ -18,7 +19,7 @@ const AccountModal = ({ userEmail, openModal, closeModal }) => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    if (verification === userEmail) {
+    if (verification === userLogin) {
       utils.deleteAccount();
     } else {
       console.log('invalid email');
@@ -35,12 +36,12 @@ const AccountModal = ({ userEmail, openModal, closeModal }) => {
       </header>
       <form className='account__form' onSubmit={(e) => handleDelete(e)}>
         <div className='account__warning'>
-          <p>If you want to delete your account, write your email in the box below and submit.</p>
+          <p>If you want to delete your account, write your login in the box below and submit.</p>
           <p><span><IoWarningOutline /></span> This action is irreversible, all data from your Pokèdex will be deleted along with your account.</p>
         </div>
         <div className='account__input-box'>
           <input type='text' onChange={(e) => setVerification(e.target.value)} required />
-          <label>confirm your email address</label>
+          <label>confirm your login</label>
           <button className={clsx('account__btn', 'account__btn--delete')} type='submit'>Delete account</button>
         </div>
       </form>

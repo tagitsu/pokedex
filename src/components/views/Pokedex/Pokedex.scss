@@ -5,7 +5,7 @@
   padding: 1vh;
   display: grid;
   grid-template-columns: minmax(120px, 20%) auto;
-  grid-template-rows: auto auto;
+  grid-template-rows: minmax(auto, 10%) auto;
   background: $red;
   border-radius: $base-size;
 
@@ -15,7 +15,7 @@
     display: grid;
     justify-content: center;
     justify-items: center;
-    align-items: start;
+    align-items: center;
     align-content: stretch;
     grid-template-columns: repeat(auto-fill, minmax(370px, 30%));
     gap: calc($base-size * 2);
@@ -44,8 +44,6 @@
   .pokedex {
     grid-template-columns: 40vw auto;
     grid-template-rows: 10vh auto;
-    //justify-content: center;
-
 
     &__collection {
       grid-column: 2 / 3;

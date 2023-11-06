@@ -28,7 +28,7 @@ const TypeEffects = ({ type, effects, isOpen, closeModal }) => {
       case 'half_damage_to':
         return 'weak attack';
       case 'no_damage_to':
-        return 'immune to attack';
+        return 'unable to deal damage';
       default:
         return '-';
     }

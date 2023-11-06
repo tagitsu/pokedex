@@ -19,7 +19,7 @@ import AccountModal from '../AccountModal/AccountModal';
 
 const Auth = () => {
 
-  const [ email, setEmail ] = useState('');
+  const [ login, setLogin ] = useState('');
   const [ password, setPassword ] = useState('');
 
   const [ user, setUser ] = useState({});
@@ -46,17 +46,19 @@ const Auth = () => {
       <div className='panel__login'>
         <div className='panel__input-box'>
           <input 
-          id='email-input'
+          id='login-input'
+          autocomplete="off"
           onChange={(event) => {
-            setEmail(event.target.value)
+            setLogin(event.target.value)
           }} 
           required 
           />
-          <label htmlFor='email-input'>email</label>
+          <label htmlFor='login-input'>login</label>
         </div>
         <div className='panel__input-box'>
           <input 
             id='password-input'
+            autocomplete="off"
             type='password'
             onChange={(event) => {
               setPassword(event.target.value)
@@ -66,8 +68,8 @@ const Auth = () => {
           <label htmlFor='password-input'>password</label>
         </div>
         <div className='panel__sign-btn'>
-          <button className={clsx(email && password ? 'panel__activebtn' : 'panel__normalbtn')} onClick={() => utils.login(email, password, setErrorMsg)}> sign in </button>
-          <span> If you don't have own Pokèdex yet, go ahead and <button className='panel__normalbtn' onClick={() => utils.register(email, password, setErrorMsg)}> sign up </button></span>
+          <button className={clsx(login && password ? 'panel__activebtn' : 'panel__normalbtn')} onClick={() => utils.login(login, password, setErrorMsg)}> sign in </button>
+          <span> If you don't have own Pokèdex yet, go ahead and <button className='panel__normalbtn' onClick={() => utils.register(login, password, setErrorMsg)}> sign up </button></span>
         </div>
         <div className='panel__error'>
           <p> {errorMsg} </p>
@@ -77,7 +79,7 @@ const Auth = () => {
       { user && 
       <div className='panel__account'>
         <div className='panel__user' onClick={handleOpen}> <BiUserCircle /> {user.email?.substring(0, user.email.indexOf('@'))}</div>
-        <AccountModal userEmail={user.email} openModal={openModal} closeModal={handleClose} />
+        <AccountModal userLogin={user.email?.substring(0, user.email.indexOf('@'))} openModal={openModal} closeModal={handleClose} />
         <button className='panel__logout' onClick={utils.logout}>
           <FontAwesomeIcon icon={faPowerOff} />
         </button>

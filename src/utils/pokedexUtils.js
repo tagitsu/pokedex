@@ -23,7 +23,8 @@ utils.reloadPokedex = () => {
 
 // AUTHENTICATION
 
-utils.register = async (email, password, setErrorMsg) => {
+utils.register = async (login, password, setErrorMsg) => {
+  const email = `${login}@mail.com`;
   try {
     const user = await createUserWithEmailAndPassword(
       auth, 
@@ -44,7 +45,7 @@ utils.register = async (email, password, setErrorMsg) => {
       case 'auth/missing-password':
         return 'Enter the password.';
       case 'auth/email-already-in-use':
-        return `There is user using the ${email} address in our database. Enter correct password and sign in.`;
+        return `There is user using the ${login} login in our database. Enter correct password and sign in.`;
       case 'auth/weak-password':
         return 'Password should be at least 6 characters.'
       default:
@@ -54,7 +55,8 @@ utils.register = async (email, password, setErrorMsg) => {
   }
 };
 
-utils.login = async (email, password, setErrorMsg) => {
+utils.login = async (login, password, setErrorMsg) => {
+  const email = `${login}@mail.com`;
   try {
     const user = await signInWithEmailAndPassword(
       auth, 
@@ -74,7 +76,7 @@ utils.login = async (email, password, setErrorMsg) => {
           case 'auth/wrong-password':
             return 'The password is incorrect.';
           case 'auth/user-not-found':
-            return `There is no user using the ${email} address in our database.`;
+            return `There is no user using the ${login} login in our database.`;
           default:
             return null;
         }
