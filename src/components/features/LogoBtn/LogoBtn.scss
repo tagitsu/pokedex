@@ -7,13 +7,15 @@
   z-index: 100;
   display: flex;
   align-items: flex-start;
-  gap: 5px;
+  gap: 7px;
 
 &__reload {
-    width: 10vh;
-    height: 10vh;
+    min-width: 10vh;
+    max-width: 16vw;
+    min-height: 10vh;
+    max-height: 16vw;
     border-radius: 50%;
-    border: 3px inset whitesmoke;
+    border: .4vh inset whitesmoke;
     background: radial-gradient(circle, $aqua 15%, $blue);
     cursor: pointer;
     transition: all .3s ease-in-out;
@@ -25,57 +27,24 @@
   }
 
   &__btn {
-    width: 3vh;
-    height: 3vh;
+    padding: 0;
+    min-width: 3vh;
+    max-width: 3vw;
+    min-height: 3vh;
+    max-height: 3vw;
     border-radius: 50%;
-    border: 2px inset whitesmoke;
+    border: .3vh inset whitesmoke;
 
     &--red {
-      background: radial-gradient(tomato, red, darkred);
+      background: radial-gradient(circle, red 40%, darkred);
     }
 
     &--yellow {
-      background: radial-gradient(rgb(251, 251, 162), yellow, rgb(255, 183, 0));
+      background: radial-gradient(circle, yellow 40%, gold);
     }
 
     &--green {
-      background: radial-gradient(lime, yellowgreen, green);
-    }
-  }
-}
-
-// @keyframes blink {
-//   0%, 50%, 100% {
-//     opacity: 1;
-//   }
-
-//   25%, 75% {
-//     //border-color: $aqua;
-//     box-shadow: 0 0 5px white;
-//   }
-// }
-
-@media screen and (max-width: 860px) and (orientation: landscape) {
-  .logo {
-
-    &__btn {
-      width: calc($base-size * 1.4);
-      height: calc($base-size * 1.4);
-    }
-  }
-}
-
-@media screen and (max-width: 420px) and (orientation: portrait){
-  .logo {
-
-    &__reload {
-      width: 5vh;
-      height: 5vh;
-    }
-
-    &__btn {
-      width: 2vh;
-      height: 2vh;
+      background: radial-gradient(circle, lime 40%, green);
     }
   }
 }

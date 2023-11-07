@@ -7,8 +7,6 @@ import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import Header from './components/views/Header/Header';
 import Auth from './components/features/Auth/Auth';
-import UpButton from './components/common/UpButton/UpButton';
-import utils from './utils/pokedexUtils';
 import LogoBtn from './components/features/LogoBtn/LogoBtn';
 
 function App() {

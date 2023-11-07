@@ -4,10 +4,6 @@
   grid-column: 2 / 3;
 
   &__input-box {
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items: center;
     position: relative;
     color: black;
     font-family: $font-search;
@@ -38,6 +34,7 @@
     input:focus ~ label, input:valid ~ label {
       left: 105%;
       color: whitesmoke;
+      font-family: $font-content;
     }
 
     input:focus {
@@ -66,6 +63,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    span, button {
+      font-size: $base-size;
+      font-family: $font-content;
+    }
   }
 
   &__normalbtn, &__activebtn {
@@ -78,11 +80,12 @@
   &__normalbtn {
     background-color: transparent;
     color: whitesmoke;
+    transition: all .3s ease-in-out;
   }
 
   &__activebtn {
-    width: 50%;
     padding: $base-size;
+    width: 50%;
     background-color: whitesmoke;
     color: $red;
   }
@@ -93,8 +96,7 @@
 
   &__account {
     padding: 0 5px;
-    justify-self: end;
-    transition: .3s;
+    transition: all .3s ease-in-out;
   }
 
   &__user {
@@ -107,36 +109,18 @@
   }
 
   &__logout {
-    width: 3vh;
-    height: 3vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    border-radius: 50%;
     border: none;
     color: white;
     cursor: pointer;
     transition: .3s ease-in-out;
-  }
 
-  &__logout:hover {
-    color: $fire;
-  }
-}
-
-@media screen and (max-width: 860px) and (orientation: landscape) {
-  .panel {
-
-    &__user {
-      font-size: 4vh;
+    &:hover {
+      color: $red;
     }
-
-    &__logout {
-      width: 2vw;
-      height: 2vw;
-      font-size: 3vh;
-      }
   }
 }
 
@@ -148,7 +132,7 @@
     }
 
     input:focus ~ label, input:valid ~ label {
-      top: -25%;
+      top: -35%;
       left: 10%;
       color: whitesmoke;
     }

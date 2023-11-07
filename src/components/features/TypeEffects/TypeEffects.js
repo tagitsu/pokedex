@@ -39,9 +39,18 @@ const TypeEffects = ({ type, effects, isOpen, closeModal }) => {
       <header className='effects__header'>
         <div className='effects__title'>
           <h1> {type.name} </h1> 
-          <img src={`${process.env.PUBLIC_URL}/images/types/${type.name}.webp`} alt={`${type.name} type icon`} className='effects__icon'/>
+          <img 
+            src={`${process.env.PUBLIC_URL}/images/types/${type.name}.webp`} 
+            alt={`${type.name} type icon`} 
+            className='effects__icon'
+          />
         </div>
-        <button className='effects__close' onClick={closeModal}> <FontAwesomeIcon icon={faClose} /> </button>
+        <button 
+          className='effects__close' 
+          onClick={closeModal}
+        > 
+          <FontAwesomeIcon icon={faClose} /> 
+        </button>
       </header>
         <div className='effects__container'>
         {effects?.map( item => 
@@ -49,8 +58,13 @@ const TypeEffects = ({ type, effects, isOpen, closeModal }) => {
             <h2 className='effects__subtitle'> {item[0].includes('from') ? <FontAwesomeIcon icon={faShield} /> : <FontAwesomeIcon icon={faBurst} /> } {translate(item[0])} </h2>
             {item[1].map( value => 
               <li key={value.name} className='effects__types'>
-                <img src={`${process.env.PUBLIC_URL}/images/types/${value.name}.webp`} alt={`${type.name} type icon`} className='effects__icon'/>
-              </li>)} 
+                <img 
+                  src={`${process.env.PUBLIC_URL}/images/types/${value.name}.webp`} 
+                  alt={`${type.name} type icon`} 
+                  className='effects__icon'
+                />
+              </li>
+            )} 
           </ul>
         )}
         </div>

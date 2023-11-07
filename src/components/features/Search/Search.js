@@ -23,7 +23,14 @@ const Search = ({ allPokemons, userPokemons, getSearchedPokemons, getSortedPokem
 
   return (
     <form className='search'>
-      <input type='text' name='search-input' autocomplete="off" defaultValue={search} onChange={(event) => setSearch(event.target.value)} />
+      <input 
+        type='text' 
+        name='search-input' 
+        placeholder="search..."
+        autocomplete="off" 
+        defaultValue={search} 
+        onChange={(event) => setSearch(event.target.value)} 
+      />
       <button onClick={(e) => utils.searchPokemon(e, getSortedPokemons, setPokemonData, setMyPokemons, allPokemons, search)}>
         <TbWorldSearch />
       </button>

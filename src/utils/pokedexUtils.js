@@ -2,7 +2,6 @@ import { doc, setDoc, deleteDoc } from "firebase/firestore";
 import axios from "axios";
 import { 
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
   deleteUser
@@ -13,13 +12,28 @@ import { auth, db } from '../firebase-config';
 const utils = {};
 
 // APP
-utils.getOffsetTop = (element) => {
-  return (element.offsetTop);
+
+utils.toggleVisible = (container, setVisible) => {
+  const scrolledScreen = document.documentElement.querySelector(container).scrollTop;
+  if ( scrolledScreen > 500) {
+    setVisible(true);
+  } else {
+    setVisible(false);
+  }
+};
+
+utils.handleScrollToTop = (collectionContainer) => {
+  collectionContainer.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
 };
 
 utils.reloadPokedex = () => {
   window.location.reload();
 };
+
+
 
 // AUTHENTICATION
 
@@ -70,7 +84,7 @@ utils.login = async (login, password, setErrorMsg) => {
       setErrorMsg( () => {
         switch (errorCode) {
           case 'auth/invalid-email':
-            return 'The email is not correct. Please enter a valid email address.';
+            return 'Please enter your login.';
           case 'auth/missing-password':
             return 'Enter the password.';
           case 'auth/wrong-password':
@@ -245,7 +259,8 @@ utils.getFirstLetters = (pokemons) => {
 };
 
 utils.getTypes = (pokemons) => {
-  const allTypes = pokemons.map( pokemon => { for (let i = 0; i < pokemon.types.length; i++) { return(pokemon.types[i].name)} } );
+  let allTypes = [];
+  pokemons.map( pokemon => { for (let i = 0; i < pokemon.types.length; i++) { allTypes.push(pokemon.types[i].name)} } );
   const sortTypes = allTypes.sort();
   let types = [];
   for (let i = 0; i < sortTypes.length; i++) {

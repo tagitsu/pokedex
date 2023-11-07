@@ -1,14 +1,14 @@
 import './Menu.scss';
 import utils from '../../../utils/pokedexUtils';
+import { BsFilterCircle } from 'react-icons/bs';
 
 const Menu = ({ displayPokemons, getSortedPokemons }) => {
 
   return (
     <div className='menu'>
+      {/* <BsFilterCircle /> */}
       <section>
-        <p>filter by name</p>
         <div className='menu__button-box'>
-          
           { utils.getFirstLetters(displayPokemons()).map( letter => 
             <button 
               className='menu__button'
@@ -21,7 +21,6 @@ const Menu = ({ displayPokemons, getSortedPokemons }) => {
         </div>
       </section>
       <section>
-        <p>filter by types</p>
         <div className='menu__button-box'>
           { utils.getTypes(displayPokemons()).map( type => 
             <button 

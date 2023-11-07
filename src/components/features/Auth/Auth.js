@@ -1,20 +1,10 @@
 import { useState, useEffect } from 'react';
-import { 
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signOut
-} from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import clsx from 'clsx';
-import { auth, db } from '../../../firebase-config';
+import { auth } from '../../../firebase-config';
 import utils from '../../../utils/pokedexUtils';
-
 import './Auth.scss';
-
-import { doc, setDoc } from 'firebase/firestore';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
-import { BiUserCircle } from 'react-icons/bi';
+import { FaCircleUser, FaPowerOff } from 'react-icons/fa6';
 import AccountModal from '../AccountModal/AccountModal';
 
 const Auth = () => {
@@ -30,7 +20,7 @@ const Auth = () => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     })
-  }, [])
+  }, []);
 
   const handleOpen = () => {
     setOpenModal(true);
@@ -68,8 +58,20 @@ const Auth = () => {
           <label htmlFor='password-input'>password</label>
         </div>
         <div className='panel__sign-btn'>
-          <button className={clsx(login && password ? 'panel__activebtn' : 'panel__normalbtn')} onClick={() => utils.login(login, password, setErrorMsg)}> sign in </button>
-          <span> If you don't have own Pokèdex yet, go ahead and <button className='panel__normalbtn' onClick={() => utils.register(login, password, setErrorMsg)}> sign up </button></span>
+          <button 
+            className={clsx(login && password ? 'panel__activebtn' : 'panel__normalbtn')} 
+            onClick={() => utils.login(login, password, setErrorMsg)}
+          > 
+            sign in 
+          </button>
+          <span> If you don't have own Pokèdex yet, go ahead and 
+            <button 
+              className='panel__normalbtn' 
+              onClick={() => utils.register(login, password, setErrorMsg)}
+            > 
+              sign up 
+            </button>
+          </span>
         </div>
         <div className='panel__error'>
           <p> {errorMsg} </p>
@@ -77,15 +79,25 @@ const Auth = () => {
       </div>}
 
       { user && 
-      <div className='panel__account'>
-        <div className='panel__user' onClick={handleOpen}> <BiUserCircle /> {user.email?.substring(0, user.email.indexOf('@'))}</div>
-        <AccountModal userLogin={user.email?.substring(0, user.email.indexOf('@'))} openModal={openModal} closeModal={handleClose} />
-        <button className='panel__logout' onClick={utils.logout}>
-          <FontAwesomeIcon icon={faPowerOff} />
-        </button>
-      </div>}
+        <div className='panel__account'>
+          <div className='panel__user' onClick={handleOpen}> 
+            <FaCircleUser /> {user.email?.substring(0, user.email.indexOf('@'))}
+          </div>
+          <AccountModal 
+            userLogin={user.email?.substring(0, user.email.indexOf('@'))} 
+            openModal={openModal} 
+            closeModal={handleClose} 
+          />
+          <button 
+            className='panel__logout' 
+            onClick={utils.logout}
+          >
+            <FaPowerOff />
+          </button>
+        </div>
+      }
     </div>
-  )
+  );
 };
 
 export default Auth;
