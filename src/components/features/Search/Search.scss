@@ -1,6 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .search {
+  height: calc($base-size * 3);
   border-radius: $base-size;
   grid-column: span 2;
   justify-self: flex-end;

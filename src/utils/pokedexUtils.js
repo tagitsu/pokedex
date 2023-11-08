@@ -33,8 +33,6 @@ utils.reloadPokedex = () => {
   window.location.reload();
 };
 
-
-
 // AUTHENTICATION
 
 utils.register = async (login, password, setErrorMsg) => {
@@ -112,7 +110,6 @@ utils.deleteAccount = async () => {
     console.log(error.code)
   };
 }
-
 
 // SEARCH
 
@@ -214,7 +211,7 @@ utils.searchPokemon = (e, getSortedPokemons, setPokemonData, setMyPokemons, allP
       })
     }
   };
-  searchMatch();
+  if (search) {searchMatch();}
 };
 
 // POKECARD

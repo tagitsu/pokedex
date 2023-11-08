@@ -7,15 +7,3 @@ body, ::after, ::before {
   font-family: $font-content;
   font-size: calc($base-size * 2);
 }
-
-@media screen and (max-width: 860px) and (orientation: landscape) {
-  body {
-    background-color: greenyellow;
-  }
-}
-
-@media screen and (max-width: 420px) and (orientation: portrait){
-  body {
-    background-color: fuchsia;
-  }
-}

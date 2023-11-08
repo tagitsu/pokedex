@@ -27,7 +27,7 @@ const Search = ({ allPokemons, userPokemons, getSearchedPokemons, getSortedPokem
         type='text' 
         name='search-input' 
         placeholder="search..."
-        autocomplete="off" 
+        autoComplete="off" 
         defaultValue={search} 
         onChange={(event) => setSearch(event.target.value)} 
       />
