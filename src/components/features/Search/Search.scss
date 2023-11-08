@@ -1,60 +1,53 @@
 @import '../../../styles/settings.scss';
 
 .search {
-  height: calc($base-size * 3);
-  border-radius: $base-size;
-  grid-column: span 2;
-  justify-self: flex-end;
+  //border-radius: $base-size;
+  grid-column: 2 / 3;
+  //justify-self: flex-end;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  //gap: 5px;
 
   input {
     padding: 3px 5px;
-    background-color: $screenGray;
-    border: 3px inset $red;
-    font-size: calc($base-size * 1.7);
-    font-family: $font-search;
-    font-weight: 600;
+    background-color: $navy;
+    border: none;
+    //font-size: calc($base-size * 1.7);
+    //font-family: $font-search;
+    //font-weight: 600;
     letter-spacing: 2px;
-    color: black;
+    color: white;
     border-radius: $radius;
     //text-align: center;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  }
+    //text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 
-  button {
-    width: calc($base-size * 3);
-    height: calc($base-size * 3);
-    display: flex;
-    align-items: center;
-    font-size: calc($base-size * 3);
-    border: 2px outset whitesmoke;
-    border-radius: 50%;
-    color: $blue;
-    background-color: whitesmoke;
-    transition: all .3s ease-in-out;
-    cursor: pointer;
-
-    &:hover {
-      color: whitesmoke;
-      background-color: $blue;
+    &::placeholder {
+      color: lightgray;
     }
   }
 
-  button:active {
-    transform: scale(0.96);
+  button {
+    display: flex;
+    align-items: center;
+    font-size: calc($base-size * 1.6);
+    border: none;
+    //border: 2px outset whitesmoke;
+    //border-radius: 50%;
+    color: white;
+    background-color: transparent;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+
+    &::active {
+      transform: scale(0.96);
+    }
   }
 }
 
 @media screen and (max-width: 860px) and (orientation: landscape) {
   .search {
-    margin: 5px;
-    grid-column: 1 / 2;
-    justify-self: center;
-    gap: 5px;
-    font-size: calc($base-size * 1.4);
+    grid-column: 2 / 3;
 
     input {
       width: 50%;
@@ -64,7 +57,6 @@
 
     button {
       align-self: stretch;
-      font-size: calc($base-size * 2.4);
     }
   }
 }
@@ -72,10 +64,7 @@
 @media screen and (max-width: 420px) and (orientation: portrait){
 
   .search {
-    grid-row: 1 / 2;
-
-    input {
-      width: 50%;
-    }
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
   }
 }

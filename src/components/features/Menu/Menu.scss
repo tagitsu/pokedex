@@ -50,8 +50,9 @@
 
 @media screen and (max-width: 860px) and (orientation: landscape) {
   .menu {
+    //height: 100%;
     grid-column: 1 / 2;
-    grid-row: 2 / 3;
+    //grid-row: 2 / 3;
     margin: 5px;
     align-self: stretch;
     justify-self: stretch;
@@ -62,7 +63,7 @@
   .menu {
     margin: 0;
     padding: 3px;
-    grid-row: 3 / 4;
+    grid-row: 2 / 3;
     gap: 5px;
     align-items: baseline;
     display: grid;
