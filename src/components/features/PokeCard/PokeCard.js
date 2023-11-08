@@ -10,8 +10,6 @@ const PokeCard = ({ user, pokemon, userPokemons }) => {
 
   const img = pokemon.appearance.image || pokemon.appearance.image2 || pokemon.appearance.image3;
 
-  // TODO uproszczenie komponentu - dwa komponenty MiniCard i StandardCard
-  // lub MiniCard jako osobny komponent a pełna wersja karty tutaj
   return(
     <div>
       { !isActive &&

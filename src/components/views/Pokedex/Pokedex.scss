@@ -19,8 +19,8 @@
     align-content: stretch;
     grid-template-columns: repeat(auto-fill, minmax(370px, 30%));
     gap: calc($base-size * 2);
-    background-color: #ced7ce;
-    background-image: radial-gradient(#c3c3c3 0.9500000000000001px, #ced7ce 0.9500000000000001px);
+    background-color: $screenGray;
+    background-image: radial-gradient(#c3c3c3 0.95px, #ced7ce 0.95px);
     background-size: 19px 19px;
     border-radius: $base-size;
     border: 2px inset $red;
@@ -56,6 +56,7 @@
 }
 
 @media screen and (max-width: 420px) and (orientation: portrait){
+
   .pokedex {
     grid-template-columns: 100%;
     grid-template-rows: 6vh 58vh 21vh;
