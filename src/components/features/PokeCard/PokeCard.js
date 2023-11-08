@@ -8,8 +8,16 @@ const PokeCard = ({ user, pokemon, userPokemons }) => {
 
   const [ isActive, setIsActive ] = useState(false);
 
-  const img = pokemon.appearance.image || pokemon.appearance.image2 || pokemon.appearance.image3;
-
+  const img = () => { 
+    if ( pokemon.appearance.image ) { 
+      return pokemon.appearance.image
+    } else if (!pokemon.appearance.image && pokemon.appearance.image2) {
+      return pokemon.appearance.image2
+    } else if (!pokemon.appearance.image && !pokemon.appearance.image2) {
+      return pokemon.appearance.image3
+    }
+  };
+  
   return(
     <div>
       { !isActive &&
@@ -36,7 +44,7 @@ const PokeCard = ({ user, pokemon, userPokemons }) => {
               <p>Weight: {pokemon.appearance.weight} kg</p>
             </div>
             <div className={clsx('card__image')}>
-              <img src={img} alt={pokemon.name} />
+              <img src={img()} alt={pokemon.name} />
             </div>
           </section>
         </article>
@@ -61,7 +69,7 @@ const PokeCard = ({ user, pokemon, userPokemons }) => {
           </header>
           <section className={clsx('card__appearance', 'card--active__appearance', `card--active__${pokemon.habitat}`)} onClick={() => setIsActive(!isActive)}>
             <div className={clsx('card--active__image')}>
-              <img src={img} alt={pokemon.name} />
+              <img src={img()} alt={pokemon.name} />
             </div>
             <div className={clsx('card__features', 'card--active__features')}>
               <p> No. {pokemon.id} </p>

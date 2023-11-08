@@ -1,7 +1,6 @@
 # Pokémon collection App
 > A simple web application that allows you to search for pokemons from Pokéapi (RESTful Pokémon API) and save it to your account as a pokemon cards.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
-
+> Live demo [_here_](https://pokemon-a6c4f.web.app/).
 
 ## General Information
 - I created this simple app for Pokémon fans, to help them get to know their favorite pocket monsters even better.

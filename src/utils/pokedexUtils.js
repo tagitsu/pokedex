@@ -151,7 +151,6 @@ utils.searchPokemon = (e, getSortedPokemons, setPokemonData, setMyPokemons, allP
       axios.get(matchingPokemons[i].url).then( response => {
         const pokemonObject = response.data;
         console.log(`pokemonObject ${pokemonObject.name}`, pokemonObject);
-
         for (let i = 0; i < pokemonObject.types.length; i++) {
           pokemonTypes.push({
             name: pokemonObject?.types[i].type.name,
@@ -178,8 +177,9 @@ utils.searchPokemon = (e, getSortedPokemons, setPokemonData, setMyPokemons, allP
                 habitat: pokemonSpecies.habitat?.name ? pokemonSpecies.habitat.name : null, 
                 color: pokemonSpecies.color?.name ? pokemonSpecies.color.name : null,
                 text: pickText(funFacts),
-                genus: genera[0].genus,
+                genus: genera[0]?.genus,
               };
+
               setPokemonData(pokemonData => [...pokemonData, pokemon]);
             }) 
           }
@@ -189,11 +189,11 @@ utils.searchPokemon = (e, getSortedPokemons, setPokemonData, setMyPokemons, allP
             name: pokemonObject.name,
             types: pokemonTypes,
             appearance: {
-              image: pokemonObject.sprites.other.dream_world.front_default, // pokemonObject.sprites.front_default - ścieżka do grafik pikselowych
+              image: pokemonObject.sprites.other.dream_world.front_default, 
               image2: pokemonObject.sprites.other.home.front_default,
               image3: pokemonObject.sprites.front_default,
               height: pokemonObject.height / 10,
-              weight: pokemonObject.weight /10,
+              weight: pokemonObject.weight / 10,
             },
             stats: {
               hp: pokemonObject.stats[0].base_stat,
@@ -206,12 +206,18 @@ utils.searchPokemon = (e, getSortedPokemons, setPokemonData, setMyPokemons, allP
             abilities: pokemonAbilities,
             captureTime: captureTime,
           };
+
         };
+
         getSpeciesInfo();
+
+
       })
     }
   };
   if (search) {searchMatch();}
+
+  
 };
 
 // POKECARD

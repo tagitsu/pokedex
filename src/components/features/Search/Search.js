@@ -21,6 +21,8 @@ const Search = ({ allPokemons, userPokemons, getSearchedPokemons, getSortedPokem
     displaySearchResult();
   }
 
+  console.log()
+
   return (
     <form className='search'>
       <input 
