@@ -1,33 +1,21 @@
 import './Pokedex.scss';
-import { useState, useEffect } from "react";
-import { db } from '../../../firebase-config';
-import { collection, getDocs } from 'firebase/firestore';
+import { useContext } from "react";
 import PokeCard from "../../features/PokeCard/PokeCard";
-import Search from '../../features/Search/Search';
 import Menu from '../../features/Menu/Menu';
 import UpButton from '../../common/UpButton/UpButton';
+import { AppContext } from '../../../utils/pokedexContexts';
 
-const Pokedex = ({ user, allPokemons }) => {
+const Pokedex = () => {
 
-  const [ userPokemons, setUserPokemons ] = useState([]);
-  const [ sortedPokemons, setSortedPokemons ] = useState(null);
-  const [ searchedPokemons, setSearchedPokemons ] = useState(null);
+  const { 
+    user, 
+    userPokemons, 
+    searchedPokemons, 
+    setSearchedPokemons, 
+    sortedPokemons, 
+    setSortedPokemons 
+  } = useContext(AppContext);
 
-  useEffect(() => {
-    const getPokemons = async() => {
-      const data = await getDocs(collection(db, 'users', `${user}`, 'pokedex'));
-      setUserPokemons(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-    }
-    getPokemons();
-    }, [user]);
-
-  const getSortedPokemons = (pokemons) => {
-    setSortedPokemons(pokemons);
-  };
-
-  const getSearchedPokemons = (pokemons) => {
-    setSearchedPokemons(pokemons);
-  };
 
   const displayPokemons = () => {
     if (!sortedPokemons?.length && !searchedPokemons) {
@@ -51,10 +39,9 @@ const Pokedex = ({ user, allPokemons }) => {
 
   return (
     <div className='pokedex'>
-      {/* <Search user={user} allPokemons={allPokemons} userPokemons={userPokemons} getSearchedPokemons={getSearchedPokemons} getSortedPokemons={getSortedPokemons} /> */}
-      <Menu userPokemons={userPokemons} getSortedPokemons={getSortedPokemons} displayPokemons={displayPokemons} />
+      <Menu displayPokemons={displayPokemons} />
       <div className='pokedex__collection'>
-        { !userPokemons.length && !searchedPokemons && info }
+        { (!userPokemons.length && !searchedPokemons) && info }
         { displayPokemons().map( pokemon => <PokeCard key={pokemon.id.toString()} user={user} pokemon={pokemon} userPokemons={userPokemons} />) }
       </div>
       <UpButton container={'.pokedex__collection'}/>

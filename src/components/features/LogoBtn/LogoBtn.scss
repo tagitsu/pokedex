@@ -32,19 +32,41 @@
     max-width: 3vw;
     min-height: 3vh;
     max-height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
     border: .3vh inset whitesmoke;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
 
     &--red {
       background: radial-gradient(circle, red 40%, darkred);
+      color: darkred;
+
+      &:hover {
+        border-color: lightcoral;
+        box-shadow: 0 0 12px red;
+      }
     }
 
     &--yellow {
       background: radial-gradient(circle, yellow 40%, gold);
+      color: olive;
+
+      &:hover {
+        border-color: lightyellow;
+        box-shadow: 0 0 12px yellow;
+      }
     }
 
     &--green {
       background: radial-gradient(circle, lime 40%, green);
+
+      &:hover {
+        border-color: lightgreen;
+        box-shadow: 0 0 12px lime;
+      }
     }
   }
 }

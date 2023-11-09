@@ -3,8 +3,8 @@ import { onAuthStateChanged } from 'firebase/auth';
 import clsx from 'clsx';
 import { auth } from '../../../firebase-config';
 import utils from '../../../utils/pokedexUtils';
-import './Auth.scss';
 import { FaCircleUser, FaPowerOff } from 'react-icons/fa6';
+import './Auth.scss';
 import AccountModal from '../AccountModal/AccountModal';
 
 const Auth = () => {
@@ -37,7 +37,7 @@ const Auth = () => {
         <div className='panel__input-box'>
           <input 
           id='login-input'
-          autocomplete="off"
+          autoComplete="off"
           onChange={(event) => {
             setLogin(event.target.value)
           }} 
@@ -48,7 +48,7 @@ const Auth = () => {
         <div className='panel__input-box'>
           <input 
             id='password-input'
-            autocomplete="off"
+            autoComplete="off"
             type='password'
             onChange={(event) => {
               setPassword(event.target.value)

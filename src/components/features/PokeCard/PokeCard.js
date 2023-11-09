@@ -1,10 +1,13 @@
 import './PokeCard.scss';
 import clsx from 'clsx';
 import Type from '../../common/Type/Type';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import utils from '../../../utils/pokedexUtils';
+import { AppContext } from '../../../utils/pokedexContexts';
 
-const PokeCard = ({ user, pokemon, userPokemons }) => {
+const PokeCard = ({ pokemon }) => {
+
+  const { user, userPokemons } = useContext(AppContext);
 
   const [ isActive, setIsActive ] = useState(false);
 
@@ -17,6 +20,8 @@ const PokeCard = ({ user, pokemon, userPokemons }) => {
       return pokemon.appearance.image3
     }
   };
+
+  console.log(pokemon.name, img());
   
   return(
     <div>

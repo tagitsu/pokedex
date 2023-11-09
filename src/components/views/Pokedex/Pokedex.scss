@@ -15,7 +15,7 @@
     display: grid;
     justify-content: center;
     justify-items: center;
-    align-items: center;
+    align-items: start;
     align-content: stretch;
     grid-template-columns: repeat(auto-fill, minmax(370px, 30%));
     gap: calc($base-size * 2);

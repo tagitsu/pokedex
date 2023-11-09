@@ -113,9 +113,18 @@ utils.deleteAccount = async () => {
 
 // SEARCH
 
-utils.searchMyPokemons = (e, getSortedPokemons, setPokemonData, setMyPokemons, userPokemons, search) => {
+utils.getSortedPokemons = (pokemons, setSortedPokemons) => {
+  setSortedPokemons(pokemons);
+};
+
+utils.getSearchedPokemons = (pokemons, setSearchedPokemons) => {
+  setSearchedPokemons(pokemons);
+};
+
+
+utils.searchMyPokemons = (e, setSortedPokemons, setPokemonData, setMyPokemons, userPokemons, search) => {
   e.preventDefault();
-  getSortedPokemons(null);
+  setSortedPokemons(null);
   setPokemonData([]);
   setMyPokemons([]);
 
@@ -128,9 +137,9 @@ utils.searchMyPokemons = (e, getSortedPokemons, setPokemonData, setMyPokemons, u
   setMyPokemons(myPokemons);
 };
 
-utils.searchPokemon = (e, getSortedPokemons, setPokemonData, setMyPokemons, allPokemons, search) => {
+utils.searchPokemon = (e, setSortedPokemons, setPokemonData, setMyPokemons, allPokemons, search) => {
   e.preventDefault();
-  getSortedPokemons(null);
+  setSortedPokemons(null);
   setPokemonData([]);
   setMyPokemons([]);
 
@@ -275,8 +284,8 @@ utils.getTypes = (pokemons) => {
   return (types);
 };
 
-utils.getPokemonsByName = (displayPokemons, letter, getSortedPokemons) => {
-   getSortedPokemons(displayPokemons().filter( pokemon => pokemon.name[0] === letter.toLowerCase() ));
+utils.getPokemonsByName = (displayPokemons, letter, setSortedPokemons) => {
+   utils.getSortedPokemons(displayPokemons().filter( pokemon => pokemon.name[0] === letter.toLowerCase() ), setSortedPokemons);
 };
 
 utils.getPokemonsByType = (displayPokemons, type, getSortedPokemons) => {

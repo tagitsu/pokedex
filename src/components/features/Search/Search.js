@@ -1,27 +1,29 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import './Search.scss';
 import { TbDeviceMobileSearch, TbWorldSearch } from 'react-icons/tb';
 import utils from "../../../utils/pokedexUtils";
+import { AppContext } from "../../../utils/pokedexContexts";
 
-const Search = ({ allPokemons, userPokemons, getSearchedPokemons, getSortedPokemons }) => {
+const Search = () => {
+
+  const { 
+    allPokemons, 
+    userPokemons, 
+    setSearchedPokemons, 
+    setSortedPokemons 
+  } = useContext(AppContext);
 
   const [ search, setSearch ] = useState(''); 
   const [ pokemonData, setPokemonData ] = useState([]);
   const [ myPokemons, setMyPokemons ] = useState([]);
 
-  const displaySearchResult = () => {
-    if (pokemonData.length) {
-      getSearchedPokemons(pokemonData);
-    } else if (myPokemons.length) {
-      getSearchedPokemons(myPokemons);
-    }
+
+  if (pokemonData.length) {
+    setSearchedPokemons(pokemonData) 
+  } else if (myPokemons.length) {
+    setSearchedPokemons(myPokemons)
   };
 
-  if (pokemonData.length || myPokemons.length) {
-    displaySearchResult();
-  }
-
-  console.log()
 
   return (
     <form className='search'>
@@ -33,10 +35,10 @@ const Search = ({ allPokemons, userPokemons, getSearchedPokemons, getSortedPokem
         defaultValue={search} 
         onChange={(event) => setSearch(event.target.value)} 
       />
-      <button onClick={(e) => utils.searchPokemon(e, getSortedPokemons, setPokemonData, setMyPokemons, allPokemons, search)}>
+      <button onClick={(e) => utils.searchPokemon(e, setSortedPokemons, setPokemonData, setMyPokemons, allPokemons, search)}>
         <TbWorldSearch />
       </button>
-      <button onClick={(e) => utils.searchMyPokemons(e, getSortedPokemons, setPokemonData, setMyPokemons, userPokemons, search)}>
+      <button onClick={(e) => utils.searchMyPokemons(e, setSortedPokemons, setPokemonData, setMyPokemons, userPokemons, search)}>
         <TbDeviceMobileSearch />
       </button>
     </form>
