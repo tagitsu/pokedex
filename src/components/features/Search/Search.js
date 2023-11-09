@@ -11,7 +11,6 @@ const Search = () => {
     userPokemons, 
     setSortedPokemons,
     setPokemonData,
-    setMyPokemons 
   } = useContext(AppContext);
 
   const [ search, setSearch ] = useState(''); 

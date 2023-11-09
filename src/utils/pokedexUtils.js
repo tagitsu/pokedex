@@ -121,7 +121,6 @@ utils.getSearchedPokemons = (pokemons, setSearchedPokemons) => {
   setSearchedPokemons(pokemons);
 };
 
-
 utils.searchMyPokemons = (e, setSortedPokemons, setPokemonData, userPokemons, search) => {
   e.preventDefault();
   setSortedPokemons(null);
