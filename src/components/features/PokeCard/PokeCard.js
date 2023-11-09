@@ -7,6 +7,8 @@ import { AppContext } from '../../../utils/pokedexContexts';
 
 const PokeCard = ({ pokemon }) => {
 
+  console.log(typeof pokemon.id);
+
   const { user, userPokemons } = useContext(AppContext);
 
   const [ isActive, setIsActive ] = useState(false);

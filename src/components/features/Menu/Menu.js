@@ -1,6 +1,5 @@
 import './Menu.scss';
 import utils from '../../../utils/pokedexUtils';
-import { BsFilterCircle } from 'react-icons/bs';
 import { useContext } from 'react';
 import { AppContext } from '../../../utils/pokedexContexts';
 
@@ -10,7 +9,6 @@ const Menu = ({ displayPokemons }) => {
 
   return (
     <div className='menu'>
-      {/* <BsFilterCircle /> */}
       <section>
         <div className='menu__button-box'>
           { utils.getFirstLetters(displayPokemons()).map( letter => 

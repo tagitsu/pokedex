@@ -215,18 +215,13 @@ utils.searchPokemon = (e, setSortedPokemons, setPokemonData, setMyPokemons, allP
             abilities: pokemonAbilities,
             captureTime: captureTime,
           };
-
         };
-
+        
         getSpeciesInfo();
-
-
       })
     }
   };
-  if (search) {searchMatch();}
-
-  
+  if (search) { searchMatch(); }
 };
 
 // POKECARD
@@ -235,13 +230,11 @@ utils.nameToUpperCase = (pokemonName) => {
 };
 
 utils.isInPokedex = (myPokemons, id) => {
-  const pokemonInPokedex = myPokemons.filter( pokemon => pokemon.id == String(id));
+  const pokemonInPokedex = myPokemons.filter( pokemon => pokemon.id === String(id));
   return (Boolean(pokemonInPokedex.length));
 };
 
 utils.addPokemon = (pokemon, user) => {
-  console.log(pokemon);
-  console.log(user);
   setDoc(doc(db, `users/${user}/pokedex`, `${pokemon.id}`), pokemon);
 };
 
@@ -291,8 +284,5 @@ utils.getPokemonsByName = (displayPokemons, letter, setSortedPokemons) => {
 utils.getPokemonsByType = (displayPokemons, type, getSortedPokemons) => {
   getSortedPokemons(displayPokemons().filter( pokemon => {for(let i = 0; i < pokemon.types.length; i++) { if(pokemon.types[i].name === type) return(true) }}  ));
 };
-
-
-
 
 export default utils;

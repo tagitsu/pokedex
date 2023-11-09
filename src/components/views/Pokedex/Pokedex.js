@@ -42,7 +42,7 @@ const Pokedex = () => {
       <Menu displayPokemons={displayPokemons} />
       <div className='pokedex__collection'>
         { (!userPokemons.length && !searchedPokemons) && info }
-        { displayPokemons().map( pokemon => <PokeCard key={pokemon.id.toString()} user={user} pokemon={pokemon} userPokemons={userPokemons} />) }
+        { displayPokemons().map( pokemon => <PokeCard key={pokemon.id} pokemon={pokemon} />) }
       </div>
       <UpButton container={'.pokedex__collection'}/>
     </div>
