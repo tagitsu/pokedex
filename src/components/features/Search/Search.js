@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import './Search.scss';
-import { TbDeviceMobileSearch, TbWorldSearch } from 'react-icons/tb';
+import { BsSearch } from 'react-icons/bs';
 import utils from "../../../utils/pokedexUtils";
 import { AppContext } from "../../../utils/pokedexContexts";
 
@@ -16,7 +16,7 @@ const Search = () => {
   const [ search, setSearch ] = useState(''); 
 
   return (
-    <form className='search'>
+    <form className='search' onSubmit={(e) => utils.searchPokemon(e, setSortedPokemons, setPokemonData, allPokemons, search)}>
       <input 
         type='text' 
         name='search-input' 
@@ -25,12 +25,12 @@ const Search = () => {
         defaultValue={search} 
         onChange={(event) => setSearch(event.target.value)} 
       />
-      <button onClick={(e) => utils.searchPokemon(e, setSortedPokemons, setPokemonData, allPokemons, search)}>
-        <TbWorldSearch />
+      <button type='submit'>
+        <BsSearch />
       </button>
-      <button onClick={(e) => utils.searchMyPokemons(e, setSortedPokemons, setPokemonData, userPokemons, search)}>
+      {/* <button onClick={(e) => utils.searchMyPokemons(e, setSortedPokemons, setPokemonData, userPokemons, search)}>
         <TbDeviceMobileSearch />
-      </button>
+      </button> */}
     </form>
   )
 };
