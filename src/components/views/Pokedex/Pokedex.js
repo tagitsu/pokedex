@@ -8,41 +8,38 @@ import { AppContext } from '../../../utils/pokedexContexts';
 const Pokedex = () => {
 
   const { 
-    user, 
     userPokemons, 
-    searchedPokemons, 
-    setSearchedPokemons, 
-    sortedPokemons, 
-    setSortedPokemons 
+    sortedPokemons,
+    pokemonData 
   } = useContext(AppContext);
 
-
   const displayPokemons = () => {
-    if (!sortedPokemons?.length && !searchedPokemons) {
+    if (!sortedPokemons?.length && !pokemonData.length) {
       return(userPokemons);
-    } else if (sortedPokemons?.length && !searchedPokemons) {
+    } else if (sortedPokemons?.length && !pokemonData.length) {
       return(sortedPokemons);
-    } else if (searchedPokemons && !sortedPokemons?.length) {
-      return(searchedPokemons);
-    } else if (searchedPokemons && sortedPokemons?.length) {
+    } else if (pokemonData.length && !sortedPokemons?.length) {
+      return(pokemonData);
+    } else if (pokemonData.length && sortedPokemons?.length) {
       return(sortedPokemons);
     }
   };
-
   displayPokemons();
-
-  const info = 
-    <article className='pokedex__info'>
-      <h2> You don't have any Pokemon yet </h2>
-      <p> Search and catch your first Pokèmons </p>
-    </article>
 
   return (
     <div className='pokedex'>
       <Menu displayPokemons={displayPokemons} />
       <div className='pokedex__collection'>
-        { (!userPokemons.length && !searchedPokemons) && info }
-        { displayPokemons().map( pokemon => <PokeCard key={pokemon.id} pokemon={pokemon} />) }
+        { 
+          (!userPokemons.length && !pokemonData.length) 
+          ? 
+          <article className='pokedex__info'>
+            <h2> You don't have any Pokemon yet </h2>
+            <p> Search and catch your first Pokèmons </p>
+          </article> 
+          :
+          displayPokemons().map( pokemon => <PokeCard key={pokemon.id} pokemon={pokemon} />)
+        }
       </div>
       <UpButton container={'.pokedex__collection'}/>
     </div>

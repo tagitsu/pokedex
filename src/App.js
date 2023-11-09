@@ -16,7 +16,7 @@ function App() {
   const [ allPokemons, setAllPokemons ] = useState([]);
   const [ userPokemons, setUserPokemons ] = useState([]);
   const [ sortedPokemons, setSortedPokemons ] = useState(null);
-  const [ searchedPokemons, setSearchedPokemons ] = useState(null);
+  const [ pokemonData, setPokemonData ] = useState([]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -42,9 +42,10 @@ function App() {
           userPokemons, 
           sortedPokemons,
           setSortedPokemons,
-          searchedPokemons, 
-          setSearchedPokemons
-          }}>
+          pokemonData,
+          setPokemonData
+        }}
+      >
         <Header />
         { user ? <Pokedex /> : <Auth /> }
       </AppContext.Provider>

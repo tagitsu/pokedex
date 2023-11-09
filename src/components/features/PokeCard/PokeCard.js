@@ -7,8 +7,6 @@ import { AppContext } from '../../../utils/pokedexContexts';
 
 const PokeCard = ({ pokemon }) => {
 
-  console.log(typeof pokemon.id);
-
   const { user, userPokemons } = useContext(AppContext);
 
   const [ isActive, setIsActive ] = useState(false);
@@ -23,8 +21,6 @@ const PokeCard = ({ pokemon }) => {
     }
   };
 
-  console.log(pokemon.name, img());
-  
   return(
     <div>
       { !isActive &&
@@ -113,7 +109,7 @@ const PokeCard = ({ pokemon }) => {
         </article>
       }
     </div>
-  )
+  );
 };
 
 export default PokeCard;

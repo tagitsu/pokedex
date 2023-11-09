@@ -122,11 +122,10 @@ utils.getSearchedPokemons = (pokemons, setSearchedPokemons) => {
 };
 
 
-utils.searchMyPokemons = (e, setSortedPokemons, setPokemonData, setMyPokemons, userPokemons, search) => {
+utils.searchMyPokemons = (e, setSortedPokemons, setPokemonData, userPokemons, search) => {
   e.preventDefault();
   setSortedPokemons(null);
   setPokemonData([]);
-  setMyPokemons([]);
 
   const myPokemons = userPokemons.filter( 
     pokemon => 
@@ -134,14 +133,13 @@ utils.searchMyPokemons = (e, setSortedPokemons, setPokemonData, setMyPokemons, u
     || 
     pokemon.id === search 
   );
-  setMyPokemons(myPokemons);
+  setPokemonData(myPokemons);
 };
 
-utils.searchPokemon = (e, setSortedPokemons, setPokemonData, setMyPokemons, allPokemons, search) => {
+utils.searchPokemon = (e, setSortedPokemons, setPokemonData, allPokemons, search) => {
   e.preventDefault();
   setSortedPokemons(null);
   setPokemonData([]);
-  setMyPokemons([]);
 
   // czas wyszukania pokemona/pokemonów
   const leadingZero = (time) => {
@@ -159,7 +157,6 @@ utils.searchPokemon = (e, setSortedPokemons, setPokemonData, setMyPokemons, allP
 
       axios.get(matchingPokemons[i].url).then( response => {
         const pokemonObject = response.data;
-        console.log(`pokemonObject ${pokemonObject.name}`, pokemonObject);
         for (let i = 0; i < pokemonObject.types.length; i++) {
           pokemonTypes.push({
             name: pokemonObject?.types[i].type.name,
@@ -216,7 +213,7 @@ utils.searchPokemon = (e, setSortedPokemons, setPokemonData, setMyPokemons, allP
             captureTime: captureTime,
           };
         };
-        
+
         getSpeciesInfo();
       })
     }

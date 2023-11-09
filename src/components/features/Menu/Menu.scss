@@ -33,9 +33,11 @@
     font-weight: 600;
     font-size: calc($base-size * 2);
 
+    &:hover {
+      border-color: white;
+    }
+
     &:active {
-      //background-color: lime;
-      //color: white;
       border: 1px outset darkgray;
       transform: scale(.96);
     }

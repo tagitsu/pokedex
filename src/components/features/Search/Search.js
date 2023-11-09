@@ -9,21 +9,12 @@ const Search = () => {
   const { 
     allPokemons, 
     userPokemons, 
-    setSearchedPokemons, 
-    setSortedPokemons 
+    setSortedPokemons,
+    setPokemonData,
+    setMyPokemons 
   } = useContext(AppContext);
 
   const [ search, setSearch ] = useState(''); 
-  const [ pokemonData, setPokemonData ] = useState([]);
-  const [ myPokemons, setMyPokemons ] = useState([]);
-
-
-  if (pokemonData.length) {
-    setSearchedPokemons(pokemonData) 
-  } else if (myPokemons.length) {
-    setSearchedPokemons(myPokemons)
-  };
-
 
   return (
     <form className='search'>
@@ -35,10 +26,10 @@ const Search = () => {
         defaultValue={search} 
         onChange={(event) => setSearch(event.target.value)} 
       />
-      <button onClick={(e) => utils.searchPokemon(e, setSortedPokemons, setPokemonData, setMyPokemons, allPokemons, search)}>
+      <button onClick={(e) => utils.searchPokemon(e, setSortedPokemons, setPokemonData, allPokemons, search)}>
         <TbWorldSearch />
       </button>
-      <button onClick={(e) => utils.searchMyPokemons(e, setSortedPokemons, setPokemonData, setMyPokemons, userPokemons, search)}>
+      <button onClick={(e) => utils.searchMyPokemons(e, setSortedPokemons, setPokemonData, userPokemons, search)}>
         <TbDeviceMobileSearch />
       </button>
     </form>
