@@ -11,6 +11,7 @@
 Project is created with:
 - ReactJS 18.2.0
 - Firebase 9.23.0
+- axios 1.4.0
 - sass 1.63.6
 - react-icons 4.11.0
 - Font Awesome 6.4.2 (with Font Awesome React component 0.2.0)

@@ -162,7 +162,6 @@ utils.searchPokemon = (e, setSortedPokemons, setPokemonData, allPokemons, search
             url: pokemonObject?.types[i].type.url,
           })
         }
-
         for (let i = 0; i < pokemonObject.abilities.length; i++) {
           pokemonAbilities.push(pokemonObject?.abilities[i].ability.name)
         }

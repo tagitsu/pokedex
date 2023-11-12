@@ -8,7 +8,6 @@ const Search = () => {
 
   const { 
     allPokemons, 
-    userPokemons, 
     setSortedPokemons,
     setPokemonData,
   } = useContext(AppContext);
@@ -28,9 +27,6 @@ const Search = () => {
       <button type='submit'>
         <BsSearch />
       </button>
-      {/* <button onClick={(e) => utils.searchMyPokemons(e, setSortedPokemons, setPokemonData, userPokemons, search)}>
-        <TbDeviceMobileSearch />
-      </button> */}
     </form>
   )
 };
