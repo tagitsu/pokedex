@@ -1,4 +1,8 @@
-import { doc, setDoc, deleteDoc } from "firebase/firestore";
+import { 
+  doc, 
+  setDoc, 
+  deleteDoc 
+} from "firebase/firestore";
 import axios from "axios";
 import { 
   createUserWithEmailAndPassword,
@@ -121,18 +125,88 @@ utils.getSearchedPokemons = (pokemons, setSearchedPokemons) => {
   setSearchedPokemons(pokemons);
 };
 
-utils.searchMyPokemons = (e, setSortedPokemons, setPokemonData, userPokemons, search) => {
-  e.preventDefault();
-  setSortedPokemons(null);
-  setPokemonData([]);
+// utils.searchMyPokemons = (e, setSortedPokemons, setPokemonData, userPokemons, search) => {
+//   e.preventDefault();
+//   setSortedPokemons(null);
+//   setPokemonData([]);
 
-  const myPokemons = userPokemons.filter( 
-    pokemon => 
-    pokemon.name.includes(search) 
-    || 
-    pokemon.id === search 
-  );
-  setPokemonData(myPokemons);
+//   const myPokemons = userPokemons.filter( 
+//     pokemon => 
+//     pokemon.name.includes(search) 
+//     || 
+//     pokemon.id === search 
+//   );
+//   setPokemonData(myPokemons);
+// };
+utils.getSpeciesInfo = (captureTime, pokemonObject, setPokemonData, pokemonTypes, pokemonAbilities) => {
+  axios.get(pokemonObject.species.url).then( response => {
+    const pokemonSpecies = response.data;
+    const funFacts = pokemonSpecies.flavor_text_entries.filter( text => text.language.name === 'en');
+    const genera = pokemonSpecies.genera.filter( text => text.language.name === 'en');
+    const pickText = (funFacts) => {
+      const index = Math.floor(Math.random() * funFacts.length);
+      return funFacts[index]?.flavor_text;
+    };
+
+    pokemon = { 
+      ...pokemon, 
+      habitat: pokemonSpecies.habitat?.name ? pokemonSpecies.habitat.name : null, 
+      color: pokemonSpecies.color?.name ? pokemonSpecies.color.name : null,
+      text: pickText(funFacts),
+      genus: genera[0]?.genus,
+    };
+
+    setPokemonData(pokemonData => [...pokemonData, pokemon]);
+  }) 
+
+  let pokemon = {
+    id: pokemonObject.id,
+    name: pokemonObject.name,
+    types: pokemonTypes,
+    appearance: {
+      image: pokemonObject.sprites.other.dream_world.front_default, 
+      image2: pokemonObject.sprites.other.home.front_default,
+      image3: pokemonObject.sprites.front_default,
+      height: pokemonObject.height / 10,
+      weight: pokemonObject.weight / 10,
+    },
+    stats: {
+      hp: pokemonObject.stats[0].base_stat,
+      atk: pokemonObject.stats[1].base_stat,
+      def: pokemonObject.stats[2].base_stat,
+      spAtk: pokemonObject.stats[3].base_stat,
+      spDef: pokemonObject.stats[4].base_stat,
+      spd: pokemonObject.stats[5].base_stat,
+    },
+    abilities: pokemonAbilities,
+    captureTime: captureTime,
+  };
+};
+
+utils.searchMatch = async (setPokemonData, allPokemons, search, captureTime) => {
+  try {
+    const matchingPokemons = allPokemons.filter( pokemon => pokemon.name.includes(search) );
+    for ( let i = 0; i < matchingPokemons.length; i++) {
+      let pokemonTypes = [], pokemonAbilities = [];
+
+      axios.get(matchingPokemons[i].url).then( response => {
+        const pokemonObject = response.data;
+        for (let i = 0; i < pokemonObject.types.length; i++) {
+          pokemonTypes.push({
+            name: pokemonObject?.types[i].type.name,
+            url: pokemonObject?.types[i].type.url,
+          })
+        }
+        for (let i = 0; i < pokemonObject.abilities.length; i++) {
+          pokemonAbilities.push(pokemonObject?.abilities[i].ability.name)
+        }
+
+        utils.getSpeciesInfo(captureTime, pokemonObject, setPokemonData, pokemonTypes, pokemonAbilities)
+      });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 utils.searchPokemon = (e, setSortedPokemons, setPokemonData, allPokemons, search) => {
@@ -148,75 +222,7 @@ utils.searchPokemon = (e, setSortedPokemons, setPokemonData, allPokemons, search
   const date = new Date();
   const captureTime = `${leadingZero(date.getDate())}.${leadingZero(date.getMonth() +1)}.${date.getFullYear()} ${leadingZero(date.getHours())}:${leadingZero(date.getMinutes())}:${leadingZero(date.getSeconds())}`;
 
-  // znalezienie pasujących do wyszukiwania
-  const searchMatch = () => {
-    const matchingPokemons = allPokemons.filter( pokemon => pokemon.name.includes(search) );
-    for ( let i = 0; i < matchingPokemons.length; i++) {
-      let pokemon, pokemonTypes = [], pokemonAbilities = [];
-
-      axios.get(matchingPokemons[i].url).then( response => {
-        const pokemonObject = response.data;
-        for (let i = 0; i < pokemonObject.types.length; i++) {
-          pokemonTypes.push({
-            name: pokemonObject?.types[i].type.name,
-            url: pokemonObject?.types[i].type.url,
-          })
-        }
-        for (let i = 0; i < pokemonObject.abilities.length; i++) {
-          pokemonAbilities.push(pokemonObject?.abilities[i].ability.name)
-        }
-        const getSpeciesInfo = () => {
-          if (pokemonObject) {
-            axios.get(pokemonObject.species.url).then( response => {
-              const pokemonSpecies = response.data;
-              const funFacts = pokemonSpecies.flavor_text_entries.filter( text => text.language.name === 'en');
-              const genera = pokemonSpecies.genera.filter( text => text.language.name === 'en');
-              const pickText = (funFacts) => {
-                const index = Math.floor(Math.random() * funFacts.length);
-                return funFacts[index]?.flavor_text;
-              };
-
-              pokemon = { 
-                ...pokemon, 
-                habitat: pokemonSpecies.habitat?.name ? pokemonSpecies.habitat.name : null, 
-                color: pokemonSpecies.color?.name ? pokemonSpecies.color.name : null,
-                text: pickText(funFacts),
-                genus: genera[0]?.genus,
-              };
-
-              setPokemonData(pokemonData => [...pokemonData, pokemon]);
-            }) 
-          }
-
-          pokemon = {
-            id: pokemonObject.id,
-            name: pokemonObject.name,
-            types: pokemonTypes,
-            appearance: {
-              image: pokemonObject.sprites.other.dream_world.front_default, 
-              image2: pokemonObject.sprites.other.home.front_default,
-              image3: pokemonObject.sprites.front_default,
-              height: pokemonObject.height / 10,
-              weight: pokemonObject.weight / 10,
-            },
-            stats: {
-              hp: pokemonObject.stats[0].base_stat,
-              atk: pokemonObject.stats[1].base_stat,
-              def: pokemonObject.stats[2].base_stat,
-              spAtk: pokemonObject.stats[3].base_stat,
-              spDef: pokemonObject.stats[4].base_stat,
-              spd: pokemonObject.stats[5].base_stat,
-            },
-            abilities: pokemonAbilities,
-            captureTime: captureTime,
-          };
-        };
-
-        getSpeciesInfo();
-      })
-    }
-  };
-  if (search) { searchMatch(); }
+  utils.searchMatch(setPokemonData, allPokemons, search, captureTime);
 };
 
 // POKECARD
@@ -235,7 +241,7 @@ utils.addPokemon = (pokemon, user) => {
 
 // TYPE
 
-utils.getRelations = (type, setRelations, setIsOpen) => {
+utils.getRelations = (type, setRelations, setIsOpen, captureTime) => {
   axios.get(type.url).then( (response) => {
     const relObjects = Object.entries(response.data.damage_relations);
     setRelations(relObjects);
