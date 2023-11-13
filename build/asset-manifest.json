@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9147aa8e.css",
+    "main.js": "/static/js/main.5178530d.js",
+    "static/media/batch_forest.jpg": "/static/media/batch_forest.f3bd9a678cbef4795ef8.jpg",
+    "static/media/batch_sea.jpg": "/static/media/batch_sea.8c48394b8e001161ddbc.jpg",
+    "static/media/batch_mountain.jpg": "/static/media/batch_mountain.e21af32579bbeb64b1c4.jpg",
+    "static/media/batch_urban.jpg": "/static/media/batch_urban.a67707388fb672553339.jpg",
+    "static/media/batch_rough-terrain.jpg": "/static/media/batch_rough-terrain.c2b405cbe65f99b90f04.jpg",
+    "static/media/batch_waters-edge.jpg": "/static/media/batch_waters-edge.351d9a213667f069b899.jpg",
+    "static/media/batch_grassland.jpg": "/static/media/batch_grassland.a6f3f87f2920fa0a4c3f.jpg",
+    "static/media/batch_rare.jpg": "/static/media/batch_rare.9c910e458d6b126255bb.jpg",
+    "static/media/batch_cave.jpg": "/static/media/batch_cave.fbfdfada9c0de94a123b.jpg",
+    "static/media/pokeball-icon.png": "/static/media/pokeball-icon.a835fb9ba399394db72d.png",
+    "index.html": "/index.html",
+    "main.9147aa8e.css.map": "/static/css/main.9147aa8e.css.map",
+    "main.5178530d.js.map": "/static/js/main.5178530d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9147aa8e.css",
+    "static/js/main.5178530d.js"
+  ]
+}
