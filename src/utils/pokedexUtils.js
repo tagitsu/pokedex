@@ -183,8 +183,7 @@ utils.getSpeciesInfo = (captureTime, pokemonObject, setPokemonData, pokemonTypes
   };
 };
 
-utils.searchMatch = async (setPokemonData, allPokemons, search, captureTime) => {
-  try {
+utils.searchMatch = (setPokemonData, allPokemons, search, captureTime) => {
     const matchingPokemons = allPokemons.filter( pokemon => pokemon.name.includes(search) );
     for ( let i = 0; i < matchingPokemons.length; i++) {
       let pokemonTypes = [], pokemonAbilities = [];
@@ -204,16 +203,13 @@ utils.searchMatch = async (setPokemonData, allPokemons, search, captureTime) => 
         utils.getSpeciesInfo(captureTime, pokemonObject, setPokemonData, pokemonTypes, pokemonAbilities)
       });
     }
-  } catch (error) {
-    console.log(error.message);
-  }
 };
 
 utils.searchPokemon = (e, setSortedPokemons, setPokemonData, allPokemons, search) => {
   e.preventDefault();
   setSortedPokemons(null);
   setPokemonData([]);
-
+  console.log(search);
   // czas wyszukania pokemona/pokemonów
   const leadingZero = (time) => {
     return (time < 10) ? '0' + time : time;
