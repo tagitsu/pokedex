@@ -5,7 +5,6 @@
   padding: 1vh;
   display: grid;
   grid-template-columns: minmax(120px, 20%) auto;
-  //grid-template-rows: minmax(auto, 10%) auto;
   background: $red;
   border-radius: $base-size;
 
@@ -37,6 +36,41 @@
     text-align: center;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   }
+
+  &__alert {
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    border: $base-size solid white;
+    background: $blue;
+    color: white;
+    border-radius: $base-size;
+    box-shadow: $card-up;
+
+    p {
+      font-size: calc($base-size * 2);
+    }
+
+    button {
+      padding: 0;
+      position: absolute;
+      right: 3px;
+      top: 3px;
+      font-size: calc($base-size * 2);
+      background-color: transparent;
+      border: none;
+      transition: all .3s ease-in-out;
+      cursor: pointer;
+      opacity: .5;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 1;
+    }
+  }
+
+  
 
 }
 

@@ -10,12 +10,13 @@ const Search = () => {
     allPokemons, 
     setSortedPokemons,
     setPokemonData,
+    setAlert
   } = useContext(AppContext);
 
   const [ search, setSearch ] = useState(''); 
 
   return (
-    <form className='search' onSubmit={(e) => utils.searchPokemon(e, setSortedPokemons, setPokemonData, allPokemons, search)}>
+    <form className='search' onSubmit={(e) => utils.searchPokemon(e, setSortedPokemons, setPokemonData, allPokemons, search, setAlert)}>
       <input 
         type='text' 
         name='search-input' 

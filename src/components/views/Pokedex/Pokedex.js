@@ -1,17 +1,30 @@
 import './Pokedex.scss';
-import { useContext } from "react";
+import { useContext, useRef, useEffect } from "react";
 import PokeCard from "../../features/PokeCard/PokeCard";
 import Menu from '../../features/Menu/Menu';
 import UpButton from '../../common/UpButton/UpButton';
 import { AppContext } from '../../../utils/pokedexContexts';
+import { IoClose } from 'react-icons/io5';
 
 const Pokedex = () => {
 
   const { 
     userPokemons, 
     sortedPokemons,
-    pokemonData 
+    pokemonData,
+    alert,
+    setAlert 
   } = useContext(AppContext);
+
+  const ref = useRef();
+
+  useEffect( () => {
+    if (alert) {
+      ref.current?.showModal();
+    } else {
+      ref.current?.close();
+    }
+  }, [alert]);
 
   const displayPokemons = () => {
     if (!sortedPokemons?.length && !pokemonData.length) {
@@ -28,8 +41,8 @@ const Pokedex = () => {
 
   return (
     <div className='pokedex'>
-      <Menu displayPokemons={displayPokemons} />
-      <div className='pokedex__collection'>
+      <Menu key='menu' displayPokemons={displayPokemons} />
+      <div key='collection' className='pokedex__collection'>
         { 
           (!userPokemons.length && !pokemonData.length) 
           ? 
@@ -41,7 +54,16 @@ const Pokedex = () => {
           displayPokemons().map( pokemon => <PokeCard key={pokemon.id} pokemon={pokemon} />)
         }
       </div>
-      <UpButton container={'.pokedex__collection'}/>
+      { alert &&
+        <dialog className='pokedex__alert' ref={ref} onCancel={() => setAlert('')}>
+        <p> I don't know any pokemon with <span>{alert}</span> in the name.</p>
+        <button onClick={() => setAlert('')}>
+          <IoClose />
+        </button>
+      </dialog>
+      }
+      
+      <UpButton key='upButton' container={'.pokedex__collection'}/>
     </div>
   )
 };

@@ -107,7 +107,6 @@ utils.logout = async () => {
 utils.deleteAccount = async () => {
   try {
     const user = auth.currentUser;
-    console.log(user.uid);
     await deleteUser(user);
     await deleteDoc(doc(db, `users`, `${user.uid}`));
   } catch (error) {
@@ -139,25 +138,6 @@ utils.getSearchedPokemons = (pokemons, setSearchedPokemons) => {
 //   setPokemonData(myPokemons);
 // };
 utils.getSpeciesInfo = (captureTime, pokemonObject, setPokemonData, pokemonTypes, pokemonAbilities) => {
-  axios.get(pokemonObject.species.url).then( response => {
-    const pokemonSpecies = response.data;
-    const funFacts = pokemonSpecies.flavor_text_entries.filter( text => text.language.name === 'en');
-    const genera = pokemonSpecies.genera.filter( text => text.language.name === 'en');
-    const pickText = (funFacts) => {
-      const index = Math.floor(Math.random() * funFacts.length);
-      return funFacts[index]?.flavor_text;
-    };
-
-    pokemon = { 
-      ...pokemon, 
-      habitat: pokemonSpecies.habitat?.name ? pokemonSpecies.habitat.name : null, 
-      color: pokemonSpecies.color?.name ? pokemonSpecies.color.name : null,
-      text: pickText(funFacts),
-      genus: genera[0]?.genus,
-    };
-
-    setPokemonData(pokemonData => [...pokemonData, pokemon]);
-  }) 
 
   let pokemon = {
     id: pokemonObject.id,
@@ -181,35 +161,60 @@ utils.getSpeciesInfo = (captureTime, pokemonObject, setPokemonData, pokemonTypes
     abilities: pokemonAbilities,
     captureTime: captureTime,
   };
+
+  axios.get(pokemonObject.species.url).then( response => {
+    const pokemonSpecies = response.data;
+    const funFacts = pokemonSpecies.flavor_text_entries.filter( text => text.language.name === 'en');
+    const genera = pokemonSpecies.genera.filter( text => text.language.name === 'en');
+    const pickText = (funFacts) => {
+      const index = Math.floor(Math.random() * funFacts.length);
+      return funFacts[index]?.flavor_text;
+    };
+
+    pokemon = { 
+      ...pokemon, 
+      habitat: pokemonSpecies.habitat?.name ? pokemonSpecies.habitat.name : null, 
+      color: pokemonSpecies.color?.name ? pokemonSpecies.color.name : null,
+      text: pickText(funFacts),
+      genus: genera[0]?.genus,
+    };
+
+    setPokemonData(pokemonData => [...pokemonData, pokemon]);
+  }) 
+
 };
 
-utils.searchMatch = (setPokemonData, allPokemons, search, captureTime) => {
+utils.searchMatch = (setPokemonData, allPokemons, search, captureTime, setAlert) => {
     const matchingPokemons = allPokemons.filter( pokemon => pokemon.name.includes(search) );
-    for ( let i = 0; i < matchingPokemons.length; i++) {
-      let pokemonTypes = [], pokemonAbilities = [];
+    if (matchingPokemons.length) {
+      for ( let i = 0; i < matchingPokemons.length; i++) {
+        let pokemonTypes = [], pokemonAbilities = [];
+        axios.get(matchingPokemons[i].url).then( response => {
+          const pokemonObject = response.data;
+          for (let i = 0; i < pokemonObject.types.length; i++) {
+            pokemonTypes.push({
+              name: pokemonObject?.types[i].type.name,
+              url: pokemonObject?.types[i].type.url,
+            })
+          }
+          for (let i = 0; i < pokemonObject.abilities.length; i++) {
+            pokemonAbilities.push(pokemonObject?.abilities[i].ability.name)
+          }
 
-      axios.get(matchingPokemons[i].url).then( response => {
-        const pokemonObject = response.data;
-        for (let i = 0; i < pokemonObject.types.length; i++) {
-          pokemonTypes.push({
-            name: pokemonObject?.types[i].type.name,
-            url: pokemonObject?.types[i].type.url,
-          })
-        }
-        for (let i = 0; i < pokemonObject.abilities.length; i++) {
-          pokemonAbilities.push(pokemonObject?.abilities[i].ability.name)
-        }
-
-        utils.getSpeciesInfo(captureTime, pokemonObject, setPokemonData, pokemonTypes, pokemonAbilities)
-      });
+          utils.getSpeciesInfo(captureTime, pokemonObject, setPokemonData, pokemonTypes, pokemonAbilities)
+        });
+      }
+    } else {
+      setAlert(search);
     }
+    
 };
 
-utils.searchPokemon = (e, setSortedPokemons, setPokemonData, allPokemons, search) => {
+utils.searchPokemon = (e, setSortedPokemons, setPokemonData, allPokemons, search, setAlert) => {
   e.preventDefault();
   setSortedPokemons(null);
   setPokemonData([]);
-  console.log(search);
+
   // czas wyszukania pokemona/pokemonów
   const leadingZero = (time) => {
     return (time < 10) ? '0' + time : time;
@@ -218,7 +223,7 @@ utils.searchPokemon = (e, setSortedPokemons, setPokemonData, allPokemons, search
   const date = new Date();
   const captureTime = `${leadingZero(date.getDate())}.${leadingZero(date.getMonth() +1)}.${date.getFullYear()} ${leadingZero(date.getHours())}:${leadingZero(date.getMinutes())}:${leadingZero(date.getSeconds())}`;
 
-  utils.searchMatch(setPokemonData, allPokemons, search, captureTime);
+  utils.searchMatch(setPokemonData, allPokemons, search, captureTime, setAlert);
 };
 
 // POKECARD

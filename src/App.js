@@ -17,6 +17,7 @@ function App() {
   const [ userPokemons, setUserPokemons ] = useState([]);
   const [ sortedPokemons, setSortedPokemons ] = useState(null);
   const [ pokemonData, setPokemonData ] = useState([]);
+  const [ alert, setAlert ] = useState('');
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -43,7 +44,9 @@ function App() {
           sortedPokemons,
           setSortedPokemons,
           pokemonData,
-          setPokemonData
+          setPokemonData,
+          alert,
+          setAlert
         }}
       >
         <Header />
