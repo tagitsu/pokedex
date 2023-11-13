@@ -185,7 +185,7 @@ utils.getSpeciesInfo = (captureTime, pokemonObject, setPokemonData, pokemonTypes
 };
 
 utils.searchMatch = (setPokemonData, allPokemons, search, captureTime, setAlert) => {
-    const matchingPokemons = allPokemons.filter( pokemon => pokemon.name.includes(search) );
+    const matchingPokemons = allPokemons.filter( pokemon => pokemon.name.includes(search.toLowerCase()) );
     if (matchingPokemons.length) {
       for ( let i = 0; i < matchingPokemons.length; i++) {
         let pokemonTypes = [], pokemonAbilities = [];
