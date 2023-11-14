@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.1d37e98b.css",
-    "main.js": "/static/js/main.de81f0cc.js",
+    "main.css": "/static/css/main.4a86b513.css",
+    "main.js": "/static/js/main.3bba3e2a.js",
     "static/media/batch_forest.jpg": "/static/media/batch_forest.f3bd9a678cbef4795ef8.jpg",
     "static/media/batch_sea.jpg": "/static/media/batch_sea.8c48394b8e001161ddbc.jpg",
     "static/media/batch_mountain.jpg": "/static/media/batch_mountain.e21af32579bbeb64b1c4.jpg",
@@ -13,11 +13,11 @@
     "static/media/batch_cave.jpg": "/static/media/batch_cave.fbfdfada9c0de94a123b.jpg",
     "static/media/pokeball-icon.png": "/static/media/pokeball-icon.a835fb9ba399394db72d.png",
     "index.html": "/index.html",
-    "main.1d37e98b.css.map": "/static/css/main.1d37e98b.css.map",
-    "main.de81f0cc.js.map": "/static/js/main.de81f0cc.js.map"
+    "main.4a86b513.css.map": "/static/css/main.4a86b513.css.map",
+    "main.3bba3e2a.js.map": "/static/js/main.3bba3e2a.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d37e98b.css",
-    "static/js/main.de81f0cc.js"
+    "static/css/main.4a86b513.css",
+    "static/js/main.3bba3e2a.js"
   ]
 }
