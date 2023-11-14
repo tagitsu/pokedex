@@ -1,5 +1,5 @@
 import './Pokedex.scss';
-import { useContext, useRef, useEffect, useState } from "react";
+import { useContext, useRef, useEffect } from "react";
 import PokeCard from "../../features/PokeCard/PokeCard";
 import Menu from '../../features/Menu/Menu';
 import UpButton from '../../common/UpButton/UpButton';
@@ -8,7 +8,6 @@ import { IoClose } from 'react-icons/io5';
 import Pokemon from '../../features/Pokemon/Pokemon';
 
 const Pokedex = () => {
-
 
   const { 
     userPokemons, 
@@ -47,12 +46,6 @@ const Pokedex = () => {
     const choosenCard = displayPokemons().filter( pokemon => pokemon.id === id);
     return(choosenCard);
   };
-
-  // Co chcę wyświetlać?
-  // - kolekcję pokemonów użytkownika - mini
-  // - wyszukiwanie - mini
-  // - filtrowanie - mini
-  // - wybraną kartę - card
 
   const info = <article className='pokedex__info'>
   <h2> You don't have any Pokemon yet </h2>
