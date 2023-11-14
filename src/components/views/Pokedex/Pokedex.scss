@@ -16,7 +16,7 @@
     justify-items: center;
     align-items: start;
     align-content: stretch;
-    grid-template-columns: repeat(auto-fill, minmax(370px, 30%));
+    grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 12), 1fr));
     gap: calc($base-size * 2);
     background-color: $screenGray;
     background-image: radial-gradient(#c3c3c3 0.95px, #ced7ce 0.95px);
@@ -41,8 +41,9 @@
     width: 80vw;
     display: flex;
     justify-content: center;
-    border: $base-size solid white;
-    background: $blue;
+    border: 2px outset rgba(255, 255, 255, 0.3);
+    background-color: $blue;
+    background: radial-gradient(at center, $blue, $navy);
     color: white;
     border-radius: $base-size;
     box-shadow: $card-up;

@@ -1,24 +1,30 @@
 @import '../../../styles/settings.scss';
 
-
 .card {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 10% 35% 20% 35%;
+  width: 310px;
+  height: 500px;
+  position: relative;
   border: calc($base-size * 1) solid white;
   border-radius: calc($base-size * 1.2);
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto auto;
+  box-shadow: $card-up;
+  transform: scale(1.02);
   padding: calc($base-size / 2);
-  width: 310px;
-  height: 150px;
-  box-shadow: $card-down;
-  position: relative;
   background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.7));
 
   &__header {
+    display: flex;
+    color: $blue;
+    grid-column: span 2;
+    justify-content: space-between;
+    align-items: baseline;
     grid-column: span 2;
     justify-content: space-between;
     align-items: baseline;
     display: flex;
+
   }
 
   &__box, &__title {
@@ -39,44 +45,89 @@
   &__types, &__hp {
     display: flex;
     align-items: baseline;
+    gap: 5px;
 
-    p {
-      font-size: calc($base-size * 3);
+    span {
+      font-size: calc($base-size / 1.2);
+    }
+
+    h1, p {
+      font-size: calc($base-size * 1.4);
       margin: 0;
     }
   }
 
-  &__appearence {
-    grid-column: span 2;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    grid-template-columns: 1fr 1fr;
+  &__hp {
+    color: $blue;
+    align-self: center;
+    align-items: baseline;
+
+    p {
+      font-size: calc($base-size * 3);
+    }
   }
 
-  &__features > p {
-    height: 100%;
-    padding: 0;
+  &__appearance {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    color: $blue;
+    overflow: hidden;
+    border: 4px solid white;
+
+    // display: grid;
+    // align-items: center;
+    // justify-items: center;
+    // grid-template-columns: 1fr 1fr;
   }
 
   &__image {
-    width: 100px;
-    height: 100px;
 
     img {
-      width: 100%;
       height: 100%;
       object-fit: contain;
     }
   }
 
-  &__normal {
-    background-color: $normal;
+  &__info {
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    border: 2px outset rgba(255, 255, 255, 0.3);
+    background-color: $blue;
+    background: radial-gradient(at center, $blue, $navy);
+    color: white;
+    border-radius: $base-size;
+    box-shadow: $card-up;
+
+    p {
+      font-size: calc($base-size * 2);
+    }
+
+    button {
+      padding: 0;
+      position: absolute;
+      right: 3px;
+      top: 3px;
+      font-size: calc($base-size * 2);
+      background-color: transparent;
+      border: none;
+      transition: all .3s ease-in-out;
+      cursor: pointer;
+      opacity: .5;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 1;
+    }
   }
 
-  &__fire {
-    background-color: $fire;
-  }
+
 
   &__water {
     background-color: $water;
@@ -140,64 +191,16 @@
   &__fairy {
     background-color: $fairy;
   }
-}
 
-.card--active {
-  grid-template-columns: auto auto;
-  grid-template-rows: 10% 35% 20% 35%;
-  height: 500px;
-  position: relative;
-  box-shadow: $card-up;
-  transform: scale(1.02);
-
-  &__header {
-    display: flex;
-    color: $blue;
-    grid-column: span 2;
-    justify-content: space-between;
+  &__normal {
+    background-color: $normal;
   }
 
-  &__box {
-    display: flex;
+  &__fire {
+    background-color: $fire;
   }
 
-  &__types, &__hp {
-    display: flex;
-    align-items: baseline;
-    gap: 5px;
 
-    span {
-      font-size: calc($base-size / 1.2);
-    }
-
-    h1, p {
-      font-size: calc($base-size * 1.4);
-      margin: 0;
-    }
-  }
-
-  &__hp {
-    color: $blue;
-    align-self: center;
-    align-items: baseline;
-
-    p {
-      font-size: calc($base-size * 3);
-    }
-  }
-
-  &__appearance {
-    grid-column: span 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background-color: whitesmoke;
-    border-radius: 10px;
-    color: $blue;
-    overflow: hidden;
-    border: 4px solid white;
-  }
 
   &__cave {
     background: url(../../../../public/images/habitats/batch_cave.jpg) center ;

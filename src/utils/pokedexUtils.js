@@ -210,10 +210,11 @@ utils.searchMatch = (setPokemonData, allPokemons, search, captureTime, setAlert)
     
 };
 
-utils.searchPokemon = (e, setSortedPokemons, setPokemonData, allPokemons, search, setAlert) => {
+utils.searchPokemon = (e, setSortedPokemons, setPokemonData, allPokemons, search, setAlert, setDisplayCard) => {
   e.preventDefault();
   setSortedPokemons(null);
   setPokemonData([]);
+  setDisplayCard(null);
 
   // czas wyszukania pokemona/pokemonów
   const leadingZero = (time) => {
@@ -236,8 +237,9 @@ utils.isInPokedex = (myPokemons, id) => {
   return (Boolean(pokemonInPokedex.length));
 };
 
-utils.addPokemon = (pokemon, user) => {
+utils.addPokemon = (pokemon, user, setInfo) => {
   setDoc(doc(db, `users/${user}/pokedex`, `${pokemon.id}`), pokemon);
+  setInfo(true);
 };
 
 // TYPE

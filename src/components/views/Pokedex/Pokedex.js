@@ -1,19 +1,23 @@
 import './Pokedex.scss';
-import { useContext, useRef, useEffect } from "react";
+import { useContext, useRef, useEffect, useState } from "react";
 import PokeCard from "../../features/PokeCard/PokeCard";
 import Menu from '../../features/Menu/Menu';
 import UpButton from '../../common/UpButton/UpButton';
 import { AppContext } from '../../../utils/pokedexContexts';
 import { IoClose } from 'react-icons/io5';
+import Pokemon from '../../features/Pokemon/Pokemon';
 
 const Pokedex = () => {
+
 
   const { 
     userPokemons, 
     sortedPokemons,
     pokemonData,
     alert,
-    setAlert 
+    setAlert,
+    displayCard,
+    setDisplayCard 
   } = useContext(AppContext);
 
   const ref = useRef();
@@ -37,21 +41,35 @@ const Pokedex = () => {
       return(sortedPokemons);
     }
   };
-  displayPokemons();
+
+  const displayChoosenCard = (id) => {
+
+    const choosenCard = displayPokemons().filter( pokemon => pokemon.id === id);
+    return(choosenCard);
+  };
+
+  // Co chcę wyświetlać?
+  // - kolekcję pokemonów użytkownika - mini
+  // - wyszukiwanie - mini
+  // - filtrowanie - mini
+  // - wybraną kartę - card
+
+  const info = <article className='pokedex__info'>
+  <h2> You don't have any Pokemon yet </h2>
+  <p> Search and catch your first Pokèmons </p>
+</article> 
+
 
   return (
     <div className='pokedex'>
       <Menu key='menu' displayPokemons={displayPokemons} />
       <div key='collection' className='pokedex__collection'>
         { 
-          (!userPokemons.length && !pokemonData.length) 
+          (!displayCard) 
           ? 
-          <article className='pokedex__info'>
-            <h2> You don't have any Pokemon yet </h2>
-            <p> Search and catch your first Pokèmons </p>
-          </article> 
+          displayPokemons().map( pokemon => <Pokemon key={pokemon.id} pokemon={pokemon} chooseCard={() => setDisplayCard(pokemon.id)} />)
           :
-          displayPokemons().map( pokemon => <PokeCard key={pokemon.id} pokemon={pokemon} />)
+          displayChoosenCard(displayCard).map( pokemon => <PokeCard key={pokemon.id} pokemon={pokemon} closeCard={() => setDisplayCard(null)} />)
         }
       </div>
       { alert &&

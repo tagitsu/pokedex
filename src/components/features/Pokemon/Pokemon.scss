@@ -1,0 +1,133 @@
+@import '../../../styles/settings.scss';
+
+.pokemon {
+  width: calc($base-size * 12);
+  height: calc($base-size * 12);
+  padding: calc($base-size / 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  box-shadow: $card-down;
+  //background: radial-gradient(center, transparent, rgba(255, 255, 255, 0.7));
+  background: rgba(255, 255, 255, 1.0);
+  background: radial-gradient(at center, rgba(255, 255, 255, 1.0), rgba(255, 255, 255, 0.0));
+  position: relative;
+
+
+
+  // &__header {
+  //   grid-column: span 2;
+  //   justify-content: space-between;
+  //   align-items: baseline;
+  //   display: flex;
+  // }
+
+  // &__title {
+  //   display: flex;
+  //   justify-content: flex-start;
+  //   align-items: baseline;
+  //   gap: calc($base-size / 2);
+  //   margin: 0;
+  //   color: white;
+  //   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.292);
+    
+  //   h1 {
+  //     height: calc($base-size * 2);
+  //     overflow-wrap: break-word;
+  //   }
+  // }
+
+  // &__number {
+  //   border: 1px solid magenta;
+  //   width: 100%;
+  //   height: 100%;
+  //   position: absolute;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
+
+  &__image {
+    width: 100px;
+    height: 100px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__normal {
+    background-color: $normal;
+  }
+
+  &__fire {
+    background-color: $fire;
+  }
+
+  &__water {
+    background-color: $water;
+  }
+
+  &__grass {
+    background-color: $grass;
+  }
+
+  &__flying {
+    background-color: $flying;
+  }
+
+  &__fighting {
+    background-color: $fighting;
+  }
+
+  &__poison {
+    background-color: $poison;
+  }
+
+  &__electric {
+    background-color: $electric;
+  }
+
+  &__ground {
+    background-color: $ground;
+  }
+
+  &__rock {
+    background-color: $rock;
+  }
+
+  &__psychic {
+    background-color: $psychic;
+  }
+  &__ice {
+    background-color: $ice;
+  }
+
+  &__bug {
+    background-color: $bug;
+  }
+
+  &__ghost {
+    background-color: $ghost;
+  }
+
+  &__steel {
+    background-color: $steel;
+  }
+
+  &__dragon {
+    background-color: $dragon;
+  }
+
+  &__dark {
+    background-color: $dark;
+  }
+
+  &__fairy {
+    background-color: $fairy;
+  }
+}
