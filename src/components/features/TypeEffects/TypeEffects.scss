@@ -2,20 +2,21 @@
 
 .effects {
   width: 80vw;
-  border: $base-size solid white;
-  background: $blue;
+  border: 2px outset rgba(255, 255, 255, 0.3);
+  background-color: $blue;
+  background: radial-gradient(at center, $blue, $navy);
   color: white;
   border-radius: $base-size;
   box-shadow: $card-up;
+
+  &__header, &__types {
+    display: flex;
+  }
 
   &__header {
     grid-column: span 2;
     justify-content: space-between;
     align-items: flex-start;
-  }
-
-  &__header, &__types {
-    display: flex;
   }
 
   &__types {
@@ -29,14 +30,14 @@
   }
 
   &__title {
-    width: 200%;
+    padding: $base-size;
+    //width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: calc($base-size * 3);
+    text-shadow: $card-down;
 
-    h1 {
-      margin: $base-size 0;
-    }
   }
 
   &__subtitle {
@@ -62,9 +63,17 @@
     height: calc($base-size * 1.9);
   }
 
+  &__icon--title {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    opacity: .9;
+
+  }
+
   &__container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: $base-size;
   }
 

@@ -41,9 +41,7 @@ const PokeCard = ({ pokemon, closeCard }) => {
           <IoClose />
         </button> */}
         <header className={clsx('card__header')}>
-          <div className='card__title'>
-            <h1> {utils.nameToUpperCase(pokemon.name)}</h1>
-          </div>
+          <h1 className='card__title'> {utils.nameToUpperCase(pokemon.name)}</h1>
           <div className='card__box'>
             <div className='card__hp'>
               <span> HP </span>

@@ -37,14 +37,14 @@ const TypeEffects = ({ type, effects, isOpen, closeModal }) => {
   return (
     <dialog className='effects' ref={ref} onCancel={closeModal}>
       <header className='effects__header'>
-        <div className='effects__title'>
-          <h1> {type.name} </h1> 
+        <h1 className='effects__title'> 
+          {type.name} 
           <img 
             src={`${process.env.PUBLIC_URL}/images/types/${type.name}.webp`} 
             alt={`${type.name} type icon`} 
-            className='effects__icon'
+            className='effects__icon--title'
           />
-        </div>
+        </h1> 
         <button 
           className='effects__close' 
           onClick={closeModal}
