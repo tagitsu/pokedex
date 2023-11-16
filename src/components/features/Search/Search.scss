@@ -1,29 +1,22 @@
 @import '../../../styles/settings.scss';
 
 .search {
-  //border-radius: $base-size;
   grid-column: 2 / 3;
-  //justify-self: flex-end;
   display: flex;
   justify-content: center;
   align-items: center;
-  //gap: 5px;
 
   input {
     padding: 3px 5px;
-    background-color: $navy;
+    background-color: $blue;
     border: none;
-    //font-size: calc($base-size * 1.7);
-    //font-family: $font-search;
-    //font-weight: 600;
     letter-spacing: 2px;
     color: white;
     border-radius: $radius;
-    //text-align: center;
-    //text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    text-align: right;
 
     &::placeholder {
-      color: lightgray;
+      color: whitesmoke;
     }
   }
 
@@ -50,7 +43,6 @@
     grid-column: 2 / 3;
 
     input {
-      width: 50%;
       align-self: stretch;
       font-size: inherit;
     }
