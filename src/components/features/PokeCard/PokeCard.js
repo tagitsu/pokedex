@@ -37,9 +37,6 @@ const PokeCard = ({ pokemon, closeCard }) => {
   return(
     <div>
       <article className={clsx('card', `card__${pokemon.types[0].name}`)} >
-        {/* <button className='card__closeButton' onClick={closeCard} >
-          <IoClose />
-        </button> */}
         <header className={clsx('card__header')}>
           <h1 className='card__title'> {utils.nameToUpperCase(pokemon.name)}</h1>
           <div className='card__box'>
@@ -92,9 +89,10 @@ const PokeCard = ({ pokemon, closeCard }) => {
         { info &&
         <dialog className='card__info' ref={ref} onCancel={() => setInfo(false)}>
           <p> You have {utils.nameToUpperCase(pokemon.name)} in your collection! </p>
-          <button onClick={() => setInfo(false)}>
+          <button className='card__closeInfo' onClick={() => setInfo(false)}>
             <IoClose />
           </button>
+          <button className='card__okInfo' onClick={() => setInfo(false)}>OK</button>
         </dialog>
         }
       </article>

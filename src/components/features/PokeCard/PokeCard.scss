@@ -3,7 +3,7 @@
 .card {
   display: grid;
   grid-template-columns: auto auto;
-  grid-template-rows: 10% 35% 20% 35%;
+  grid-template-rows: 8% 35% 22% 35%;
   width: 310px;
   height: 500px;
   position: relative;
@@ -19,12 +19,7 @@
     color: $blue;
     grid-column: span 2;
     justify-content: space-between;
-    align-items: baseline;
-    grid-column: span 2;
-    justify-content: space-between;
-    align-items: baseline;
-    display: flex;
-
+    align-items: last baseline;
   }
 
   &__box, &__title {
@@ -37,7 +32,6 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.292);
     height: calc($base-size * 2);
     overflow-wrap: break-word;
-    
   }
 
   &__types, &__hp {
@@ -45,11 +39,11 @@
     align-items: baseline;
     gap: 5px;
 
-    span {
+    & > span {
       font-size: calc($base-size / 1.2);
     }
 
-    p {
+    & > p {
       font-size: calc($base-size * 1.4);
       margin: 0;
     }
@@ -85,7 +79,7 @@
 
   &__image {
 
-    img {
+    & > img {
       height: 100%;
       object-fit: contain;
     }
@@ -94,6 +88,8 @@
   &__info {
     width: 80vw;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     border: 2px outset rgba(255, 255, 255, 0.3);
     background-color: $blue;
@@ -101,31 +97,45 @@
     color: white;
     border-radius: $base-size;
     box-shadow: $card-up;
+    font-size: calc($base-size * 2);
+  }
 
-    p {
-      font-size: calc($base-size * 2);
-    }
+  &__okInfo {
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: whitesmoke;
+    color: $navy;
+    border: 2px outset lightgray;
+    border-radius: $radius;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    font-family: $font-content;
+    font-size: calc($base-size * 2);
 
-    button {
-      padding: 0;
-      position: absolute;
-      right: 3px;
-      top: 3px;
-      font-size: calc($base-size * 2);
-      background-color: transparent;
-      border: none;
-      transition: all .3s ease-in-out;
-      cursor: pointer;
-      opacity: .5;
-      color: white;
-    }
-
-    button:hover {
-      opacity: 1;
+    &:hover {
+      border-color: white;
     }
   }
 
+  &__closeInfo {
+    padding: 0;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    font-size: calc($base-size * 2);
+    background-color: transparent;
+    border: none;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    opacity: .5;
+    color: white;
 
+    &:hover {
+      opacity: 1;
+    }
+  }
 
   &__water {
     background-color: $water;
