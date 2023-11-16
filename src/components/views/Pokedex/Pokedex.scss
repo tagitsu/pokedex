@@ -40,7 +40,9 @@
   &__alert {
     width: 80vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     border: 2px outset rgba(255, 255, 255, 0.3);
     background-color: $blue;
     background: radial-gradient(at center, $blue, $navy);
@@ -52,24 +54,47 @@
       font-size: calc($base-size * 2);
     }
 
-    button {
-      padding: 0;
-      position: absolute;
-      right: 3px;
-      top: 3px;
-      font-size: calc($base-size * 2);
-      background-color: transparent;
-      border: none;
-      transition: all .3s ease-in-out;
-      cursor: pointer;
-      opacity: .5;
-      color: white;
-    }
+  }
 
-    button:hover {
+  &__okAlert {
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: whitesmoke;
+    color: $navy;
+    border: 2px outset lightgray;
+    border-radius: $radius;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    font-family: $font-content;
+    font-size: calc($base-size * 2);
+
+    &:hover {
+      border-color: white;
+    }
+  }
+
+
+  &__closeAlert {
+    padding: 0;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    font-size: calc($base-size * 2);
+    background-color: transparent;
+    border: none;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    opacity: .5;
+    color: white;
+
+    &:hover {
       opacity: 1;
     }
   }
+
+  
 
   
 

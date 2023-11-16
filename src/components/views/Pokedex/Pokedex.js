@@ -67,11 +67,13 @@ const Pokedex = () => {
       </div>
       { alert &&
         <dialog className='pokedex__alert' ref={ref} onCancel={() => setAlert('')}>
-        <p> I don't know any pokemon with <span>{alert}</span> in the name.</p>
-        <button onClick={() => setAlert('')}>
-          <IoClose />
-        </button>
-      </dialog>
+          <p> I don't know any pokemon with <span>{alert}</span> in the name.</p>
+          <button className='pokedex__okAlert' onClick={() => setAlert('')}>OK</button>
+          <button className='pokedex__closeAlert' onClick={() => setAlert('')}>
+            <IoClose />
+          </button>
+        </dialog>
+
       }
       
       <UpButton key='upButton' container={'.pokedex__collection'}/>
