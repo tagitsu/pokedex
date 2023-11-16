@@ -5,20 +5,19 @@
 
   &__input-box {
     position: relative;
-    color: black;
-    font-family: $font-search;
-    letter-spacing: 2px;
+    color: $navy;
 
     input {
-      background-color: $screenGray;
-      border: 3px inset $red;
+      padding: calc($base-size / 2);
+      background-color: whitesmoke;
+      color: $navy;
+      border: none;
+      font-family: $font-content;
       font-size: calc($base-size * 1.4);
-      font-family: $font-search;
       font-weight: 300;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       border-radius: $radius;
       text-align: center;
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
     }
 
     label {
@@ -52,7 +51,6 @@
   }
 
   &__login {
-    width: 100vw;
     height: 50vh;
     flex-direction: column;
     justify-content: center;
@@ -92,6 +90,7 @@
 
   &__error {
     height: calc($base-size * 3);
+    padding: $base-size;
   }
 
   &__account {
@@ -126,8 +125,10 @@
 
 @media screen and (max-width: 420px) and (orientation: portrait){
   .panel {
+    height: 100%;
 
     &__login {
+      height: 100%;
       gap: calc($base-size * 3);
     }
 

@@ -92,7 +92,7 @@ utils.login = async (login, password, setErrorMsg) => {
           case 'auth/wrong-password':
             return 'The password is incorrect.';
           case 'auth/user-not-found':
-            return `There is no user using the ${login} login in our database.`;
+            return `We dont't have a user with the login ${login}. You can sign up and create a new account for user ${login}.`;
           default:
             return null;
         }
