@@ -22,8 +22,6 @@ const PokeCard = ({ pokemon, closeCard }) => {
     }
   }, [info]);
 
-
-
   const img = () => { 
     if ( pokemon.appearance.image ) { 
       return pokemon.appearance.image
@@ -36,6 +34,7 @@ const PokeCard = ({ pokemon, closeCard }) => {
 
   return(
     <div>
+      <button className='card__closeInfo' onClick={closeCard}><IoClose /></button>
       <article className={clsx('card', `card__${pokemon.types[0].name}`)} >
         <header className={clsx('card__header')}>
           <h1 className='card__title'> {utils.nameToUpperCase(pokemon.name)}</h1>

@@ -67,7 +67,7 @@ const Pokedex = () => {
       </div>
       { alert &&
         <dialog className='pokedex__alert' ref={ref} onCancel={() => setAlert('')}>
-          <p> I don't know any pokemon with <span>{alert}</span> in the name.</p>
+          <p> I don't know any pokemon with <span>{alert}</span> in its name.</p>
           <button className='pokedex__okAlert' onClick={() => setAlert('')}>OK</button>
           <button className='pokedex__closeAlert' onClick={() => setAlert('')}>
             <IoClose />

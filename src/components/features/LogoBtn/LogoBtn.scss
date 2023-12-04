@@ -2,20 +2,20 @@
 
 .logo {
   position: absolute;
-  top: 1vh;
-  left: 1vh;
+  top: 1dvh;
+  left: 1dvh;
   z-index: 100;
   display: flex;
   align-items: flex-start;
   gap: 7px;
 
 &__reload {
-    min-width: 10vh;
+    min-width: 8vh;
     max-width: 16vw;
-    min-height: 10vh;
+    min-height: 8vh;
     max-height: 16vw;
     border-radius: 50%;
-    border: .4vh inset whitesmoke;
+    border: .4vh inset $navy;
     background: radial-gradient(circle, $aqua 15%, $blue);
     cursor: pointer;
     transition: all .3s ease-in-out;
@@ -36,7 +36,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    border: .3vh inset whitesmoke;
+    border: .3vh inset $navy;
     cursor: pointer;
     transition: all .3s ease-in-out;
 

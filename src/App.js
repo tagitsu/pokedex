@@ -20,7 +20,6 @@ function App() {
   const [ alert, setAlert ] = useState('');
   const [ displayCard, setDisplayCard ] = useState(null);
 
-
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser?.uid);

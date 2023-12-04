@@ -1,7 +1,11 @@
 @import '../../../styles/settings.scss';
 
 .panel {
+  height: 100vh;
   grid-column: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &__input-box {
     position: relative;
@@ -125,7 +129,6 @@
 
 @media screen and (max-width: 420px) and (orientation: portrait){
   .panel {
-    height: 100%;
 
     &__login {
       height: 100%;

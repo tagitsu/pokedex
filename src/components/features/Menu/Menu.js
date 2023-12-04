@@ -2,10 +2,11 @@ import './Menu.scss';
 import utils from '../../../utils/pokedexUtils';
 import { useContext } from 'react';
 import { AppContext } from '../../../utils/pokedexContexts';
+import clsx from 'clsx';
 
 const Menu = ({ displayPokemons }) => {
 
-  const { setSortedPokemons } = useContext(AppContext);
+  const { displayCard, setSortedPokemons } = useContext(AppContext);
 
   return (
     <div className='menu'>
@@ -13,7 +14,7 @@ const Menu = ({ displayPokemons }) => {
         <div className='menu__button-box'>
           { utils.getFirstLetters(displayPokemons()).map( letter => 
             <button 
-              className='menu__button'
+              className={clsx('menu__button', displayCard && 'menu__hidden')}
               key={letter}
               onClick={(e) => utils.getPokemonsByName(displayPokemons, e.target.innerText, setSortedPokemons)}
             > 
@@ -26,7 +27,7 @@ const Menu = ({ displayPokemons }) => {
         <div className='menu__button-box'>
           { utils.getTypes(displayPokemons()).map( type => 
             <button 
-              className='menu__button' 
+              className={clsx('menu__button', displayCard && 'menu__hidden')}
               key={type} 
               onClick={() => utils.getPokemonsByType(displayPokemons, type, setSortedPokemons)}
             > 

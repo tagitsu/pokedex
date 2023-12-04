@@ -31,9 +31,9 @@ const Pokemon = ({ pokemon, chooseCard }) => {
   return(
     <button className={clsx('pokemon')} onClick={() => chooseCard(pokemon.id)} onMouseEnter={() => setIsVisible(true)} onMouseLeave={() => setIsVisible(false)}>
       <div className={clsx('pokemon__pokeball')}/>
-      <h2 className={clsx(isVisible && 'pokemon__name', isVisible && `pokemon__${pokemon.types[0].name}`)}>
-        {pokemon.name} <span className={clsx('pokemon__number')}>#{pokemon.id}</span>
-      </h2>
+      <div className={clsx(isVisible ? 'pokemon__name' : 'pokemon__hidden')}>
+        <p>{pokemon.name}</p> <p className={clsx('pokemon__number')}>{pokemon.id}</p>
+      </div>
       <div className={clsx('pokemon__image')}>
         <img src={img()} alt={pokemon.name} />
       </div>
